@@ -1,0 +1,30 @@
+ DummyEmail=https://www.fakemail.net/
+ 
+ BaseUrl=http://65.108.222.73/#/en/login
+ 
+ ActiveToken=http://65.108.222.73:8080/recent-user-activation-link/
+ 
+ PasswordToken=http://65.108.222.73:8080/recent-recent-password-link/
+ 
+ SetPassword=http://65.108.222.73/#/en/createPassword?token=
+ 
+ ResetPassword=http://65.108.222.73/#/en/reset-password?token=
+ 
+ Otp=http://65.108.222.73:8080/recent-user-otp/
+ 
+
+DB_URL =mongodb://welldercare:rntVrfcPE9vAJkJqXvVi@65.108.222.73:27017/db_welldercare_dev?authSource=admin
+
+DB_USER =admin
+
+DB_PASSWORD =rntVrfcPE9vAJkJqXvVi
+
+Database=db_welldercare_dev
+
+host=65.108.222.73
+port=27017
+mongodb.username=admin
+mongodb.password=rntVrfcPE9vAJkJqXvVi
+mongodb.database=db_welldercare_dev
+mongodb.uri=mongodb://welldercare:rntVrfcPE9vAJkJqXvVi@65.108.222.73:27017/db_welldercare_dev?authSource=admin
+server.port=8080

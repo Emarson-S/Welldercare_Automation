@@ -1,0 +1,19 @@
+ DummyEmail=https://www.fakemail.net/
+  
+ BaseUrl=http://65.108.147.81/#/en/login
+ 
+ ActiveToken=http://65.108.147.81:8090/recent-user-activation-link/
+ 
+ PasswordToken=http://65.108.147.81:8090/recent-recent-password-link/
+ 
+ SetPassword=http://65.108.147.81/#/en/createPassword?token=
+ 
+ ResetPassword=http://65.108.147.81/#/en/reset-password?token=
+ 
+ Otp=http://65.108.147.81:8090/recent-user-otp/
+ 
+ DB_URL=mongodb://root:root@65.108.147.81:27017/db_welldercare_QA?authSource=admin
+ 
+ Database=db_welldercare_QA
+ 
+ 
