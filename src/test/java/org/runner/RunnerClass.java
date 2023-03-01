@@ -60,7 +60,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
 		toThreadSleep(2000);
-		Configurations.readtoken("ActiveToken", text, "SetPassword");
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
@@ -106,8 +106,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 1));
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		String output=MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ONE_TIME_PASSWORD, "emailId", text, "otp");		
-		System.out.println(output);
+		String output=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < output.length(); i++, j++) {
 			char ch = output.charAt(i);
 			String otp = Character.toString(ch);
@@ -132,7 +131,7 @@ public class RunnerClass extends BaseClass {
 
 		openChrome();
 		maxWindow();
-		launchUrl("https://www.fakemail.net/");
+		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
 		toCreateNewCell("Files", "Login&Usercreation", 8, 2, text);
@@ -163,7 +162,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
 		toThreadSleep(2000);
-		Configurations.readtoken("ActiveToken", text, "SetPassword");
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
@@ -209,8 +208,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 2));
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(2000);
-		String s=Configurations.readOtp("Otp", text);
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -232,7 +230,7 @@ public class RunnerClass extends BaseClass {
 	private void usercreationDr1() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl("https://www.fakemail.net/");
+		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
 		toCreateNewCell("Files", "Login&Usercreation", 8, 3, text);
@@ -263,7 +261,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
 		toThreadSleep(1000);
-		Configurations.readtoken("ActiveToken", text, "SetPassword");
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
@@ -347,8 +345,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickDrFormSubmit());
 		toThreadSleep(3000);
-		String s=Configurations.readOtp("Otp", text);
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -366,14 +363,14 @@ public class RunnerClass extends BaseClass {
 	private void usercreationDr2() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl("https://www.fakemail.net/");
+		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
 		toCreateNewCell("Files", "Login&Usercreation", 8, 6, text);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.open()");
 		switchToWindow(1);
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
@@ -397,10 +394,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(1000);
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/" + text + "");
-		String token = response.asString();
-		launchUrl("http://65.108.222.73/#/en/createPassword?token=" + token + "");
+		toThreadSleep(3000);
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
@@ -484,9 +479,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickDrFormSubmit());
 		toThreadSleep(3000);
-		Response respon = RestAssured.get("http://65.108.222.73:8080/recent-user-otp/" + text + "");
-		String s = respon.asString();
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -505,14 +498,14 @@ public class RunnerClass extends BaseClass {
 	private void usercreationPH() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl("https://www.fakemail.net/");
+		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
 		toCreateNewCell("Files", "Login&Usercreation", 8, 5, text);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.open()");
 		switchToWindow(1);
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
 		Actions a = new Actions(driver);
 		toThreadSleep(2000);
@@ -535,10 +528,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(1000);
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/" + text + "");
-		String token = response.asString();
-		launchUrl("http://65.108.222.73/#/en/createPassword?token=" + token + "");
+		toThreadSleep(3000);
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
@@ -598,9 +589,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		Response respon = RestAssured.get("http://65.108.222.73:8080/recent-user-otp/" + text + "");
-		String s = respon.asString();
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -622,14 +611,14 @@ public class RunnerClass extends BaseClass {
 	private void usercreationCT() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl("https://www.fakemail.net/");
+		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
 		toCreateNewCell("Files", "Login&Usercreation", 8, 4, text);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.open()");
 		switchToWindow(1);
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
 		Actions a = new Actions(driver);
 		toThreadSleep(2000);
@@ -652,10 +641,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(1000);
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/" + text + "");
-		String token = response.asString();
-		launchUrl("http://65.108.222.73/#/en/createPassword?token=" + token + "");
+		toThreadSleep(3000);
+		Configurations.readVerificationToken(text, "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
@@ -735,9 +722,7 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickFri());
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		Response respon = RestAssured.get("http://65.108.222.73:8080/recent-user-otp/" + text + "");
-		String s = respon.asString();
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -818,7 +803,7 @@ public class RunnerClass extends BaseClass {
 	private void enquirypage() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
@@ -889,7 +874,7 @@ public class RunnerClass extends BaseClass {
 	private void veteranOnboarding() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
@@ -920,13 +905,16 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterHight(), toReadDataFromExcel("Files", "Enquiry", 29, 1));
 		toFillTextbox(l2.getEnterWeight(), toReadDataFromExcel("Files", "Enquiry", 30, 1));
-		toSelectVisibleText(l2.getSelectBloodGroup(), toReadDataFromExcel("Files", "Enquiry", 31, 1));
+		toFillTextbox(l2.getSelectBloodGroup(), toReadDataFromExcel("Files", "Enquiry", 31, 1));
+		pressEnterKey();
+		toThreadSleep(1000);
 		driver.findElement(By.xpath("(//label[text()='Moderate'])[1]")).click();
 		toFillTextbox(l2.getEnterSmokeDuration(), "2013");
 		toFillTextbox(l2.getEnterSmokingPerDay(), "2");
 		driver.findElement(By.xpath("(//label[text()='Moderate'])[2]")).click();
 		toFillTextbox(l2.getEnterDrinkingDuration(), "2016");
 		toFillTextbox(l2.getEnterDrinkingPerWeek(), "4");
+		scrollDown(l2.getEnterDrinkingPerWeek());
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
 		toThreadSleep(1000);
@@ -940,6 +928,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l2.getEnterOxygenLevel(), toReadDataFromExcel("Files", "Enquiry", 37, 1));
 		toFillTextbox(l2.getEnterHeartRate(), toReadDataFromExcel("Files", "Enquiry", 38, 1));
 		toFillTextbox(l2.getEnterRespiratoryRate(), toReadDataFromExcel("Files", "Enquiry", 39, 1));
+		scrollDown(l2.getEnterRespiratoryRate());
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
 		toThreadSleep(1000);
@@ -1049,7 +1038,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignDoctorBtn1());
 		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
+		toFillTextbox(l2.getEnterDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignDoctorBtn2());
@@ -1060,11 +1049,11 @@ public class RunnerClass extends BaseClass {
 	
 // < --- Doctor Approval --->	
 	
-	@Test(enabled = false, priority=9)
+	@Test(enabled = true, priority=9)
 	private void doctorApproval() throws Throwable {
 		openChrome();
 		maxWindow();
-		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
+		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
@@ -1097,17 +1086,13 @@ public class RunnerClass extends BaseClass {
 	
 //   < --  Veteran active  -->	
 	
-	@Test (enabled=false, priority=10)
+	@Test (enabled=true, priority=10)
 	private void veteranActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/"+toReadDataFromExcel("Files", "Enquiry", 4, 1)+"");
-		String token = response.asString();
-		System.out.println(token);
-		toThreadSleep(2000);
-		launchUrl("http://65.108.222.73/#/en/createPassword?token=" + token + "");
+		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 4, 1), "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
@@ -1117,9 +1102,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		Response respon = RestAssured.get("http://65.108.222.73:8080/recent-user-otp/" + toReadDataFromExcel("Files", "Enquiry", 4, 1) + "");
-		String s = respon.asString();
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 4, 1));
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -1135,17 +1118,13 @@ public class RunnerClass extends BaseClass {
 	
 //   <---- Family member active -->
 	
-	@Test (enabled=false, priority=11)
+	@Test (enabled=true, priority=11)
 	private void familymemberActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/"+toReadDataFromExcel("Files", "Enquiry", 16, 1)+"");
-		String token = response.asString();
-		System.out.println(token);
-		toThreadSleep(2000);
-		launchUrl("http://65.108.222.73/#/en/createPassword?token=" + token + "");
+		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 16, 1), "SetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
@@ -1155,9 +1134,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		Response respon = RestAssured.get("http://65.108.222.73:8080/recent-user-otp/" + toReadDataFromExcel("Files", "Enquiry", 16, 1) + "");
-		String s = respon.asString();
-		System.out.println(s);
+		String s=Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 16, 1));
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
