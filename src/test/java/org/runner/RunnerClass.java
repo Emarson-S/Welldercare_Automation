@@ -870,7 +870,7 @@ public class RunnerClass extends BaseClass {
 	
 // <--- Veteran Onboarding --->	
 	
-	@Test (enabled=false, priority=8)
+	@Test (enabled=true, priority=8)
 	private void veteranOnboarding() throws Throwable {
 		openChrome();
 		maxWindow();

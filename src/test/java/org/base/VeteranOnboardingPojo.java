@@ -185,8 +185,7 @@ public class VeteranOnboardingPojo extends BaseClass {
 		private WebElement enterWeight;
 		
 		@FindAll({
-			@FindBy(xpath="//select[@formcontrolname='bloodGroup']"),
-			@FindBy(xpath="//select[@placeholder='Select blood group']")}) 
+			@FindBy(xpath="(//input[@aria-autocomplete='list'])[1]")}) 
 		private WebElement selectBloodGroup;
 		
 		@FindAll({
