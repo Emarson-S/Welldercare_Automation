@@ -1,11 +1,13 @@
 package org.base;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -93,5 +95,108 @@ public class Configurations extends BaseClass {
 		System.out.println(otp);
 		return otp;
 	}
+	
 
+// Enter Address	
+	
+	public static List<String> enterAddress(String Country,String State, String City, String Pincode ,String Territory) {
+		List<String> l = new ArrayList();
+		l.add(Country);
+		l.add(State);
+		l.add(City);
+		l.add(Pincode);
+		l.add(Territory);		
+		return l;
+		}
+	
+// Enter contact numbers	
+	
+	public static List<String> enterContactNo(long PhoneNumber,long AlterContact, long PanNumber, int i) {
+		long v1=PhoneNumber+i;
+		long v2=AlterContact+i;
+		long v3=PanNumber+i;
+		String s1=String.valueOf(v1);
+		String s2=String.valueOf(v2);
+		String s3=String.valueOf(v3);
+		List<String> l = new ArrayList();
+		l.add(s1);
+		l.add(s2);
+		l.add(s3);
+		return l;
+		}
+	
+// Enter image url
+	
+	public static List<String> enterImage(String ImageUrl, String ProfileImage, String IdProof, String RegScanCopy, String MedicalReport,String InsuranceCopy) {
+		List<String> l = new ArrayList();
+		String image1=ImageUrl+ProfileImage;
+		String image2=ImageUrl+IdProof;
+		String image3=ImageUrl+RegScanCopy;
+		String image4=ImageUrl+MedicalReport;
+		String image5=ImageUrl+InsuranceCopy;	
+		l.add(image1);
+		l.add(image2);
+		l.add(image3);
+		l.add(image4);
+		l.add(image5);
+		return l;
+		
+	}
+	
+	
+	
+	@Test
+    private void addExcelDetails() throws IOException {
+		
+	// Change Address
+		
+		List<String> l1=Configurations.enterAddress("India", "Tamilnadu", "Chennai","656453", "Egmore");
+		for (int i = 8, k=0; i < 13 && k<5; i++,k++) {
+			toCreateNewCell("Files", "Enquiry", i, 1, l1.get(k));
+		}				
+		for (int j =1; j < 7; j++) {
+		for (int i = 22, k=0; i < 27 && k<5; i++,k++) {	
+			toCreateNewCell("Files", "Login&Usercreation", i, j, l1.get(k));
+		}}
+		
+	// Change phone numbers & Id numbers
+		
+		for (int i = 0, j=-1; i < 7 || j<7; i++, j++) {	
+		List<String> l2=Configurations.enterContactNo(8976564320l,78745323458l,876593543628l, i);
+		if (j>=1) {			
+		toCreateNewCell("Files","Login&Usercreation" , 15, j, l2.get(1));
+		toCreateNewCell("Files","Login&Usercreation" , 18, j, l2.get(2));				
+		}
+		if(i==0) {
+			toCreateNewCell("Files", "Enquiry", 5, 1, l2.get(0));
+			
+		}
+		else if(i==1) {
+			toCreateNewCell("Files", "Enquiry", 18, 1, l2.get(0));
+			
+		}
+		else if (i>1) {
+		toCreateNewCell("Files","Login&Usercreation" , 9, j, l2.get(0));		
+		}
+		}		
+		
+	// Change images
+		
+		List<String> l3=Configurations.enterImage("C:\\Users\\Emarson\\OneDrive - MAVENS I SOFTECH SOLUTIONS PRIVATE LIMITED\\Desktop\\images\\", "image1.jpg", "image2.jpg","image3.jpg","image4.jpg","image5.jpg");
+		for (int i = 1; i < 7; i++) {
+			toCreateNewCell("Files", "Login&Usercreation", 12, i,l3.get(0));
+			toCreateNewCell("Files", "Login&Usercreation", 19, i,l3.get(1));
+		}
+		for (int i = 3; i <7 ; i++) {
+			toCreateNewCell("Files", "Login&Usercreation", 31, i,l3.get(2));
+		}
+		toCreateNewCell("Files", "Enquiry", 22, 1, l3.get(0));
+		toCreateNewCell("Files", "Enquiry", 22, 3, l3.get(0));
+		toCreateNewCell("Files", "Enquiry", 28, 1, l3.get(1));
+		toCreateNewCell("Files", "Enquiry", 26, 3, l3.get(1));
+		toCreateNewCell("Files", "Enquiry", 46, 1, l3.get(3));
+		toCreateNewCell("Files", "Enquiry", 65, 1, l3.get(4));
+		
+	}
+	
 }

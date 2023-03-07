@@ -799,7 +799,7 @@ public class RunnerClass extends BaseClass {
 //	<--- Enquiry page --->
 	
 	
-	@Test (enabled=false, priority=7)
+	@Test (enabled=true, priority=7)
 	private void enquirypage() throws Throwable {
 		openChrome();
 		maxWindow();

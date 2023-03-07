@@ -1,49 +1,25 @@
 package org.runner;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.List;
 
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
 import org.base.Configurations;
-import org.base.MongoDBCollections;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
-import org.bson.Document;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
-import bsh.ParseException;
-import groovyjarjarantlr.TokenStreamSelector;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
 	
 	
-	@Test
-	private void tc1() throws ParseException, java.text.ParseException, IOException {
-	String output=MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_VERIFICATION_TOKEN, "user.emailId", "pinarayivijayan@veteran.com", "token");
-	System.out.println(output);
-	  
-	}
 	
-
 
 	@Test(enabled = false)
 	private void requestAppointments() throws Throwable {
