@@ -164,7 +164,7 @@ public class AppointmentsPojo extends BaseClass {
 	private WebElement clickLiveRequestMenu;
 	
 	@FindAll({
-		@FindBy(xpath="(//i[@class='fa fa-ellipsis-h'])[1]")}) 
+		@FindBy(xpath="(//i[@class='ti-eye me-4'])[1]")}) 
 	private WebElement clickNewLiveRequest;
 	
 	@FindAll({
@@ -175,9 +175,60 @@ public class AppointmentsPojo extends BaseClass {
 		@FindBy(xpath="//button[text()=' Attend ']")}) 
 	private WebElement clickAttendBtn;
 	
+	@FindAll({
+		@FindBy(xpath="//button[text()=' False Alarm ']")}) 
+	private WebElement clickFalseAlarmBtn;
 	
 	
 	
+	// <---- Request appointment reshcedule>
+	
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()=' Requested ']")}) 
+	private WebElement clickRequestFilterBtn;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='date']")}) 
+	private WebElement  enterRescheduleDate;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='time']")}) 
+	private WebElement  enterRescheduleTime;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Accept']")}) 
+	private WebElement  clickAcceptRequestAppt;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Accept']")}) 
+	private WebElement  clickRejectRequestAppt;
+		
+		
+	public WebElement getClickFalseAlarmBtn() {
+		return clickFalseAlarmBtn;
+	}
+
+	public WebElement getClickRequestFilterBtn() {
+		return clickRequestFilterBtn;
+	}
+
+	public WebElement getEnterRescheduleDate() {
+		return enterRescheduleDate;
+	}
+
+	public WebElement getEnterRescheduleTime() {
+		return enterRescheduleTime;
+	}
+
+	public WebElement getClickAcceptRequestAppt() {
+		return clickAcceptRequestAppt;
+	}
+
+	public WebElement getClickRejectRequestAppt() {
+		return clickRejectRequestAppt;
+	}
+
 	public WebElement getClickEmergencyBtn() {
 		return clickEmergencyBtn;
 	}

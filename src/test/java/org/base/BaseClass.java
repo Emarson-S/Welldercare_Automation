@@ -5,17 +5,15 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
 
@@ -26,7 +24,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.bson.Document;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -34,22 +31,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-
-import bsh.ParseException;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 
 public class BaseClass {
 
@@ -59,14 +48,23 @@ public class BaseClass {
 	public static Alert l;
 	public static Select s;
 	public static WebDriverWait w;
-	
 
-	// launch Chrome browser
 	public static void openChrome() {
 
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		disableImageChrome(options);
+		driver = new ChromeDriver(options);
+	}
 
+	public static ChromeOptions disableImageChrome(ChromeOptions options) {
+		HashMap<String, Object> images = new HashMap<String, Object>();
+		images.put("image", 2);
+		HashMap<String, Object> profile = new HashMap<String, Object>();
+		profile.put("profile", images);
+		options.setExperimentalOption("prefs", profile);
+		return options;
 	}
 
 	// launch Firefox browser
@@ -86,8 +84,6 @@ public class BaseClass {
 		driver = new EdgeDriver();
 
 	}
-
-
 
 	// closeBrower
 	public static void closeBrowser() {
@@ -119,8 +115,6 @@ public class BaseClass {
 
 		element.sendKeys(data);
 	}
-
-	int myInt = 7;
 
 	public static void toFillIntigerTextbox(WebElement element, int myInt) {
 
@@ -299,7 +293,7 @@ public class BaseClass {
 	// create new Excel Sheet
 	public static void tocreateExcelSheet(String fileName, String sheetName, int rowNo, int cellNo, String value)
 			throws IOException {
-		File f = new File("C:\\Users\\Emarson\\eclipse-workspace\\Welldercare\\Excel Files\\" + fileName + ".xlsx");
+		File f = new File("D:\\Project\\Welldercare_Automation\\Excel Files\\" + fileName + ".xlsx");
 		FileInputStream fil = new FileInputStream(f);
 		Workbook b = new XSSFWorkbook(fil);
 		Sheet sh = b.createSheet(sheetName);
@@ -314,7 +308,7 @@ public class BaseClass {
 	// create new row in old Sheet
 	public static void toCreateNewRow(String fileName, String sheetName, int rowNo, int cellNo, String value)
 			throws IOException {
-		File f = new File("C:\\Users\\Emarson\\eclipse-workspace\\Welldercare\\Excel Files\\" + fileName + ".xlsx");
+		File f = new File("D:\\Project\\Welldercare_Automation\\Excel Files\\" + fileName + ".xlsx");
 		FileInputStream fil = new FileInputStream(f);
 		Workbook b = new XSSFWorkbook(fil);
 		Sheet sh = b.getSheet(sheetName);
@@ -330,7 +324,7 @@ public class BaseClass {
 
 	public static void toCreateNewCell(String fileName, String sheetName, int rowNo, int cellNo, String value)
 			throws IOException {
-		File f = new File("C:\\Users\\Emarson\\eclipse-workspace\\Welldercare\\Excel Files\\" + fileName + ".xlsx");
+		File f = new File("D:\\Project\\Welldercare_Automation\\Excel Files\\" + fileName + ".xlsx");
 		FileInputStream fil = new FileInputStream(f);
 		Workbook b = new XSSFWorkbook(fil);
 		Sheet sh = b.getSheet(sheetName);
@@ -344,7 +338,7 @@ public class BaseClass {
 	public static String toReadDataFromExcel(String fileName, String sheetName, int rowNo, int cellNo)
 			throws IOException {
 
-		File f = new File("C:\\Users\\Emarson\\eclipse-workspace\\Welldercare\\Excel Files\\" + fileName + ".xlsx");
+		File f = new File("D:\\Project\\Welldercare_Automation\\Excel Files\\" + fileName + ".xlsx");
 		FileInputStream fin = new FileInputStream(f);
 		Workbook b = new XSSFWorkbook(fin);
 		Sheet sh = b.getSheet(sheetName);
@@ -444,8 +438,5 @@ public class BaseClass {
 		return d1;
 
 	}
-
-
-
 
 }

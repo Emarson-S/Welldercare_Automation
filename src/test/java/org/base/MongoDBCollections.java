@@ -24,7 +24,7 @@ public class MongoDBCollections extends BaseClass {
 // read particular collections	
 	
 	public static String connectMongoDB(String DB_URL, String Database,String Tablename, String key,String putValue, String getValue) throws IOException { 
-	    FileReader reader=new FileReader("C:\\Users\\Emarson\\eclipse-workspace\\Welldercare\\src\\test\\java\\org\\runner\\Application properties Dev");
+	    FileReader reader=new FileReader("D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
         Properties props=new Properties();
         props.load(reader);
         FindIterable<Document> resutls = null;

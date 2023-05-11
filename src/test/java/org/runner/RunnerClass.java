@@ -1,5 +1,6 @@
 package org.runner;
 
+import java.awt.AWTException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -799,7 +800,7 @@ public class RunnerClass extends BaseClass {
 //	<--- Enquiry page --->
 	
 	
-	@Test (enabled=true, priority=7)
+	@Test (enabled=false, priority=7)
 	private void enquirypage() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -870,7 +871,7 @@ public class RunnerClass extends BaseClass {
 	
 // <--- Veteran Onboarding --->	
 	
-	@Test (enabled=true, priority=8)
+	@Test (enabled=false, priority=8)
 	private void veteranOnboarding() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1049,7 +1050,7 @@ public class RunnerClass extends BaseClass {
 	
 // < --- Doctor Approval --->	
 	
-	@Test(enabled = true, priority=9)
+	@Test(enabled = false, priority=9)
 	private void doctorApproval() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1086,7 +1087,7 @@ public class RunnerClass extends BaseClass {
 	
 //   < --  Veteran active  -->	
 	
-	@Test (enabled=true, priority=10)
+	@Test (enabled=false, priority=10)
 	private void veteranActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
@@ -1118,7 +1119,7 @@ public class RunnerClass extends BaseClass {
 	
 //   <---- Family member active -->
 	
-	@Test (enabled=true, priority=11)
+	@Test (enabled=false, priority=11)
 	private void familymemberActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
@@ -1146,95 +1147,7 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-
-// < --- Upcoming Appointments -- >	
 	
-	@Test(enabled = false)
-	private void createAppointment() throws Throwable {
-		openChrome();
-		maxWindow();
-		Configurations.readUrl("BaseUrl");
-		toThreadSleep(2000);
-		UserCreationPojo l1 = new UserCreationPojo();
-		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickCalendar());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickcreateAppointmenBtn());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterVeteranName(), "Pinarayi Vijayan");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterAppointmentType(), "OPD");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterAppointmentMode(), "Online");
-		pressEnterKey();
-		toThreadSleep(1000);
-		String date = readDate();
-		toFillTextbox(l3.getEnterAppointmentDate(), date);
-		toClickButton(l3.getClickTimePicker());
-		String hr = readHour();
-		String mm = readMin();
-		String aa = readAm();
-		toThreadSleep(1000);
-		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
-		String out = text.getText();
-		if (aa == out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), mm);
-			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
-			pressEnterKey();
-			toThreadSleep(1000);
-		} else if (aa != out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), mm);
-			toThreadSleep(1000);
-			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
-			a.moveToElement(bb).click();
-			toClickButton(l3.getClickTimePicker());
-			toThreadSleep(1000);
-			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
-			pressEnterKey();
-			toThreadSleep(1000);
-		}
-		toClickButton(l3.getClickBookAppointment());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickStartBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
-		scrollDown(l3.getClickUpdateAppointment());
-		 toThreadSleep(1000);
-        toClickButton(l3.getClickAddMedicines());
-        toThreadSleep(1000);
-        toFillTextbox(l3.getEnterMedicineName(),  "Amoxicillin&nbsp;10mg" );
-        pressEnterKey();
-		toThreadSleep(1000);
-        toClickButton(l2.getClickMorning());
-        toClickButton(l2.getClickAfternoon());
-        toClickButton(l3.getClickAfterFood());
-        toFillTextbox(l3.getEnterNoOfDays(), "5");
-        toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
-        toFillTextbox(l3.getEnterLabTest(), "Ct scan");
-        pressEnterKey();
-		scrollDown(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-        toClickButton(l3.getClickUpdateAppointment());
-        toThreadSleep(1000);
-        driver.findElement(By.xpath("//button[text()='OK']")).click();
-        toThreadSleep(4000);
-        closeBrowser();
-
-	}
 	
 	
 //  <--- Assign Caretaker -->
@@ -1289,5 +1202,360 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickAssignDoctor());
 	}
 
+	
+	// Live request complete
+	
+	@Test(enabled = false)
+	private void liveRequest() throws Throwable {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickEmergencyBtn());
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toThreadSleep(3000);
+		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+		toThreadSleep(2000);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickLiveRequestMenu());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickNewLiveRequest());
+		toThreadSleep(2000);
+		scrollDown(l3.getClickAttendBtn());
+		toThreadSleep(1000);
+		toClickButton(l3.getClickAttendBtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickStartBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
+		scrollDown(l3.getClickUpdateAppointment());
+		toThreadSleep(1000);
+		toClickButton(l3.getClickAddMedicines());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterMedicineName(), "Amplodipined&nbsp;450&nbsp;mg");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toClickButton(l2.getClickMorning());
+		toClickButton(l2.getClickAfternoon());
+		toClickButton(l3.getClickAfterFood());
+		toFillTextbox(l3.getEnterNoOfDays(), "5");
+		toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
+		toFillTextbox(l3.getEnterLabTest(), "Ct scan");
+		pressEnterKey();
+		toThreadSleep(1000);
+		scrollDown(l3.getClickUpdateAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpdateAppointment());
+		toThreadSleep(1000);
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toThreadSleep(4000);
+		closeBrowser();				
+
+	}
+	
+	
+	
+	// Live request cancelled
+
+	@Test(enabled = false)
+	private void liveRequestCancelled() throws Throwable {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickEmergencyBtn());
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toThreadSleep(3000);
+		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+		toThreadSleep(2000);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickLiveRequestMenu());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickNewLiveRequest());
+		toThreadSleep(2000);
+		scrollDown(l3.getClickAttendBtn());
+		toThreadSleep(1000);
+	    toClickButton(l3.getClickFalseAlarmBtn());
+	    toThreadSleep(3000);
+	    closeBrowser();
+
+		}
+
+
+// < --- Upcoming Appointments complete-- >	
+	
+	
+
+	@Test(enabled = false)
+	private void createAppointment() throws Throwable {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickCalendar());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickcreateAppointmenBtn());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterVeteranName(), toReadDataFromExcel("Files", "Enquiry", 2, 3));
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterAppointmentType(), "OPD");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterAppointmentMode(), "Online");
+		pressEnterKey();
+		toThreadSleep(1000);
+		String date = readDate();
+		toFillTextbox(l3.getEnterAppointmentDate(), date);
+		toClickButton(l3.getClickTimePicker());
+		String hr = readHour();
+		String mm = readMin();
+		int m=Integer.parseInt(mm);
+		String aa = readAm();
+		toThreadSleep(1000);
+		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
+		String out = text.getText();
+		if (aa == out) {
+			toFillTextbox(l3.getEnterhour(), hr);
+			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+			pressEnterKey();
+			toThreadSleep(1000);
+		} else if (aa != out) {
+			toFillTextbox(l3.getEnterhour(), hr);
+			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toThreadSleep(1000);
+			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
+			a.moveToElement(bb).click();
+			toClickButton(l3.getClickTimePicker());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+			pressEnterKey();
+			toThreadSleep(1000);
+		}
+		toClickButton(l3.getClickBookAppointment());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickStartBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
+		scrollDown(l3.getClickUpdateAppointment());
+		toThreadSleep(1000);
+		toClickButton(l3.getClickAddMedicines());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterMedicineName(), "Amplodipined&nbsp;450&nbsp;mg");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toClickButton(l2.getClickMorning());
+		toClickButton(l2.getClickAfternoon());
+		toClickButton(l3.getClickAfterFood());
+		toFillTextbox(l3.getEnterNoOfDays(), "5");
+		toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
+		toFillTextbox(l3.getEnterLabTest(), "Ct scan");
+		pressEnterKey();
+		scrollDown(l3.getClickUpdateAppointment());
+		toThreadSleep(1000);
+		toClickButton(l3.getClickUpdateAppointment());
+		toThreadSleep(1000);
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toThreadSleep(4000);
+		closeBrowser();
+
+	}
+	
+	
+	// Appointment request by Caregiver
+	
+	@Test (enabled=false)
+	private void requestAppointmentByCaregiver() throws InterruptedException, IOException, AWTException {
+		
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestDoctorName(), "Emarson S");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
+		pressEnterKey();
+		toThreadSleep(1000);
+		String s = readDay();
+		String mm = readMonth();
+		String yyyy = readYear();
+		int n = Integer.parseInt(s) + 1;
+		String dd = n + "";
+		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
+		toThreadSleep(1000);
+		driver.findElement(By.xpath("//input[@placeholder='00:00']")).click();
+		toFillTextbox(l3.getEnterhour(), "10");
+		toFillTextbox(l3.getEnterMin(), "00");
+		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toClickButton(l3.getClickSubmitRequestAppointment());
+		toThreadSleep(3000);
+        closeBrowser();
+	}
+	
+	
+	// Appointment request by Veteran
+	
+	@Test(enabled = false)
+	private void requestAppointmentByVeteran() throws Throwable {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestDoctorName(), "Emarson S");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
+		pressEnterKey();
+		toThreadSleep(1000);
+		String s = readDay();
+		String mm = readMonth();
+		String yyyy = readYear();
+		int n = Integer.parseInt(s) + 1;
+		String dd = n + "";
+		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
+		toThreadSleep(1000);
+		driver.findElement(By.xpath("//input[@placeholder='00:00']")).click();
+		toFillTextbox(l3.getEnterhour(), "10");
+		toFillTextbox(l3.getEnterMin(), "00");
+		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toClickButton(l3.getClickSubmitRequestAppointment());
+		toThreadSleep(3000);
+        closeBrowser();
+	}
+	
+	// <--- Request Appointment Accept by Doctor--->
+	
+	@Test(enabled=false)
+	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
+		
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestFilterBtn());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		scrollDown(l3.getClickAcceptRequestAppt());
+		toThreadSleep(1000);
+		String date = readDate();
+	//	toFillTextbox(l3.getEnterRescheduleDate(), date);
+		toClickButton(l3.getClickTimePicker());
+		String hr = readHour();
+		String mm = readMin();
+		int m=Integer.parseInt(mm);
+		String aa = readAm();
+		toThreadSleep(1000);
+		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
+		String out = text.getText();
+		if (aa == out) {
+			toFillTextbox(l3.getEnterhour(), hr);
+			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+		} else if (aa != out) {
+			toFillTextbox(l3.getEnterhour(), hr);
+			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toThreadSleep(1000);
+			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
+			a.moveToElement(bb).click();							
+		}
+		
+		toClickButton(l3.getClickAcceptRequestAppt());
+		toThreadSleep(1000);
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		closeBrowser();
+	}
+	
 
 }
