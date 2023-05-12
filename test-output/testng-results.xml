@@ -2,19 +2,19 @@
 <testng-results total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-11T12:20:29Z" name="Default suite" finished-at="2023-05-11T12:21:43Z" duration-ms="73800">
+  <suite started-at="2023-05-12T05:21:17Z" name="Default suite" finished-at="2023-05-12T05:22:09Z" duration-ms="52186">
     <groups>
     </groups>
-    <test started-at="2023-05-11T12:20:29Z" name="Default test" finished-at="2023-05-11T12:21:43Z" duration-ms="73800">
+    <test started-at="2023-05-12T05:21:17Z" name="Default test" finished-at="2023-05-12T05:22:09Z" duration-ms="52186">
       <class name="org.runner.SampleClass">
-        <test-method signature="requestAppointmentByCaregiver()[pri:0, instance:org.runner.SampleClass@5ba88be8]" started-at="2023-05-11T17:50:29Z" name="requestAppointmentByCaregiver" finished-at="2023-05-11T17:51:43Z" duration-ms="73759" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- requestAppointmentByCaregiver -->
-        <test-method signature="tc2()[pri:0, instance:org.runner.SampleClass@5ba88be8]" started-at="2023-05-11T17:51:43Z" name="tc2" finished-at="2023-05-11T17:51:43Z" duration-ms="8" status="PASS">
+        <test-method signature="tc2()[pri:0, instance:org.runner.SampleClass@3899782c]" started-at="2023-05-12T10:51:17Z" name="tc2" finished-at="2023-05-12T10:51:17Z" duration-ms="21" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc2 -->
+        <test-method signature="upcomingAppointmentCancelByDoctor()[pri:0, instance:org.runner.SampleClass@3899782c]" started-at="2023-05-12T10:51:17Z" name="upcomingAppointmentCancelByDoctor" finished-at="2023-05-12T10:52:09Z" duration-ms="52143" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- upcomingAppointmentCancelByDoctor -->
       </class> <!-- org.runner.SampleClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

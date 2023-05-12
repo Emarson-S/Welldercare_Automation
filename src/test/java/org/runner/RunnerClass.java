@@ -739,7 +739,7 @@ public class RunnerClass extends BaseClass {
 	
 // < --- Change Password ---- >
 	
-	@Test (enabled=false)
+	@Test (enabled=false, priority=7)
 	private void changePassword() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -770,7 +770,7 @@ public class RunnerClass extends BaseClass {
 	
 // < --- Forgot Password --->	
 	
-	@Test (enabled=false)
+	@Test (enabled=false, priority=8)
 	private void forgotPassword() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -800,7 +800,7 @@ public class RunnerClass extends BaseClass {
 //	<--- Enquiry page --->
 	
 	
-	@Test (enabled=false, priority=7)
+	@Test (enabled=false, priority=9)
 	private void enquirypage() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -871,7 +871,7 @@ public class RunnerClass extends BaseClass {
 	
 // <--- Veteran Onboarding --->	
 	
-	@Test (enabled=false, priority=8)
+	@Test (enabled=false, priority=10)
 	private void veteranOnboarding() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1050,7 +1050,7 @@ public class RunnerClass extends BaseClass {
 	
 // < --- Doctor Approval --->	
 	
-	@Test(enabled = false, priority=9)
+	@Test(enabled = false, priority=11)
 	private void doctorApproval() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1087,7 +1087,7 @@ public class RunnerClass extends BaseClass {
 	
 //   < --  Veteran active  -->	
 	
-	@Test (enabled=false, priority=10)
+	@Test (enabled=false, priority=12)
 	private void veteranActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
@@ -1119,7 +1119,7 @@ public class RunnerClass extends BaseClass {
 	
 //   <---- Family member active -->
 	
-	@Test (enabled=false, priority=11)
+	@Test (enabled=false, priority=13)
 	private void familymemberActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
@@ -1152,7 +1152,7 @@ public class RunnerClass extends BaseClass {
 	
 //  <--- Assign Caretaker -->
 	
-	@Test (enabled=false, priority=12)
+	@Test (enabled=false, priority=14)
 	private void caretakerAssign() throws Throwable{
 		openChrome();
 		maxWindow();
@@ -1178,7 +1178,7 @@ public class RunnerClass extends BaseClass {
 	
 //  < Assign Doctor -->	
 	
-	@Test (enabled=false, priority=13)
+	@Test (enabled=false, priority=15)
 	private void assignDoctor() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1205,7 +1205,7 @@ public class RunnerClass extends BaseClass {
 	
 	// Live request complete
 	
-	@Test(enabled = false)
+	@Test(enabled = false, priority=16)
 	private void liveRequest() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1221,7 +1221,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(3000);
 		toClickButton(l3.getClickEmergencyBtn());
 		toThreadSleep(2000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
 		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
 		toThreadSleep(2000);
@@ -1265,7 +1265,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickUpdateAppointment());
 		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(4000);
 		closeBrowser();				
 
@@ -1275,7 +1275,7 @@ public class RunnerClass extends BaseClass {
 	
 	// Live request cancelled
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority=17)
 	private void liveRequestCancelled() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1291,7 +1291,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(3000);
 		toClickButton(l3.getClickEmergencyBtn());
 		toThreadSleep(2000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
 		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
 		toThreadSleep(2000);
@@ -1318,7 +1318,7 @@ public class RunnerClass extends BaseClass {
 	
 	
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority=18)
 	private void createAppointment() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1400,7 +1400,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l3.getClickUpdateAppointment());
 		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(4000);
 		closeBrowser();
 
@@ -1409,7 +1409,7 @@ public class RunnerClass extends BaseClass {
 	
 	// Appointment request by Caregiver
 	
-	@Test (enabled=false)
+	@Test (enabled=false, priority=19)
 	private void requestAppointmentByCaregiver() throws InterruptedException, IOException, AWTException {
 		
 		openChrome();
@@ -1458,7 +1458,7 @@ public class RunnerClass extends BaseClass {
 	
 	// Appointment request by Veteran
 	
-	@Test(enabled = false)
+	@Test(enabled = false, priority=20)
 	private void requestAppointmentByVeteran() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1505,7 +1505,7 @@ public class RunnerClass extends BaseClass {
 	
 	// <--- Request Appointment Accept by Doctor--->
 	
-	@Test(enabled=false)
+	@Test(enabled=false, priority=21)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
 		
 		openChrome();
@@ -1551,11 +1551,151 @@ public class RunnerClass extends BaseClass {
 		
 		toClickButton(l3.getClickAcceptRequestAppt());
 		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
+		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
 		toClickButton(l3.getClickUpcomingAppointment());
 		closeBrowser();
 	}
+	
+	
+	// <---- Upcoming Appointment Cancelled by Doctor ---->
+	
+	
+	@Test(enabled=false, priority=22)
+	private void upcomingAppointmentCancelByDoctor() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickCancelAppointment());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+		toClickButton(l3.getClickCancel());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickOKbtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		closeBrowser();
+	}
+	
+	
+	// <---- Request Appointment cancel by Doctor --->
+	
+	@Test(enabled=false, priority=23)
+	private void requestAppointmentCancelByDoctor() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestFilterBtn());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickCancelAppointment());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+		toClickButton(l3.getClickCancel());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickOKbtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		closeBrowser();
+	}
+	
+	
+	// <---- Request Appointment cancel by Veteran --->
+	
+		@Test(enabled=false, priority=24)
+		private void requestAppointmentCancelByVeteran() throws IOException, InterruptedException {
+			openChrome();
+			maxWindow();
+			Configurations.readUrl("BaseUrl");
+			toThreadSleep(2000);
+			UserCreationPojo l1 = new UserCreationPojo();
+			AppointmentsPojo l3 = new AppointmentsPojo();
+			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+			Actions a = new Actions(driver);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickCancelAppointment());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			closeBrowser();
+		}
+		
+		// <---- Request Appointment cancel by Caregiver --->
+		
+		@Test(enabled=false)
+		private void requestAppointmentCancelByCaregiver() throws IOException, InterruptedException {
+			openChrome();
+			maxWindow();
+			Configurations.readUrl("BaseUrl");
+			toThreadSleep(2000);
+			UserCreationPojo l1 = new UserCreationPojo();
+			AppointmentsPojo l3 = new AppointmentsPojo();
+			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+			Actions a = new Actions(driver);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickCancelAppointment());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			closeBrowser();
+		}
+
+
 	
 
 }

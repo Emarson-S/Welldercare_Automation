@@ -203,8 +203,42 @@ public class AppointmentsPojo extends BaseClass {
 	@FindAll({
 		@FindBy(xpath="//button[text()='Accept']")}) 
 	private WebElement  clickRejectRequestAppt;
+	
+	
+	// <--- Appointment Cancelled --->
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Cancel Appointment']")}) 
+	private WebElement  clickCancelAppointment;
+	
+	@FindAll({
+		@FindBy(xpath="//textarea[@placeholder='Enter the reason']")}) 
+	private WebElement  enterCancelApptReason;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Yes, Cancel']")}) 
+	private WebElement  clickCancel;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='OK']")}) 
+	private WebElement  clickOKbtn;	
 		
-		
+	public WebElement getClickOKbtn() {
+		return clickOKbtn;
+	}
+
+	public WebElement getClickCancelAppointment() {
+		return clickCancelAppointment;
+	}
+
+	public WebElement getEnterCancelApptReason() {
+		return enterCancelApptReason;
+	}
+
+	public WebElement getClickCancel() {
+		return clickCancel;
+	}
+
 	public WebElement getClickFalseAlarmBtn() {
 		return clickFalseAlarmBtn;
 	}

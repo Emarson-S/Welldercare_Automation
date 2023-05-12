@@ -30,9 +30,39 @@ public class SampleClass extends BaseClass {
 	@Test
 	private void tc2() {
 		
-		String date = readDate();
-		
-System.out.println(date);
+	}
+	
+	
+	@Test
+	private void upcomingAppointmentCancelByDoctor() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		Actions a = new Actions(driver);
+		toFillTextbox(l1.getEnterUsername(), "magesh@mavens-i.com");
+		toFillTextbox(l1.getEnterPassword(), "Welldercare@3");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestFilterBtn());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickCancelAppointment());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+		toClickButton(l3.getClickCancel());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickOKbtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		closeBrowser();
 	}
 	
 	
