@@ -25,6 +25,9 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
+	
+	
+	
 
 	@Test (enabled=false)
 	private void tc2() {

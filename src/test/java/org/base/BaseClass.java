@@ -430,7 +430,7 @@ public class BaseClass {
 		return date1;
 	}
 
-	public static Date getCurrentUtcTime() throws ParseException, java.text.ParseException {
+	public static Date getCurrentUtcTime() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 		SimpleDateFormat ldf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
