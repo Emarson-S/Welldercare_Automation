@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
 import org.base.Configurations;
+import org.base.MastersPojo;
 import org.base.ProfileUpdatePojo;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
@@ -25,8 +26,29 @@ import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
 
-	@Test
+	@Test (enabled=false)
 	private void tc2() {
+		
+
+		String s = readDay();
+		String mm = readMonth();
+		String yyyy = readYear();
+		int n = Integer.parseInt(s);
+		if(n==30 || n==31 || n==29 || n==28) {
+			n=n-26;
+			int m=Integer.parseInt(mm);
+			if(m==12) {
+				mm=(m-11)+"";
+				int y=Integer.parseInt(yyyy);
+				yyyy=(y+1)+"";
+			}else {
+				mm=(m+1)+"";
+			}
+		}else {
+			n=n+2;
+		}		
+		String dd = n + "";
+	System.out.println(dd + "-" + mm + "-" + yyyy);
 
 	}
 
@@ -116,26 +138,32 @@ public class SampleClass extends BaseClass {
 	}
 
 	@Test(enabled = false)
-	private void tc1() throws IOException {
+	private void Masters() throws IOException, InterruptedException {
+		
+		openChrome();
+		maxWindow();		
+		Configurations.readUrl("BaseUrl");
+		UserCreationPojo l1 = new UserCreationPojo();
+		MastersPojo l5=new MastersPojo();
+		Actions a = new Actions(driver);
+		toThreadSleep(2000);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(2000);
+		toClickButton(l5.getClickMasters());
+		toThreadSleep(1000);
+		scrollDown(l5.getClickInsuranceCompanies());
+		toThreadSleep(1000);
+		toClickButton(l5.getClickInsuranceCompanies());
+		toThreadSleep(2000);
+		toClickButton(l5.getClickAddMasterBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l5.getEnterInsuranceCode(), "DPL");
+		toFillTextbox(l5.getEnterInsuranceCompanyName(), "DHFL Pramerica Life Insurance Co. Ltd.");
+		toClickButton(l5.getClickSaveBtn());
 
-		File file = new File("D:\\Project\\Welldercare_Automation\\Lib\\gisdata.txt");
-
-		String jsonString = Files.toString(file, Charset.defaultCharset());
-
-		String[] s = jsonString.split(",");
-
-		for (String string : s) {
-			System.out.println("String -->" + string.charAt(0));
-
-		}
-
-		String st;
-
-		BufferedReader br = new BufferedReader(new java.io.FileReader(file));
-
-		while ((st = br.readLine()) != null)
-
-			System.out.println(jsonString);
+		
 	}
 
 	@Test(enabled = false)

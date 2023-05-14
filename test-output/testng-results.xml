@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="2" passed="2" failed="0" skipped="0">
+<testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-12T09:35:08Z" name="Default suite" finished-at="2023-05-12T09:36:10Z" duration-ms="61417">
+  <suite started-at="2023-05-14T15:59:38Z" name="Default suite" finished-at="2023-05-14T16:00:03Z" duration-ms="25362">
     <groups>
     </groups>
-    <test started-at="2023-05-12T09:35:08Z" name="Default test" finished-at="2023-05-12T09:36:10Z" duration-ms="61417">
+    <test started-at="2023-05-14T15:59:38Z" name="Default test" finished-at="2023-05-14T16:00:03Z" duration-ms="25362">
       <class name="org.runner.SampleClass">
-        <test-method signature="requestAppointmentAccept()[pri:0, instance:org.runner.SampleClass@56928307]" started-at="2023-05-12T15:05:08Z" name="requestAppointmentAccept" finished-at="2023-05-12T15:06:10Z" duration-ms="61377" status="PASS">
+        <test-method signature="Masters()[pri:0, instance:org.runner.SampleClass@1603cd68]" started-at="2023-05-14T21:29:38Z" name="Masters" finished-at="2023-05-14T21:30:03Z" duration-ms="25345" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- requestAppointmentAccept -->
-        <test-method signature="tc2()[pri:0, instance:org.runner.SampleClass@56928307]" started-at="2023-05-12T15:06:10Z" name="tc2" finished-at="2023-05-12T15:06:10Z" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tc2 -->
+        </test-method> <!-- Masters -->
       </class> <!-- org.runner.SampleClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

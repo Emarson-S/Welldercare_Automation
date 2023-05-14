@@ -287,7 +287,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 3));
 		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 3));
 		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 3));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-2001");
+		toFillTextbox(l1.getEnterDrDOB(), "06-06-1998");
 		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 3));
 		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 3));
 		pressEnterKey();
@@ -421,7 +421,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 6));
 		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
 		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-2001");
+		toFillTextbox(l1.getEnterDrDOB(), "06-06-1999");
 		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 6));
 		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
 		pressEnterKey();
@@ -555,7 +555,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 5));
 		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 5));
 		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 5));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-2001");
+		toFillTextbox(l1.getEnterDrDOB(), "06-06-1919");
 		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 5));
 		pressEnterKey();
 		toThreadSleep(2000);
@@ -668,7 +668,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 4));
 		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
 		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-2001");
+		toFillTextbox(l1.getEnterDrDOB(), "06-06-1920");
 		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 4));
 		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
 		pressEnterKey();
@@ -782,17 +782,19 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterEmailAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toClickButton(l1.getClickSubmit());
 		toThreadSleep(3000);
-		Configurations.readtoken("PasswordToken", toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
+		Configurations.readPasswordToken(toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
+	//	Configurations.readtoken("PasswordToken", toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
 		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), "Welldercare@1");
-		toFillTextbox(l1.getEnterConfirmPassword(), "Welldercare@1");
+		toFillTextbox(l1.getEnterNewPassword(), "Welldercare@3");
+		toFillTextbox(l1.getEnterConfirmPassword(), "Welldercare@3");
 		toClickButton(l1.getClickCreatePassword());
-		toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Welldercare@1");
+		toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Welldercare@3");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
+		closeBrowser();
 		
 	}
 	
@@ -899,8 +901,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterVTGovtIdNumber(), toReadDataFromExcel("Files", "Enquiry", 27, 1));
-		toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files", "Enquiry", 28, 1));
-		scrollDown(l2.getUploadVTIdProof());
+	//	toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files", "Enquiry", 28, 1));
+		scrollDown(l2.getEnterVTDOB());
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
 		toThreadSleep(1000);
@@ -1174,6 +1176,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignCaretaker());
+		toThreadSleep(3000);
+		closeBrowser();
 		}
 	
 //  < Assign Doctor -->	
@@ -1200,6 +1204,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignDoctor());
+		toThreadSleep(3000);
+		closeBrowser();
 	}
 
 	
@@ -1250,7 +1256,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l3.getClickAddMedicines());
 		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterMedicineName(), "Amplodipined&nbsp;450&nbsp;mg");
+		toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickMorning());
@@ -1386,7 +1392,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l3.getClickAddMedicines());
 		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterMedicineName(), "Amplodipined&nbsp;450&nbsp;mg");
+		toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickMorning());
@@ -1420,27 +1426,40 @@ public class RunnerClass extends BaseClass {
 		AppointmentsPojo l3 = new AppointmentsPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestAppointmentBtn());
 		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterRequestDoctorName(), "Emarson S");
-		pressEnterKey();
+		toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		String s = readDay();
 		String mm = readMonth();
 		String yyyy = readYear();
-		int n = Integer.parseInt(s) + 1;
+		int n = Integer.parseInt(s);
+		if(n==30 || n==31 || n==29 || n==28) {
+			n=n-26;
+			int m=Integer.parseInt(mm);
+			if(m==12) {
+				mm=(m-11)+"";
+				int y=Integer.parseInt(yyyy);
+				yyyy=(y+1)+"";
+			}else {
+				mm=(m+1)+"";
+			}
+		}else {
+			n=n+1;
+		}		
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
@@ -1451,6 +1470,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l3.getClickSubmitRequestAppointment());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
 		toThreadSleep(3000);
         closeBrowser();
 	}
@@ -1469,26 +1490,39 @@ public class RunnerClass extends BaseClass {
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestAppointmentBtn());
 		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterRequestDoctorName(), "Emarson S");
-		pressEnterKey();
+		toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		String s = readDay();
 		String mm = readMonth();
 		String yyyy = readYear();
-		int n = Integer.parseInt(s) + 1;
+		int n = Integer.parseInt(s);
+		if(n==30 || n==31 || n==29 || n==28) {
+			n=n-27;
+			int m=Integer.parseInt(mm);
+			if(m==12) {
+				mm=(m-11)+"";
+				int y=Integer.parseInt(yyyy);
+				yyyy=(y+1)+"";
+			}else {
+				mm=(m+1)+"";
+			}
+		}else {
+			n=n+2;
+		}		
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
@@ -1496,10 +1530,11 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l3.getEnterhour(), "10");
 		toFillTextbox(l3.getEnterMin(), "00");
 		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toClickButton(l3.getClickSubmitRequestAppointment());
 		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
         closeBrowser();
 	}
 	
@@ -1556,6 +1591,7 @@ public class RunnerClass extends BaseClass {
 		driver.findElement(By.xpath("//button[text()='OK']")).click();
 		toThreadSleep(3000);
 		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(3000);
 		closeBrowser();
 	}
 	
@@ -1616,7 +1652,9 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickUpcomingAppointment());
 		toThreadSleep(2000);
-		toClickButton(l3.getClickCancelAppointment());
+		scrollDown(l3.getClickRejectRequestAppt());
+		toThreadSleep(1000);
+		toClickButton(l3.getClickRejectRequestAppt());
 		toThreadSleep(2000);
 		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
 		toClickButton(l3.getClickCancel());
@@ -1642,7 +1680,7 @@ public class RunnerClass extends BaseClass {
 			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 			Actions a = new Actions(driver);
 			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 			toClickButton(l1.getClickSignIn());
 			toThreadSleep(3000);
 			toClickButton(l3.getClickAppointments());
@@ -1675,8 +1713,8 @@ public class RunnerClass extends BaseClass {
 			AppointmentsPojo l3 = new AppointmentsPojo();
 			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 			Actions a = new Actions(driver);
-			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 			toClickButton(l1.getClickSignIn());
 			toThreadSleep(3000);
 			toClickButton(l3.getClickAppointments());
