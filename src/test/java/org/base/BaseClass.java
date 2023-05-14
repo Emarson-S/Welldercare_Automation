@@ -120,6 +120,13 @@ public class BaseClass {
 
 		element.sendKeys(String.valueOf(myInt));
 	}
+	
+	public static void toSelectAndFill(WebElement element,  String data) throws AWTException {
+		Actions b=new Actions(driver);
+		b.doubleClick(element).perform();
+        selectAllText();
+		element.sendKeys(data);
+	}
 
 	// clickButton
 	public static void toClickButton(WebElement element) {

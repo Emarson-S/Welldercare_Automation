@@ -2,19 +2,19 @@
 <testng-results total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-12T05:21:17Z" name="Default suite" finished-at="2023-05-12T05:22:09Z" duration-ms="52186">
+  <suite started-at="2023-05-12T09:35:08Z" name="Default suite" finished-at="2023-05-12T09:36:10Z" duration-ms="61417">
     <groups>
     </groups>
-    <test started-at="2023-05-12T05:21:17Z" name="Default test" finished-at="2023-05-12T05:22:09Z" duration-ms="52186">
+    <test started-at="2023-05-12T09:35:08Z" name="Default test" finished-at="2023-05-12T09:36:10Z" duration-ms="61417">
       <class name="org.runner.SampleClass">
-        <test-method signature="tc2()[pri:0, instance:org.runner.SampleClass@3899782c]" started-at="2023-05-12T10:51:17Z" name="tc2" finished-at="2023-05-12T10:51:17Z" duration-ms="21" status="PASS">
+        <test-method signature="requestAppointmentAccept()[pri:0, instance:org.runner.SampleClass@56928307]" started-at="2023-05-12T15:05:08Z" name="requestAppointmentAccept" finished-at="2023-05-12T15:06:10Z" duration-ms="61377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- requestAppointmentAccept -->
+        <test-method signature="tc2()[pri:0, instance:org.runner.SampleClass@56928307]" started-at="2023-05-12T15:06:10Z" name="tc2" finished-at="2023-05-12T15:06:10Z" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc2 -->
-        <test-method signature="upcomingAppointmentCancelByDoctor()[pri:0, instance:org.runner.SampleClass@3899782c]" started-at="2023-05-12T10:51:17Z" name="upcomingAppointmentCancelByDoctor" finished-at="2023-05-12T10:52:09Z" duration-ms="52143" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- upcomingAppointmentCancelByDoctor -->
       </class> <!-- org.runner.SampleClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

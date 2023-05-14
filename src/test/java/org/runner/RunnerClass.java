@@ -1505,9 +1505,9 @@ public class RunnerClass extends BaseClass {
 	
 	// <--- Request Appointment Accept by Doctor--->
 	
-	@Test(enabled=false, priority=21)
+	@Test(enabled = false)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
-		
+
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
@@ -1529,29 +1529,31 @@ public class RunnerClass extends BaseClass {
 		scrollDown(l3.getClickAcceptRequestAppt());
 		toThreadSleep(1000);
 		String date = readDate();
-	//	toFillTextbox(l3.getEnterRescheduleDate(), date);
+		a.doubleClick(l3.getEnterRescheduleDate()).perform();
+		selectAllText();
+	    toFillTextbox(l3.getEnterRescheduleDate(), date);
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
-		int m=Integer.parseInt(mm);
+		int m = Integer.parseInt(mm);
 		String aa = readAm();
 		toThreadSleep(1000);
 		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
 		String out = text.getText();
 		if (aa == out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 		} else if (aa != out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toThreadSleep(1000);
 			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
-			a.moveToElement(bb).click();							
+			a.moveToElement(bb).click();
 		}
-		
+
 		toClickButton(l3.getClickAcceptRequestAppt());
 		toThreadSleep(1000);
-		toClickButton(l3.getClickOKbtn());
+		driver.findElement(By.xpath("//button[text()='OK']")).click();
 		toThreadSleep(3000);
 		toClickButton(l3.getClickUpcomingAppointment());
 		closeBrowser();

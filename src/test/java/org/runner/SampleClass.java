@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
 import org.base.Configurations;
+import org.base.ProfileUpdatePojo;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
 import org.openqa.selenium.By;
@@ -23,54 +24,46 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
-	
-	
-	
-	
+
 	@Test
 	private void tc2() {
-		
+
 	}
-	
-	
-	@Test
-	private void upcomingAppointmentCancelByDoctor() throws IOException, InterruptedException {
+
+	@Test(enabled = false)
+	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
+
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
+		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
+		Actions a=new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(), "magesh@mavens-i.com");
+		toFillTextbox(l1.getEnterUsername(), "emarson.s@mavens-i.com");
 		toFillTextbox(l1.getEnterPassword(), "Welldercare@3");
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickAppointments());
+		WebElement profile=driver.findElement(By.xpath("//span[text()='My Profile ']"));
+		scrollDown(profile);
 		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestFilterBtn());
+		driver.findElement(By.xpath("//span[text()='My Profile ']")).click();
+//		toThreadSleep(2000);
+//		toClickButton(l1.getClickProfileMenu());
 		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickCancelAppointment());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-		toClickButton(l3.getClickCancel());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		closeBrowser();
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), "Emarson");
+		toSelectAndFill(l4.getEnterLastName(), "S");
+
 	}
-	
-	
-	
-	
-	@Test(enabled=false)
+
+	@Test(enabled = false)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
-		
+
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
@@ -79,7 +72,7 @@ public class SampleClass extends BaseClass {
 		AppointmentsPojo l3 = new AppointmentsPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),"emarson.s@mavens-i.com");
+		toFillTextbox(l1.getEnterUsername(), "emarson.s@mavens-i.com");
 		toFillTextbox(l1.getEnterPassword(), "Welldercare@3");
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -92,26 +85,28 @@ public class SampleClass extends BaseClass {
 		scrollDown(l3.getClickAcceptRequestAppt());
 		toThreadSleep(1000);
 		String date = readDate();
-	//	toFillTextbox(l3.getEnterRescheduleDate(), date);
+		a.doubleClick(l3.getEnterRescheduleDate()).perform();
+		selectAllText();
+	    toFillTextbox(l3.getEnterRescheduleDate(), date);
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
-		int m=Integer.parseInt(mm);
+		int m = Integer.parseInt(mm);
 		String aa = readAm();
 		toThreadSleep(1000);
 		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
 		String out = text.getText();
 		if (aa == out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 		} else if (aa != out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toThreadSleep(1000);
 			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
-			a.moveToElement(bb).click();							
+			a.moveToElement(bb).click();
 		}
-		
+
 		toClickButton(l3.getClickAcceptRequestAppt());
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()='OK']")).click();
@@ -119,34 +114,28 @@ public class SampleClass extends BaseClass {
 		toClickButton(l3.getClickUpcomingAppointment());
 		closeBrowser();
 	}
-	
-	
-	
-	@Test(enabled=false)
+
+	@Test(enabled = false)
 	private void tc1() throws IOException {
-		
-		File file=new File("D:\\Project\\Welldercare_Automation\\Lib\\gisdata.txt");
-		
-		 String jsonString = Files.toString(file, Charset.defaultCharset());
-		 
-		 
-		 String[] s=jsonString.split(",");
-		 
-		 for (String string : s) {
-			 System.out.println("String -->"+string.charAt(0));
-			
+
+		File file = new File("D:\\Project\\Welldercare_Automation\\Lib\\gisdata.txt");
+
+		String jsonString = Files.toString(file, Charset.defaultCharset());
+
+		String[] s = jsonString.split(",");
+
+		for (String string : s) {
+			System.out.println("String -->" + string.charAt(0));
+
 		}
-		 
-		
+
 		String st;
 
+		BufferedReader br = new BufferedReader(new java.io.FileReader(file));
 
-        BufferedReader br=new BufferedReader(new java.io.FileReader(file));
-        
-        while ((st = br.readLine()) != null)
+		while ((st = br.readLine()) != null)
 
-		
-		System.out.println(jsonString);
+			System.out.println(jsonString);
 	}
 
 	@Test(enabled = false)
@@ -191,13 +180,8 @@ public class SampleClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l3.getClickSubmitRequestAppointment());
 		toThreadSleep(3000);
-        closeBrowser();
+		closeBrowser();
 	}
-	
-	
-
-	
-	
 
 	@Test(enabled = false)
 	private void createAppointment() throws Throwable {
@@ -209,7 +193,7 @@ public class SampleClass extends BaseClass {
 		AppointmentsPojo l3 = new AppointmentsPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),"emarson.s@mavens-i.com");
+		toFillTextbox(l1.getEnterUsername(), "emarson.s@mavens-i.com");
 		toFillTextbox(l1.getEnterPassword(), "Welldercare@3");
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -231,20 +215,20 @@ public class SampleClass extends BaseClass {
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
-		int m=Integer.parseInt(mm);
+		int m = Integer.parseInt(mm);
 		String aa = readAm();
 		toThreadSleep(1000);
 		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
 		String out = text.getText();
 		if (aa == out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
 			pressEnterKey();
 			toThreadSleep(1000);
 		} else if (aa != out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toThreadSleep(1000);
 			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
 			a.moveToElement(bb).click();
@@ -396,7 +380,8 @@ public class SampleClass extends BaseClass {
 		maxWindow();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
-		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/"+ toReadDataFromExcel("Files", "Enquiry", 4, 1) + "");
+		Response response = RestAssured.get("http://65.108.222.73:8080/recent-user-activation-link/"
+				+ toReadDataFromExcel("Files", "Enquiry", 4, 1) + "");
 		String token = response.asString();
 		System.out.println(token);
 		toThreadSleep(2000);
@@ -425,7 +410,6 @@ public class SampleClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
 
 	@Test(enabled = false)
 	private void familymemberActive() throws InterruptedException, IOException {
