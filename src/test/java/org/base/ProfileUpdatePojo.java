@@ -14,7 +14,7 @@ public class ProfileUpdatePojo extends BaseClass{
 	
 	
 	@FindAll({
-		@FindBy(xpath="//a[text()=' Profile']")}) 
+		@FindBy(xpath="//span[text()='My Profile ']")}) 
 	private WebElement clickProfile;
 	
 	@FindAll({
@@ -47,6 +47,27 @@ public class ProfileUpdatePojo extends BaseClass{
 	@FindAll({
 		@FindBy(xpath="//input[@formcontrolname='address1']")}) 
 	private WebElement enterAddress2;
+
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pinCode']")}) 
+	private WebElement enterPinCode;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='govtId']")}) 
+	private WebElement enterGovtIDNum;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='emergencyContactNo']")}) 
+	private WebElement enterAlterContNum;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Submit']")}) 
+	private WebElement clickProfileSubmit;
+	
+	
+	
+//	<---- Doctor and Caretaker profile ----> 
 	
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]")}) 
@@ -66,17 +87,79 @@ public class ProfileUpdatePojo extends BaseClass{
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
 	private WebElement enterTerritory;
 	
+	
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
-	private WebElement enterGovtIdType;
+	private WebElement enterGovtIDType;
+
+
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
+	private WebElement enterSpecialty;
+
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]")}) 
+	private WebElement enterDegree;
+	
+//  < --- Channel partner and Caremanager profile ---->	
 	
 	@FindAll({
-		@FindBy(xpath="//input[@formcontrolname='pinCode']")}) 
-	private WebElement enterPinCode;
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]")}) 
+	private WebElement enterCpDegree;
 	
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]")}) 
+	private WebElement enterCpCountry;
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]")}) 
+	private WebElement enterCpState;
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
+	private WebElement enterCpCity;
+	
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
+	private WebElement enterCpTerritory;
+	
+	public WebElement getEnterCpDegree() {
+		return enterCpDegree;
+	}
 
 
+	public WebElement getEnterCpCountry() {
+		return enterCpCountry;
+	}
 
+
+	public WebElement getEnterCpState() {
+		return enterCpState;
+	}
+
+
+	public WebElement getEnterCpCity() {
+		return enterCpCity;
+	}
+
+
+	public WebElement getEnterCpTerritory() {
+		return enterCpTerritory;
+	}
+
+
+	public WebElement getEnterCpGovtIDType() {
+		return enterCpGovtIDType;
+	}
+
+
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
+	private WebElement enterCpGovtIDType;
+	
+	
 	public WebElement getClickProfile() {
 		return clickProfile;
 	}
@@ -84,6 +167,82 @@ public class ProfileUpdatePojo extends BaseClass{
 
 	public WebElement getEnterTitle() {
 		return enterTitle;
+	}
+
+
+	public WebElement getEnterGendar() {
+		return enterGendar;
+	}
+
+
+	public WebElement getEnterDoB() {
+		return enterDoB;
+	}
+
+
+	public WebElement getEnterAddress1() {
+		return enterAddress1;
+	}
+
+
+	public WebElement getEnterAddress2() {
+		return enterAddress2;
+	}
+
+
+	public WebElement getEnterCountry() {
+		return enterCountry;
+	}
+
+
+	public WebElement getEnterState() {
+		return enterState;
+	}
+
+
+	public WebElement getEnterCity() {
+		return enterCity;
+	}
+
+
+	public WebElement getEnterTerritory() {
+		return enterTerritory;
+	}
+
+
+
+	public WebElement getEnterPinCode() {
+		return enterPinCode;
+	}
+
+
+	public WebElement getEnterGovtIDType() {
+		return enterGovtIDType;
+	}
+
+
+	public WebElement getEnterGovtIDNum() {
+		return enterGovtIDNum;
+	}
+
+
+	public WebElement getEnterAlterContNum() {
+		return enterAlterContNum;
+	}
+
+
+	public WebElement getEnterSpecialty() {
+		return enterSpecialty;
+	}
+
+
+	public WebElement getEnterDegree() {
+		return enterDegree;
+	}
+
+
+	public WebElement getClickProfileSubmit() {
+		return clickProfileSubmit;
 	}
 
 

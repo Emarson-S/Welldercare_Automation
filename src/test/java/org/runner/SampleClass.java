@@ -51,10 +51,10 @@ public class SampleClass extends BaseClass {
 	System.out.println(dd + "-" + mm + "-" + yyyy);
 
 	}
-
-	@Test(enabled = false)
-	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
-
+	
+	
+	@Test(enabled=true)
+	private void channelPartnerProfileUpdate() throws Exception{
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
@@ -64,23 +64,168 @@ public class SampleClass extends BaseClass {
 		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
 		Actions a=new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		toFillTextbox(l1.getEnterUsername(), "emarson.s@mavens-i.com");
-		toFillTextbox(l1.getEnterPassword(), "Welldercare@3");
+		toFillTextbox(l1.getEnterUsername(), "aryo.ollis@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		WebElement profile=driver.findElement(By.xpath("//span[text()='My Profile ']"));
-		scrollDown(profile);
+		scrollDown(l4.getClickProfile());
 		toThreadSleep(2000);
-		driver.findElement(By.xpath("//span[text()='My Profile ']")).click();
-//		toThreadSleep(2000);
-//		toClickButton(l1.getClickProfileMenu());
+		toClickButton(l4.getClickProfile());
 		toThreadSleep(2000);
 		toFillTextbox(l4.getEnterTitle(), "Mrs");
 		pressEnterKey();
 		toThreadSleep(1000);
-		toSelectAndFill(l4.getEnterFirstName(), "Emarson");
-		toSelectAndFill(l4.getEnterLastName(), "S");
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 1));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 1));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
+		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 1));
+		toFillTextbox(l4.getEnterCpTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toFillTextbox(l4.getEnterDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);
+		toClickButton(l4.getClickProfileSubmit());
+		
 
+	}
+	
+	
+	@Test(enabled=false)
+    private void caretakerProfileUpdate() throws Exception{
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
+		Actions a=new Actions(driver);
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		toFillTextbox(l1.getEnterUsername(), "jahkari.yovanny@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 4));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
+		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 4));
+		toFillTextbox(l4.getEnterTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toFillTextbox(l4.getEnterDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);
+		toClickButton(l4.getClickProfileSubmit());		
+		
+
+	}
+	@Test(enabled = false)
+	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
+		Actions a=new Actions(driver);
+		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
+		toFillTextbox(l1.getEnterUsername(), "tyrese.motty@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 6));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
+		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 6));
+		toFillTextbox(l4.getEnterTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toFillTextbox(l4.getEnterDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);
+		toClickButton(l4.getClickProfileSubmit());		
 	}
 
 	@Test(enabled = false)
@@ -141,7 +286,7 @@ public class SampleClass extends BaseClass {
 	private void Masters() throws IOException, InterruptedException {
 		
 		openChrome();
-		maxWindow();		
+		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
 		MastersPojo l5=new MastersPojo();
