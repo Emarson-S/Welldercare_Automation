@@ -404,9 +404,18 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement clickFri;
 	
 	@FindAll({
+		@FindBy(xpath="//label[@for='sat']")}) 
+	private WebElement clickSat;
+	
+	@FindAll({
+		@FindBy(xpath="//label[@for='sun']")}) 
+	private WebElement clickSun;
+	
+	@FindAll({
 		@FindBy(xpath="(//input[@placement='bottom'])[1]")}) 
 	private WebElement clickStartTime;
 	
+
 	@FindAll({
 		@FindBy(xpath="(//input[@placement='bottom'])[2]")}) 
 	private WebElement clickEndTime;
@@ -489,7 +498,17 @@ public class UserCreationPojo extends BaseClass {
 		@FindBy(xpath="//textarea[@placeholder='Enter pharmacy address']")}) 
 	private WebElement enterPharmacyAddress;
 	
+
 	
+	
+	public WebElement getClickSat() {
+		return clickSat;
+	}
+
+	public WebElement getClickSun() {
+		return clickSun;
+	}
+
 	public WebElement getEnterPharmacyName() {
 		return enterPharmacyName;
 	}

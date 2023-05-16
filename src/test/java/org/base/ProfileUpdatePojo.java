@@ -101,8 +101,15 @@ public class ProfileUpdatePojo extends BaseClass{
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]")}) 
 	private WebElement enterDegree;
 	
-//  < --- Channel partner and Caremanager profile ---->	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='endTime']")}) 
+	private WebElement clickEndTime;
+		
 	
+	
+//  < --- Channel partner and Caremanager profile ---->	
+		
+
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]")}) 
 	private WebElement enterCpDegree;
@@ -124,6 +131,27 @@ public class ProfileUpdatePojo extends BaseClass{
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
 	private WebElement enterCpTerritory;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()=' Submit']")}) 
+	private WebElement clickCpSubmitBtn;
+	
+
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
+	private WebElement enterCpGovtIDType;
+	
+	
+	
+	public WebElement getClickEndTime() {
+		return clickEndTime;
+	}
+	
+	
+	public WebElement getClickCpSubmitBtn() {
+		return clickCpSubmitBtn;
+	}
+
 	
 	public WebElement getEnterCpDegree() {
 		return enterCpDegree;
@@ -153,12 +181,6 @@ public class ProfileUpdatePojo extends BaseClass{
 	public WebElement getEnterCpGovtIDType() {
 		return enterCpGovtIDType;
 	}
-
-
-	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
-	private WebElement enterCpGovtIDType;
-	
 	
 	public WebElement getClickProfile() {
 		return clickProfile;

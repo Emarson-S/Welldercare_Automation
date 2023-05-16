@@ -40,6 +40,8 @@ public class MongoDBCollections extends BaseClass {
 					         	
 	      }
 	
+	
+	
 // Table names
 	
 	
@@ -49,7 +51,6 @@ public class MongoDBCollections extends BaseClass {
 	public static String TBL_PASSWORD_RESET_TOKEN="tbl_password_reset_token";
 	
 	public static String TBL_ONE_TIME_PASSWORD="tbl_one_time_password";
-	
 	
 	
 

@@ -1,14 +1,14 @@
 package org.runner;
 
 import java.awt.AWTException;
-import java.io.FileReader;
+
 import java.io.IOException;
-import java.util.Properties;
 
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
 import org.base.Configurations;
-import org.base.MongoDBCollections;
+
+import org.base.ProfileUpdatePojo;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
 import org.openqa.selenium.By;
@@ -17,19 +17,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-
 public class RunnerClass extends BaseClass {
 
-	
-	
 	// <-- Channel partner -->
 
 	@Test(enabled = false, priority = 1)
 	private void usercreationCP() throws Throwable {
 		openChrome();
-		maxWindow();		
+		maxWindow();
 		Configurations.readUrl("DummyEmail");
 		WebElement mailBox = driver.findElement(By.id("email"));
 		String text = mailBox.getText();
@@ -39,7 +34,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -107,7 +101,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 1));
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		String output=Configurations.readOtpFromTable(text);
+		String output = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < output.length(); i++, j++) {
 			char ch = output.charAt(i);
 			String otp = Character.toString(ch);
@@ -121,13 +115,9 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 	}
 
-	
-	
-	
-	
 	// <-- Care manager -->
 
-	@Test(enabled = false, priority=2)
+	@Test(enabled = false, priority = 2)
 	private void usercreationCM() throws Throwable {
 
 		openChrome();
@@ -141,7 +131,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -209,7 +198,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 2));
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(2000);
-		String s=Configurations.readOtpFromTable(text);
+		String s = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -223,11 +212,9 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 	}
 
-	
-	
 	// <-- Doctor 1 -->
 
-	@Test(enabled = false, priority=3)
+	@Test(enabled = false, priority = 3)
 	private void usercreationDr1() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -240,7 +227,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -346,7 +332,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickDrFormSubmit());
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(text);
+		String s = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -357,10 +343,10 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
+
 //  <-- Doctor 2 -->	
-	
-	@Test (enabled=false, priority=4)
+
+	@Test(enabled = false, priority = 4)
 	private void usercreationDr2() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -373,8 +359,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -480,7 +464,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickDrFormSubmit());
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(text);
+		String s = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -491,11 +475,9 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 	}
 
-	
-	
 	// <-- Pharmacist -->
 
-	@Test(enabled = false, priority=5)
+	@Test(enabled = false, priority = 5)
 	private void usercreationPH() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -508,7 +490,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -590,7 +571,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(text);
+		String s = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -598,17 +579,15 @@ public class RunnerClass extends BaseClass {
 		}
 		toClickButton(l1.getClickValidateBtn());
 		toThreadSleep(5000);
-		WebElement output =driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
+		WebElement output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
 		System.out.println(output.getText());
 		closeBrowser();
 
 	}
 
-	
-		
 	// <-- Caretaker -->
 
-	@Test(enabled = false, priority=6)
+	@Test(enabled = false, priority = 6)
 	private void usercreationCT() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -621,7 +600,6 @@ public class RunnerClass extends BaseClass {
 		switchToWindow(1);
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
@@ -723,7 +701,7 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickFri());
 		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(text);
+		String s = Configurations.readOtpFromTable(text);
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -735,11 +713,10 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
-	
+
 // < --- Change Password ---- >
-	
-	@Test (enabled=false, priority=7)
+
+	@Test(enabled = false, priority = 7)
 	private void changePassword() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -754,7 +731,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l1.getClickChangePassword());
 		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterOdlPassword(),toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+		toFillTextbox(l1.getEnterOdlPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toFillTextbox(l1.getEnterNewPassword(), "Emarson50@");
 		toFillTextbox(l1.getEnterchangeConfirmPassword(), "Emarson50@");
 		toClickButton(l1.getClickSaveChangePassword());
@@ -765,12 +742,11 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		closeBrowser();
-		}
-	
-	
+	}
+
 // < --- Forgot Password --->	
-	
-	@Test (enabled=false, priority=8)
+
+	@Test(enabled = false, priority = 8)
 	private void forgotPassword() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -783,7 +759,8 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSubmit());
 		toThreadSleep(3000);
 		Configurations.readPasswordToken(toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
-	//	Configurations.readtoken("PasswordToken", toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
+		// Configurations.readtoken("PasswordToken", toReadDataFromExcel("Files",
+		// "Login&Usercreation", 8, 3), "ResetPassword");
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterNewPassword(), "Welldercare@3");
 		toFillTextbox(l1.getEnterConfirmPassword(), "Welldercare@3");
@@ -795,14 +772,12 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
 		closeBrowser();
-		
+
 	}
-	
-	
+
 //	<--- Enquiry page --->
-	
-	
-	@Test (enabled=false, priority=9)
+
+	@Test(enabled = false, priority = 9)
 	private void enquirypage() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -870,10 +845,10 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
+
 // <--- Veteran Onboarding --->	
-	
-	@Test (enabled=false, priority=10)
+
+	@Test(enabled = false, priority = 10)
 	private void veteranOnboarding() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -891,7 +866,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l2.getClickOnboardBtn());
 		toThreadSleep(2000);
-		toFillTextbox(l2.getUploadVTProfilePicture(),toReadDataFromExcel("Files", "Enquiry", 22, 1));
+		toFillTextbox(l2.getUploadVTProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 1));
 		toFillTextbox(l2.getEnterVTTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 1));
 		pressEnterKey();
 		toThreadSleep(1000);
@@ -901,7 +876,8 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterVTGovtIdNumber(), toReadDataFromExcel("Files", "Enquiry", 27, 1));
-	//	toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files", "Enquiry", 28, 1));
+		// toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files",
+		// "Enquiry", 28, 1));
 		scrollDown(l2.getEnterVTDOB());
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
@@ -921,7 +897,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
 		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterCelsius(),toReadDataFromExcel("Files", "Enquiry", 32, 1));
+		toFillTextbox(l2.getEnterCelsius(), toReadDataFromExcel("Files", "Enquiry", 32, 1));
 		toFillTextbox(l2.getEnterBloodGlucose(), toReadDataFromExcel("Files", "Enquiry", 33, 1));
 		toFillTextbox(l2.getEnterMealTime(), toReadDataFromExcel("Files", "Enquiry", 34, 1));
 		pressEnterKey();
@@ -1022,7 +998,7 @@ public class RunnerClass extends BaseClass {
 		driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);	
+		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()=' Submit ']")).click();
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()='OK']")).click();
@@ -1048,11 +1024,10 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(4000);
 		closeBrowser();
 	}
-	
-	
+
 // < --- Doctor Approval --->	
-	
-	@Test(enabled = false, priority=11)
+
+	@Test(enabled = false, priority = 11)
 	private void doctorApproval() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1060,7 +1035,6 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
-		Actions a=new Actions(driver);
 		toThreadSleep(1000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
@@ -1083,17 +1057,15 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickSubmitMedicalScore());
 		toThreadSleep(3000);
 		closeBrowser();
-		
+
 	}
-	
-	
+
 //   < --  Veteran active  -->	
-	
-	@Test (enabled=false, priority=12)
+
+	@Test(enabled = false, priority = 12)
 	private void veteranActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
 		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 4, 1), "SetPassword");
 		toThreadSleep(2000);
@@ -1105,7 +1077,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 4, 1));
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -1117,15 +1089,13 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
-	
+
 //   <---- Family member active -->
-	
-	@Test (enabled=false, priority=13)
+
+	@Test(enabled = false, priority = 13)
 	private void familymemberActive() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
 		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 16, 1), "SetPassword");
 		toThreadSleep(2000);
@@ -1137,7 +1107,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		String s=Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 16, 1));
+		String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 16, 1));
 		for (int i = 0, j = 1; i < s.length(); i++, j++) {
 			char ch = s.charAt(i);
 			String otp = Character.toString(ch);
@@ -1149,13 +1119,11 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
-	
-	
+
 //  <--- Assign Caretaker -->
-	
-	@Test (enabled=false, priority=14)
-	private void caretakerAssign() throws Throwable{
+
+	@Test(enabled = false, priority = 14)
+	private void caretakerAssign() throws Throwable {
 		openChrome();
 		maxWindow();
 		launchUrl(toReadDataFromExcel("Files", "Login&Usercreation", 1, 1));
@@ -1178,11 +1146,11 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickAssignCaretaker());
 		toThreadSleep(3000);
 		closeBrowser();
-		}
-	
+	}
+
 //  < Assign Doctor -->	
-	
-	@Test (enabled=false, priority=15)
+
+	@Test(enabled = false, priority = 15)
 	private void assignDoctor() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1208,10 +1176,9 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 	}
 
-	
 	// Live request complete
-	
-	@Test(enabled = false, priority=16)
+
+	@Test(enabled = false, priority = 16)
 	private void liveRequest() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1220,7 +1187,6 @@ public class RunnerClass extends BaseClass {
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toClickButton(l1.getClickSignIn());
@@ -1273,15 +1239,13 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(4000);
-		closeBrowser();				
+		closeBrowser();
 
 	}
-	
-	
-	
+
 	// Live request cancelled
 
-	@Test(enabled = false, priority=17)
+	@Test(enabled = false, priority = 17)
 	private void liveRequestCancelled() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1289,8 +1253,6 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toClickButton(l1.getClickSignIn());
@@ -1313,18 +1275,15 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		scrollDown(l3.getClickAttendBtn());
 		toThreadSleep(1000);
-	    toClickButton(l3.getClickFalseAlarmBtn());
-	    toThreadSleep(3000);
-	    closeBrowser();
+		toClickButton(l3.getClickFalseAlarmBtn());
+		toThreadSleep(3000);
+		closeBrowser();
 
-		}
-
+	}
 
 // < --- Upcoming Appointments complete-- >	
-	
-	
 
-	@Test(enabled = false, priority=18)
+	@Test(enabled = false, priority = 18)
 	private void createAppointment() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1334,7 +1293,7 @@ public class RunnerClass extends BaseClass {
 		AppointmentsPojo l3 = new AppointmentsPojo();
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -1356,20 +1315,20 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
-		int m=Integer.parseInt(mm);
+		int m = Integer.parseInt(mm);
 		String aa = readAm();
 		toThreadSleep(1000);
 		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
 		String out = text.getText();
 		if (aa == out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
 			pressEnterKey();
 			toThreadSleep(1000);
 		} else if (aa != out) {
 			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m+5)+"");
+			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
 			toThreadSleep(1000);
 			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
 			a.moveToElement(bb).click();
@@ -1411,21 +1370,18 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 
 	}
-	
-	
+
 	// Appointment request by Caregiver
-	
-	@Test (enabled=false, priority=19)
+
+	@Test(enabled = false, priority = 19)
 	private void requestAppointmentByCaregiver() throws InterruptedException, IOException, AWTException {
-		
+
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
@@ -1447,19 +1403,19 @@ public class RunnerClass extends BaseClass {
 		String mm = readMonth();
 		String yyyy = readYear();
 		int n = Integer.parseInt(s);
-		if(n==30 || n==31 || n==29 || n==28) {
-			n=n-26;
-			int m=Integer.parseInt(mm);
-			if(m==12) {
-				mm=(m-11)+"";
-				int y=Integer.parseInt(yyyy);
-				yyyy=(y+1)+"";
-			}else {
-				mm=(m+1)+"";
+		if (n == 30 || n == 31 || n == 29 || n == 28) {
+			n = n - 26;
+			int m = Integer.parseInt(mm);
+			if (m == 12) {
+				mm = (m - 11) + "";
+				int y = Integer.parseInt(yyyy);
+				yyyy = (y + 1) + "";
+			} else {
+				mm = (m + 1) + "";
 			}
-		}else {
-			n=n+1;
-		}		
+		} else {
+			n = n + 1;
+		}
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
@@ -1473,13 +1429,12 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(3000);
 		toClickButton(l3.getClickUpcomingAppointment());
 		toThreadSleep(3000);
-        closeBrowser();
+		closeBrowser();
 	}
-	
-	
+
 	// Appointment request by Veteran
-	
-	@Test(enabled = false, priority=20)
+
+	@Test(enabled = false, priority = 20)
 	private void requestAppointmentByVeteran() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1487,8 +1442,6 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
@@ -1510,19 +1463,19 @@ public class RunnerClass extends BaseClass {
 		String mm = readMonth();
 		String yyyy = readYear();
 		int n = Integer.parseInt(s);
-		if(n==30 || n==31 || n==29 || n==28) {
-			n=n-27;
-			int m=Integer.parseInt(mm);
-			if(m==12) {
-				mm=(m-11)+"";
-				int y=Integer.parseInt(yyyy);
-				yyyy=(y+1)+"";
-			}else {
-				mm=(m+1)+"";
+		if (n == 30 || n == 31 || n == 29 || n == 28) {
+			n = n - 27;
+			int m = Integer.parseInt(mm);
+			if (m == 12) {
+				mm = (m - 11) + "";
+				int y = Integer.parseInt(yyyy);
+				yyyy = (y + 1) + "";
+			} else {
+				mm = (m + 1) + "";
 			}
-		}else {
-			n=n+2;
-		}		
+		} else {
+			n = n + 2;
+		}
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
@@ -1535,11 +1488,11 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l3.getClickSubmitRequestAppointment());
 		toThreadSleep(3000);
 		toClickButton(l3.getClickUpcomingAppointment());
-        closeBrowser();
+		closeBrowser();
 	}
-	
+
 	// <--- Request Appointment Accept by Doctor--->
-	
+
 	@Test(enabled = false)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
 
@@ -1549,9 +1502,8 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -1566,7 +1518,7 @@ public class RunnerClass extends BaseClass {
 		String date = readDate();
 		a.doubleClick(l3.getEnterRescheduleDate()).perform();
 		selectAllText();
-	    toFillTextbox(l3.getEnterRescheduleDate(), date);
+		toFillTextbox(l3.getEnterRescheduleDate(), date);
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
@@ -1594,12 +1546,10 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(3000);
 		closeBrowser();
 	}
-	
-	
+
 	// <---- Upcoming Appointment Cancelled by Doctor ---->
-	
-	
-	@Test(enabled=false, priority=22)
+
+	@Test(enabled = false, priority = 22)
 	private void upcomingAppointmentCancelByDoctor() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1607,9 +1557,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -1628,11 +1576,10 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		closeBrowser();
 	}
-	
-	
+
 	// <---- Request Appointment cancel by Doctor --->
-	
-	@Test(enabled=false, priority=23)
+
+	@Test(enabled = false, priority = 23)
 	private void requestAppointmentCancelByDoctor() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1640,9 +1587,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-		Actions a = new Actions(driver);
-		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
@@ -1665,77 +1610,326 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		closeBrowser();
 	}
-	
-	
+
 	// <---- Request Appointment cancel by Veteran --->
-	
-		@Test(enabled=false, priority=24)
-		private void requestAppointmentCancelByVeteran() throws IOException, InterruptedException {
-			openChrome();
-			maxWindow();
-			Configurations.readUrl("BaseUrl");
-			toThreadSleep(2000);
-			UserCreationPojo l1 = new UserCreationPojo();
-			AppointmentsPojo l3 = new AppointmentsPojo();
-			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-			Actions a = new Actions(driver);
-			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
-			toClickButton(l1.getClickSignIn());
-			toThreadSleep(3000);
-			toClickButton(l3.getClickAppointments());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickRequestFilterBtn());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickUpcomingAppointment());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickCancelAppointment());
-			toThreadSleep(2000);
-			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-			toClickButton(l3.getClickCancel());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickOKbtn());
-			toThreadSleep(3000);
-			toClickButton(l3.getClickUpcomingAppointment());
-			toThreadSleep(2000);
-			closeBrowser();
-		}
-		
-		// <---- Request Appointment cancel by Caregiver --->
-		
-		@Test(enabled=false)
-		private void requestAppointmentCancelByCaregiver() throws IOException, InterruptedException {
-			openChrome();
-			maxWindow();
-			Configurations.readUrl("BaseUrl");
-			toThreadSleep(2000);
-			UserCreationPojo l1 = new UserCreationPojo();
-			AppointmentsPojo l3 = new AppointmentsPojo();
-			VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
-			Actions a = new Actions(driver);
-			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
-			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
-			toClickButton(l1.getClickSignIn());
-			toThreadSleep(3000);
-			toClickButton(l3.getClickAppointments());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickRequestFilterBtn());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickUpcomingAppointment());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickCancelAppointment());
-			toThreadSleep(2000);
-			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-			toClickButton(l3.getClickCancel());
-			toThreadSleep(2000);
-			toClickButton(l3.getClickOKbtn());
-			toThreadSleep(3000);
-			toClickButton(l3.getClickUpcomingAppointment());
-			toThreadSleep(2000);
-			closeBrowser();
-		}
 
+	@Test(enabled = false, priority = 24)
+	private void requestAppointmentCancelByVeteran() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestFilterBtn());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickCancelAppointment());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+		toClickButton(l3.getClickCancel());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickOKbtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		closeBrowser();
+	}
 
+	// <---- Request Appointment cancel by Caregiver --->
+
+	@Test(enabled = false)
+	private void requestAppointmentCancelByCaregiver() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		AppointmentsPojo l3 = new AppointmentsPojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickAppointments());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickRequestFilterBtn());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickCancelAppointment());
+		toThreadSleep(2000);
+		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+		toClickButton(l3.getClickCancel());
+		toThreadSleep(2000);
+		toClickButton(l3.getClickOKbtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickUpcomingAppointment());
+		toThreadSleep(2000);
+		closeBrowser();
+	}
+
+// <-----  	Care manager Update Profile  ---->	
+
+	@Test(enabled = false)
+	private void caremanagerProfileUpdate() throws Exception {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), "ilhan.demari@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
+		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
+		toFillTextbox(l4.getEnterCpTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickCpSubmitBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l4.getEnterCpGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toSelectAndFill(l4.getEnterAlterContNum(), "7685945657");
+		toFillTextbox(l4.getEnterCpDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toClickButton(l4.getClickCpSubmitBtn());
+		toThreadSleep(4000);
+		closeBrowser();
+
+	}
+
+	// <---- Channel Partner Profile Update ---->
+
+	@Test(enabled = false)
+	private void channelPartnerProfileUpdate() throws Exception {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), "aryo.ollis@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 1));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 1));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
+		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 1));
+		toFillTextbox(l4.getEnterCpTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickCpSubmitBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l4.getEnterCpGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toSelectAndFill(l4.getEnterAlterContNum(), "7685945657");
+		toFillTextbox(l4.getEnterCpDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toClickButton(l4.getClickCpSubmitBtn());
+		toThreadSleep(3000);
+		closeBrowser();
+	}
 	
+	
+
+// <---- Doctor Profile Update ---->		
+
+	@Test(enabled = false)
+	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), "tyrese.motty@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 6));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
+		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 6));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 6));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 6));
+		toFillTextbox(l4.getEnterTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 6));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDType(), "Aadhar card");
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toFillTextbox(l4.getEnterDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 6));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l1.getEnterDrAboutYourself());
+		toThreadSleep(1000);
+		toSelectAndFill(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 6));
+		toSelectAndFill(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 6));
+		toSelectAndFill(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 6));
+		toSelectAndFill(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 6));
+		toClickButton(l1.getClickSat());
+		toClickButton(l1.getClickSun());
+		toClickButton(l4.getClickEndTime());
+		toFillTextbox(l1.getEnterHrTime(), "10");
+		toFillTextbox(l1.getEnterMMTime(), "30");
+		toClickButton(l1.getClickAMbutton());
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);
+		toClickButton(l4.getClickProfileSubmit());
+		toThreadSleep(4000);
+		closeBrowser();
+	}
+	
+	
+// <------ Caretaker profile update ----->	
+	
+	
+	@Test(enabled=false)
+    private void caretakerProfileUpdate() throws Exception{
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), "jahkari.yovanny@fullangle.org");
+		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 4));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
+		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 4));
+		toFillTextbox(l4.getEnterTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toFillTextbox(l4.getEnterDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 4));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);		
+		toClickButton(l1.getClickSat());
+		toClickButton(l1.getClickSun());
+		toClickButton(l4.getClickEndTime());
+		toFillTextbox(l1.getEnterHrTime(), "10");
+		toFillTextbox(l1.getEnterMMTime(), "30");
+		toClickButton(l1.getClickAMbutton());
+		scrollDown(l4.getClickProfileSubmit());
+		toThreadSleep(1000);
+		toClickButton(l4.getClickProfileSubmit());	
+		toThreadSleep(4000);
+		closeBrowser();			
+	}
 
 }
