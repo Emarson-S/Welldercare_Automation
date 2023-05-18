@@ -4,8 +4,12 @@ import java.awt.AWTException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
@@ -15,12 +19,19 @@ import org.base.MongoDBCollections;
 import org.base.ProfileUpdatePojo;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
+import org.bson.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import com.google.common.io.Files;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -28,10 +39,10 @@ import io.restassured.response.Response;
 public class SampleClass extends BaseClass {
 
 	@Test (enabled=true)
-	private void tc2() throws IOException {		
-
+	private void tc2()  {	
+		
+		
 	}
-	
 	
 	
 	@Test(enabled=false)

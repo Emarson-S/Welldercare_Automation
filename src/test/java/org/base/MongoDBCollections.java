@@ -41,7 +41,6 @@ public class MongoDBCollections extends BaseClass {
 	      }
 	
 	
-	
 // Table names
 	
 	
