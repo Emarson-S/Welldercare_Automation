@@ -49,6 +49,14 @@ public class MongoDBCollections extends BaseClass {
 	
 	public static String TBL_ONE_TIME_PASSWORD="tbl_one_time_password";
 	
+	public static String TBL_USER="tbl_user";
 	
+	public static String TBL_USER_AUTH="tbl_user_auth";
+	
+	public static String TBL_ENQUIRY="tbl_enquiry";
+	
+	public static String TBL_VETERAN_ONBOARD_DATA="tbl_veteran_onboard_data";
+	
+	public static String TBL_DOCTOR_VETERAN_MAPPING="tbl_doctor_veteran_mapping";
 
 }

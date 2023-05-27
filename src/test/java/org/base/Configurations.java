@@ -150,7 +150,7 @@ public class Configurations extends BaseClass {
 		
 	// Change Address
 		
-		List<String> l1=Configurations.enterAddress("India", "Tamilnadu", "Madurai","656453", "Thirumangalam");
+		List<String> l1=Configurations.enterAddress("India", "Tamilnadu", "Ramanathapuram","656453", "C.k.mangalam");
 		for (int i = 8, k=0; i < 13 && k<5; i++,k++) {
 			toCreateNewCell("Files", "Enquiry", i, 1, l1.get(k));
 		}				
@@ -162,7 +162,7 @@ public class Configurations extends BaseClass {
 	// Change phone numbers & Id numbers
 		
 		for (int i = 0, j=-1; i < 7 || j<7; i++, j++) {	
-		List<String> l2=Configurations.enterContactNo(8976564380l,78745323478l,876593543638l, i);
+		List<String> l2=Configurations.enterContactNo(8976564580l,78745323578l,876593543738l, i);
 		if (j>=1) {			
 		toCreateNewCell("Files","Login&Usercreation" , 15, j, l2.get(1));
 		toCreateNewCell("Files","Login&Usercreation" , 18, j, l2.get(2));				
@@ -182,20 +182,20 @@ public class Configurations extends BaseClass {
 		
 	// Change images
 		
-		List<String> l3=Configurations.enterImage("D:\\Project\\Welldercare_Automation\\Lib\\Images\\", "image15.jpg", "image14.jpg","image8.jpg","image9.jpg","image5.jpg");
-		for (int i = 1; i < 7; i++) {
-			toCreateNewCell("Files", "Login&Usercreation", 12, i,l3.get(0));
-			toCreateNewCell("Files", "Login&Usercreation", 19, i,l3.get(1));
-		}
-		for (int i = 3; i <7 ; i++) {
-			toCreateNewCell("Files", "Login&Usercreation", 31, i,l3.get(2));
-		}
-		toCreateNewCell("Files", "Enquiry", 22, 1, l3.get(0));
-		toCreateNewCell("Files", "Enquiry", 22, 3, l3.get(0));
-		toCreateNewCell("Files", "Enquiry", 28, 1, l3.get(1));
-		toCreateNewCell("Files", "Enquiry", 26, 3, l3.get(1));
-		toCreateNewCell("Files", "Enquiry", 46, 1, l3.get(3));
-		toCreateNewCell("Files", "Enquiry", 65, 1, l3.get(4));
+//		List<String> l3=Configurations.enterImage("D:\\Project\\Welldercare_Automation\\Lib\\Images\\", "image15.jpg", "image14.jpg","image8.jpg","image9.jpg","image5.jpg");
+//		for (int i = 1; i < 7; i++) {
+//			toCreateNewCell("Files", "Login&Usercreation", 12, i,l3.get(0));
+//			toCreateNewCell("Files", "Login&Usercreation", 19, i,l3.get(1));
+//		}
+//		for (int i = 3; i <7 ; i++) {
+//			toCreateNewCell("Files", "Login&Usercreation", 31, i,l3.get(2));
+//		}
+//		toCreateNewCell("Files", "Enquiry", 22, 1, l3.get(0));
+//		toCreateNewCell("Files", "Enquiry", 22, 3, l3.get(0));
+//		toCreateNewCell("Files", "Enquiry", 28, 1, l3.get(1));
+//		toCreateNewCell("Files", "Enquiry", 26, 3, l3.get(1));
+//		toCreateNewCell("Files", "Enquiry", 46, 1, l3.get(3));
+//		toCreateNewCell("Files", "Enquiry", 65, 1, l3.get(4));
 		
 	}
 	

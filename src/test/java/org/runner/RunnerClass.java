@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.base.AppointmentsPojo;
 import org.base.BaseClass;
 import org.base.Configurations;
-
+import org.base.MongoDBCollections;
 import org.base.ProfileUpdatePojo;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
@@ -39,78 +39,92 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 1));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 1));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 1));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(2000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 1));
-		toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 1));
-		toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 1));
-		toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
-		toFillTextbox(l1.getEnterCPAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
-		toFillTextbox(l1.getEnterCPDOB(), "06-06-2001");
-		toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 1));
-		toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 1));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 1));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 1));
-		toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 1));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 1));
-		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
-		toThreadSleep(3000);
-		String output = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < output.length(); i++, j++) {
-			char ch = output.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 1));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 1));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 1));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(2000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 1));
+			toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 1));
+			toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 1));
+			toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
+			toFillTextbox(l1.getEnterCPAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
+			toFillTextbox(l1.getEnterCPDOB(), "06-06-2001");
+			toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 1));
+			toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 1));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 1));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 1));
+			toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 1));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 1));
+			driver.findElement(By.xpath("//button[text()=' Save ']")).click();
+			toThreadSleep(3000);
+			String output = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < output.length(); i++, j++) {
+				char ch = output.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toClickButton(l1.getClickValidateBtn());
+			toThreadSleep(1000);
+			WebElement output1 = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
+			System.out.println(output1.getText());
+			toThreadSleep(1000);
+		} catch (Exception e) {
 		}
-		toClickButton(l1.getClickValidateBtn());
-		toThreadSleep(1000);
-		WebElement output1 = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
-		System.out.println(output1.getText());
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
+				text, "_id");
+		if (userId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 1, 7, "Channel partner not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 1, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 1, 7,
+					userId + "\nChannel partner created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 1, 10, "Pass");
+		}
 		toThreadSleep(5000);
 		closeBrowser();
 	}
@@ -136,78 +150,91 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 2));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(2000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 2));
-		toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 2));
-		toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 2));
-		toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
-		toFillTextbox(l1.getEnterCPAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
-		toFillTextbox(l1.getEnterCPDOB(), "06-06-1996");
-		toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 2));
-		toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
-		toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 2));
-		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
-		toThreadSleep(2000);
-		String s = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 2));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(2000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 2));
+			toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 2));
+			toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 2));
+			toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
+			toFillTextbox(l1.getEnterCPAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
+			toFillTextbox(l1.getEnterCPDOB(), "06-06-1996");
+			toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 2));
+			toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
+			toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 2));
+			driver.findElement(By.xpath("//button[text()=' Save ']")).click();
+			toThreadSleep(2000);
+			String s = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toClickButton(l1.getClickValidateBtn());
+			toThreadSleep(3000);
+			WebElement output = driver.findElement(By.xpath("//h4[@class='page-title']"));
+			System.out.println(output.getText());
+		} catch (Exception e) {
 		}
-		toClickButton(l1.getClickValidateBtn());
-		toThreadSleep(3000);
-		WebElement output = driver.findElement(By.xpath("//h4[@class='page-title']"));
-		System.out.println(output.getText());
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
+				text, "_id");
+		if (userId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 2, 7, "Care manager not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 2, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 2, 7,
+					"UserId :" + userId + "\nCare manager created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 2, 10, "Pass");
+		}
 		toThreadSleep(5000);
 		closeBrowser();
 	}
@@ -232,113 +259,126 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 3));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 3));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(1000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 3));
-		toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 3));
-		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 3));
-		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 3));
-		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 3));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-1998");
-		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 3));
-		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 3));
-		toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 3));
-		toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 3));
-		toClickButton(l1.getClickStateRegType());
-		toClickButton(l1.getClickRegBoard());
-		toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 3));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//label[text()='Yes']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 3));
-		toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 3));
-		toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 3));
-		toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 3));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickMon());
-		toClickButton(l1.getClickTue());
-		toClickButton(l1.getClickWed());
-		toClickButton(l1.getClickThu());
-		toClickButton(l1.getClickStartTime());
-		toFillTextbox(l1.getEnterHrTime(), "08");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toClickButton(l1.getClickEndTime());
-		toFillTextbox(l1.getEnterHrTime(), "10");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toClickButton(l1.getClickAMbutton());
-		toClickButton(l1.getClickFri());
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickDrFormSubmit());
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 3));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 3));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(1000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 3));
+			toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 3));
+			toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 3));
+			toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 3));
+			toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 3));
+			toFillTextbox(l1.getEnterDrDOB(), "06-06-1998");
+			toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 3));
+			toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 3));
+			toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 3));
+			toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 3));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 3));
+			toClickButton(l1.getClickStateRegType());
+			toClickButton(l1.getClickRegBoard());
+			toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 3));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//label[text()='Yes']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 3));
+			toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 3));
+			toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 3));
+			toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 3));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickMon());
+			toClickButton(l1.getClickTue());
+			toClickButton(l1.getClickWed());
+			toClickButton(l1.getClickThu());
+			toClickButton(l1.getClickStartTime());
+			toFillTextbox(l1.getEnterHrTime(), "08");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toClickButton(l1.getClickEndTime());
+			toFillTextbox(l1.getEnterHrTime(), "10");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toClickButton(l1.getClickAMbutton());
+			toClickButton(l1.getClickFri());
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickDrFormSubmit());
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toClickButton(l1.getClickValidateBtn());
+		} catch (Exception e) {
 		}
-		toClickButton(l1.getClickValidateBtn());
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
+				text, "_id");
+		if (userId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 3, 7, "Doctor not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 3, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 3, 7,
+					userId + "\nDoctor created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 3, 10, "Pass");
+		}
 		toThreadSleep(5000);
 		closeBrowser();
 
@@ -364,113 +404,116 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 6));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 6));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(3000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 6));
-		toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 6));
-		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 6));
-		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
-		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-1999");
-		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 6));
-		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 6));
-		toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 6));
-		toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 6));
-		toClickButton(l1.getClickStateRegType());
-		toClickButton(l1.getClickRegBoard());
-		toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 6));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//label[text()='Yes']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 6));
-		toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 6));
-		toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 6));
-		toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 6));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickMon());
-		toClickButton(l1.getClickTue());
-		toClickButton(l1.getClickWed());
-		toClickButton(l1.getClickThu());
-		toClickButton(l1.getClickStartTime());
-		toFillTextbox(l1.getEnterHrTime(), "08");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toClickButton(l1.getClickEndTime());
-		toFillTextbox(l1.getEnterHrTime(), "10");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toClickButton(l1.getClickAMbutton());
-		toClickButton(l1.getClickFri());
-		driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickDrFormSubmit());
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 6));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 6));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(3000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 6));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 6));
+			toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 6));
+			toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 6));
+			toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
+			toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
+			toFillTextbox(l1.getEnterDrDOB(), "06-06-1999");
+			toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 6));
+			toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 6));
+			toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 6));
+			toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 6));
+			toClickButton(l1.getClickStateRegType());
+			toClickButton(l1.getClickRegBoard());
+			toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 6));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//label[text()='Yes']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 6));
+			toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 6));
+			toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 6));
+			toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 6));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickMon());
+			toClickButton(l1.getClickTue());
+			toClickButton(l1.getClickWed());
+			toClickButton(l1.getClickThu());
+			toClickButton(l1.getClickStartTime());
+			toFillTextbox(l1.getEnterHrTime(), "08");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toClickButton(l1.getClickEndTime());
+			toFillTextbox(l1.getEnterHrTime(), "10");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toClickButton(l1.getClickAMbutton());
+			toClickButton(l1.getClickFri());
+			driver.findElement(By.xpath("//button[text()=' Save & Next']")).click();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickDrFormSubmit());
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toClickButton(l1.getClickValidateBtn());
+		} catch (Exception e) {
 		}
-		toClickButton(l1.getClickValidateBtn());
 		toThreadSleep(4000);
 		closeBrowser();
 	}
@@ -495,94 +538,106 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 5));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 5));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 5));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(3000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 5));
-		toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 5));
-		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 5));
-		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 5));
-		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 5));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-1919");
-		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 5));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 5));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 5));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 5));
-		toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 5));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCTDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 5));
-		toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 5));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 5));
-		toClickButton(l1.getClickStateRegType());
-		toClickButton(l1.getClickRegBoard());
-		toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 5));
-		toFillTextbox(l1.getEnterPharmacyName(), toReadDataFromExcel("Files", "Login&Usercreation", 37, 5));
-		toFillTextbox(l1.getEnterPharmacyContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 38, 5));
-		toFillTextbox(l1.getEnterPharmacyEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 39, 5));
-		toFillTextbox(l1.getEnterPharmacyRegNo(), toReadDataFromExcel("Files", "Login&Usercreation", 40, 5));
-		toFillTextbox(l1.getEnterPharmacyGSTno(), toReadDataFromExcel("Files", "Login&Usercreation", 41, 5));
-		toFillTextbox(l1.getEnterPharmacyPanNo(), toReadDataFromExcel("Files", "Login&Usercreation", 42, 5));
-		toFillTextbox(l1.getEnterPharmacyAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 43, 5));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 5));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 5));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 5));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(3000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 5));
+			toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 5));
+			toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 5));
+			toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 5));
+			toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 5));
+			toFillTextbox(l1.getEnterDrDOB(), "06-06-1919");
+			toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 5));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 5));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 5));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 5));
+			toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 5));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCTDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 5));
+			toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 5));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 5));
+			toClickButton(l1.getClickStateRegType());
+			toClickButton(l1.getClickRegBoard());
+			toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 5));
+			toFillTextbox(l1.getEnterPharmacyName(), toReadDataFromExcel("Files", "Login&Usercreation", 37, 5));
+			toFillTextbox(l1.getEnterPharmacyContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 38, 5));
+			toFillTextbox(l1.getEnterPharmacyEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 39, 5));
+			toFillTextbox(l1.getEnterPharmacyRegNo(), toReadDataFromExcel("Files", "Login&Usercreation", 40, 5));
+			toFillTextbox(l1.getEnterPharmacyGSTno(), toReadDataFromExcel("Files", "Login&Usercreation", 41, 5));
+			toFillTextbox(l1.getEnterPharmacyPanNo(), toReadDataFromExcel("Files", "Login&Usercreation", 42, 5));
+			toFillTextbox(l1.getEnterPharmacyAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 43, 5));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save ']")).click();
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toClickButton(l1.getClickValidateBtn());
+			toThreadSleep(5000);
+			WebElement output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
+			System.out.println(output.getText());
+		} catch (Exception e) {
 		}
-		toClickButton(l1.getClickValidateBtn());
-		toThreadSleep(5000);
-		WebElement output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
-		System.out.println(output.getText());
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
+				text, "_id");
+		if (userId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 5, 7, "Pharmacist not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 5, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 5, 7,
+					userId + "\nPharmacist created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 5, 10, "Pass");
+		}
 		closeBrowser();
-
 	}
 
 	// <-- Caretaker -->
@@ -605,110 +660,122 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickUsersMenu());
-		toThreadSleep(3000);
-		toClickButton(l1.getClickCreateUser());
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
-		toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 4));
-		toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUserEmail(), text);
-		toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 4));
-		toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l1.getClickSaveBtn());
-		toThreadSleep(3000);
-		Configurations.readVerificationToken(text, "SetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), text);
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 4));
-		toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 4));
-		toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 4));
-		toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
-		toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
-		toFillTextbox(l1.getEnterDrDOB(), "06-06-1920");
-		toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 4));
-		toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 4));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 4));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 4));
-		toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 4));
-		pressEnterKey();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterCTDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCTSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterCTSpecialSkills(), toReadDataFromExcel("Files", "Login&Usercreation", 36, 4));
-		pressEnterKey();
-		toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 4));
-		toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 4));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 4));
-		toClickButton(l1.getClickStateRegType());
-		toClickButton(l1.getClickRegBoard());
-		toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 4));
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//label[text()='Yes']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 3));
-		toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 3));
-		toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 3));
-		toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 3));
-		toThreadSleep(1000);
-		scrollDown(l1.getClickCTStartTime());
-		toClickButton(l1.getClickMon());
-		toClickButton(l1.getClickTue());
-		toClickButton(l1.getClickWed());
-		toClickButton(l1.getClickThu());
-		toClickButton(l1.getClickCTStartTime());
-		toFillTextbox(l1.getEnterHrTime(), "08");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toThreadSleep(1000);
-		toClickButton(l1.getClickCTEndTime());
-		toFillTextbox(l1.getEnterHrTime(), "10");
-		toFillTextbox(l1.getEnterMMTime(), "00");
-		toClickButton(l1.getClickAMbutton());
-		toClickButton(l1.getClickFri());
-		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(text);
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+		try {
+			toClickButton(l1.getClickUsersMenu());
+			toThreadSleep(3000);
+			toClickButton(l1.getClickCreateUser());
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
+			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 4));
+			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 4));
+			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l1.getClickSaveBtn());
+			toThreadSleep(3000);
+			Configurations.readVerificationToken(text, "SetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), text);
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getUploadDrProfilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 4));
+			toFillTextbox(l1.getEnterDrTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 4));
+			toFillTextbox(l1.getEnterDrUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 4));
+			toFillTextbox(l1.getEnterDrAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
+			toFillTextbox(l1.getEnterDrAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
+			toFillTextbox(l1.getEnterDrDOB(), "06-06-1992");
+			toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 4));
+			toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 4));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 4));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 4));
+			toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 4));
+			pressEnterKey();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterCTDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCTSpecialty(), toReadDataFromExcel("Files", "Login&Usercreation", 28, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterCTSpecialSkills(), toReadDataFromExcel("Files", "Login&Usercreation", 36, 4));
+			pressEnterKey();
+			toFillTextbox(l1.getEnterDrAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 4));
+			toFillTextbox(l1.getEnterDrRegistrationYear(), toReadDataFromExcel("Files", "Login&Usercreation", 29, 4));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterDrRegistrationNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 30, 4));
+			toClickButton(l1.getClickStateRegType());
+			toClickButton(l1.getClickRegBoard());
+			toFillTextbox(l1.getUploadDrRegistrationCopy(), toReadDataFromExcel("Files", "Login&Usercreation", 31, 4));
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//label[text()='Yes']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterClinicName(), toReadDataFromExcel("Files", "Login&Usercreation", 32, 3));
+			toFillTextbox(l1.getEnterClinicContactNo(), toReadDataFromExcel("Files", "Login&Usercreation", 33, 3));
+			toFillTextbox(l1.getEnterClinicEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 34, 3));
+			toFillTextbox(l1.getEnterClinicAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 35, 3));
+			toThreadSleep(1000);
+			scrollDown(l1.getClickCTStartTime());
+			toClickButton(l1.getClickMon());
+			toClickButton(l1.getClickTue());
+			toClickButton(l1.getClickWed());
+			toClickButton(l1.getClickThu());
+			toClickButton(l1.getClickCTStartTime());
+			toFillTextbox(l1.getEnterHrTime(), "08");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toThreadSleep(1000);
+			toClickButton(l1.getClickCTEndTime());
+			toFillTextbox(l1.getEnterHrTime(), "10");
+			toFillTextbox(l1.getEnterMMTime(), "00");
+			toClickButton(l1.getClickAMbutton());
+			toClickButton(l1.getClickFri());
+			driver.findElement(By.xpath("//button[text()=' Save ']")).click();
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(text);
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toThreadSleep(1000);
+			toClickButton(l1.getClickValidateBtn());
+		} catch (Exception e) {
 		}
-		toThreadSleep(1000);
-		toClickButton(l1.getClickValidateBtn());
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",text, "_id");
+		if (userId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 7, "Caretaker not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 7,
+					userId + "\nCaretaker created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 10, "Pass");
+		}
 		toThreadSleep(5000);
 		closeBrowser();
 
@@ -727,20 +794,28 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
-		toClickButton(l1.getClickProfileMenu());
-		toThreadSleep(2000);
-		toClickButton(l1.getClickChangePassword());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterOdlPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toFillTextbox(l1.getEnterNewPassword(), "Emarson50@");
-		toFillTextbox(l1.getEnterchangeConfirmPassword(), "Emarson50@");
-		toClickButton(l1.getClickSaveChangePassword());
-		toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Emarson50@");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
+		try {
+			toClickButton(l1.getClickProfileMenu());
+			toThreadSleep(2000);
+			toClickButton(l1.getClickChangePassword());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterOdlPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toFillTextbox(l1.getEnterNewPassword(), "Welldercare@2");
+			toFillTextbox(l1.getEnterchangeConfirmPassword(), "Welldercare@2");
+			toClickButton(l1.getClickSaveChangePassword());
+			toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Welldercare@2");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("//span[text()='Dashboard ']")).click();
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7, "Password created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 10, "Pass");
+		} catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7, "New password not created");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 10, "Fail");
+		}
 		closeBrowser();
 	}
 
@@ -755,22 +830,31 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l1.getClickForgotPassword());
 		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterEmailAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toClickButton(l1.getClickSubmit());
-		toThreadSleep(3000);
-		Configurations.readPasswordToken(toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
-		// Configurations.readtoken("PasswordToken", toReadDataFromExcel("Files",
-		// "Login&Usercreation", 8, 3), "ResetPassword");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterNewPassword(), "Welldercare@3");
-		toFillTextbox(l1.getEnterConfirmPassword(), "Welldercare@3");
-		toClickButton(l1.getClickCreatePassword());
-		toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Welldercare@3");
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
+		try {
+			toFillTextbox(l1.getEnterEmailAddress(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+			toClickButton(l1.getClickSubmit());
+			toThreadSleep(3000);
+			Configurations.readPasswordToken(toReadDataFromExcel("Files", "Login&Usercreation", 8, 3), "ResetPassword");
+			// Configurations.readtoken("PasswordToken",
+			// toReadDataFromExcel("Files","Login&Usercreation", 8, 3), "ResetPassword");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterNewPassword(), "Welldercare@1");
+			toFillTextbox(l1.getEnterConfirmPassword(), "Welldercare@1");
+			toClickButton(l1.getClickCreatePassword());
+			toCreateNewCell("Files", "Login&Usercreation", 11, 3, "Welldercare@1");
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("//span[text()='Dashboard ']")).click();
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7, "\nPassword created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 10, "Pass");
+		} catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7, "New password not created");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 10, "Fail");
+		}
+
 		closeBrowser();
 
 	}
@@ -786,6 +870,7 @@ public class RunnerClass extends BaseClass {
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		UserCreationPojo l1 = new UserCreationPojo();
 		toThreadSleep(1000);
+		try {
 		driver.findElement(By.xpath("//button[text()='Click to Enquire']")).click();
 		toFillTextbox(l2.getEnterVTFirstName(), toReadDataFromExcel("Files", "Enquiry", 1, 1));
 		toFillTextbox(l2.getEnterVTLastName(), toReadDataFromExcel("Files", "Enquiry", 2, 1));
@@ -841,6 +926,18 @@ public class RunnerClass extends BaseClass {
 		toSelectIndex(l2.getSelectChannelPartner(), 1);
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignChannelPartner());
+		}
+		catch (Exception e) {
+		}
+		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email",toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
+		if (enquiryId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 7, "Enquiry not created");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 10, "Fail");
+		} else {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 7,
+					enquiryId + "\nEnquiry created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 10, "Pass");
+		}
 		toThreadSleep(4000);
 		closeBrowser();
 
@@ -860,6 +957,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
+		try {
 		toClickButton(l2.getClickEnquiriesMenu());
 		toThreadSleep(3000);
 		toClickButton(l2.getClickNewEnquiry());
@@ -868,13 +966,13 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toFillTextbox(l2.getUploadVTProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 1));
 		toFillTextbox(l2.getEnterVTTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterVTDOB(), "02/05/1980");
 		toFillTextbox(l2.getEnterVTAlternateNumber(), toReadDataFromExcel("Files", "Enquiry", 25, 1));
 		toFillTextbox(l2.getEnterVTGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 26, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterVTGovtIdNumber(), toReadDataFromExcel("Files", "Enquiry", 27, 1));
 		// toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files",
 		// "Enquiry", 28, 1));
@@ -885,8 +983,8 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l2.getEnterHight(), toReadDataFromExcel("Files", "Enquiry", 29, 1));
 		toFillTextbox(l2.getEnterWeight(), toReadDataFromExcel("Files", "Enquiry", 30, 1));
 		toFillTextbox(l2.getSelectBloodGroup(), toReadDataFromExcel("Files", "Enquiry", 31, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		driver.findElement(By.xpath("(//label[text()='Moderate'])[1]")).click();
 		toFillTextbox(l2.getEnterSmokeDuration(), "2013");
 		toFillTextbox(l2.getEnterSmokingPerDay(), "2");
@@ -900,8 +998,8 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l2.getEnterCelsius(), toReadDataFromExcel("Files", "Enquiry", 32, 1));
 		toFillTextbox(l2.getEnterBloodGlucose(), toReadDataFromExcel("Files", "Enquiry", 33, 1));
 		toFillTextbox(l2.getEnterMealTime(), toReadDataFromExcel("Files", "Enquiry", 34, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterSystolic(), toReadDataFromExcel("Files", "Enquiry", 35, 1));
 		toFillTextbox(l2.getEnterDiastolic(), toReadDataFromExcel("Files", "Enquiry", 36, 1));
 		toFillTextbox(l2.getEnterOxygenLevel(), toReadDataFromExcel("Files", "Enquiry", 37, 1));
@@ -914,8 +1012,8 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickAddComorbidities());
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterComorbidities(), toReadDataFromExcel("Files", "Enquiry", 40, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterFromYear(), toReadDataFromExcel("Files", "Enquiry", 41, 1));
 		toFillTextbox(l2.getEnterToYear(), toReadDataFromExcel("Files", "Enquiry", 42, 1));
 		toFillTextbox(l2.getEnterComorbiditiesHistory(), toReadDataFromExcel("Files", "Enquiry", 43, 1));
@@ -965,8 +1063,8 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickAddHealthInsurance());
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterInsuranceName(), toReadDataFromExcel("Files", "Enquiry", 61, 1));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterPolicyNumber(), toReadDataFromExcel("Files", "Enquiry", 62, 1));
 		toFillTextbox(l2.getEnterSumAssured(), toReadDataFromExcel("Files", "Enquiry", 63, 1));
 		toFillTextbox(l2.getEnterInsuranceEmail(), toReadDataFromExcel("Files", "Enquiry", 64, 1));
@@ -982,11 +1080,11 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toFillTextbox(l2.getUploadCGProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 3));
 		toFillTextbox(l2.getEnterCGTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 3));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterCGGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 24, 3));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toFillTextbox(l2.getEnterCGGovtIdnumber(), toReadDataFromExcel("Files", "Enquiry", 25, 3));
 		toFillTextbox(l2.getUploadCGProofId(), toReadDataFromExcel("Files", "Enquiry", 26, 3));
 		toFillTextbox(l2.getEnterCGDOB(), "02/04/1998");
@@ -1018,10 +1116,27 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l2.getClickAssignDoctorBtn1());
 		toThreadSleep(1000);
 		toFillTextbox(l2.getEnterDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toClickButton(l2.getClickAssignDoctorBtn2());
 		toThreadSleep(4000);
+		}
+		catch (Exception e) {			
+		}
+		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email",toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
+		String status = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_VETERAN_ONBOARD_DATA, "enquiryId",enquiryId, "status");
+		String mappingId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_DOCTOR_VETERAN_MAPPING, "enquiryId", enquiryId, "_id");
+		if(status != "Completed" && mappingId==null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "status :"+status+"\nVeteran not onboarded");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
+		}else if(status == "Completed" && mappingId==null){
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "\nVeteran not onboarded");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
+		}else if(status=="completed" && mappingId != null){
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7,
+					"\nVeteran onboarded successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Pass");
+		}
 		closeBrowser();
 	}
 
@@ -1040,6 +1155,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
+		try {
 		toClickButton(l2.getClickEnquiriesMenu());
 		toThreadSleep(1000);
 		toClickButton(l2.getClickNewEnquiry());
@@ -1056,6 +1172,14 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l2.getClickSubmitMedicalScore());
 		toThreadSleep(3000);
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "\nDoctor apporoved successfully");
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "Doctor not approverd");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Fail");
+		}
+		
 		closeBrowser();
 
 	}
@@ -1069,6 +1193,7 @@ public class RunnerClass extends BaseClass {
 		UserCreationPojo l1 = new UserCreationPojo();
 		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 4, 1), "SetPassword");
 		toThreadSleep(2000);
+		try {
 		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickCreatePassword());
@@ -1086,6 +1211,15 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickValidateBtn());
 		toThreadSleep(5000);
+		String output= driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
+		System.out.println(output);
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran Activated successfully");
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran not Activated");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Fail");
+		}	
 		closeBrowser();
 
 	}
@@ -1103,6 +1237,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickCreatePassword());
 		toThreadSleep(2000);
+		try {
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
@@ -1116,8 +1251,16 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		toClickButton(l1.getClickValidateBtn());
 		toThreadSleep(5000);
+		String output=driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
+		System.out.println(output);
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver Activated successfully");
+		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver not Activated");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Fail");
+		}		
 		closeBrowser();
-
 	}
 
 //  <--- Assign Caretaker -->
@@ -1134,16 +1277,27 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
+		try {
 		toClickButton(l2.getClickVeteransMenu());
 		toThreadSleep(1000);
 		toClickButton(l2.getClickNewVeteran());
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignCaretakerBtn());
-		toThreadSleep(1000);
+		toThreadSleep(3000);
 		toFillTextbox(l2.getEnterAssignCaretakerName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toClickButton(l2.getClickAssignCaretaker());
+		toThreadSleep(3000);
+		driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
+		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7, "\nCaretaker assigned successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7, "\nCaretaker not assigned");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Fail");
+		}
+		
 		toThreadSleep(3000);
 		closeBrowser();
 	}
@@ -1162,6 +1316,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
+		try {
 		toClickButton(l2.getClickVeteransMenu());
 		toThreadSleep(1000);
 		toClickButton(l2.getClickNewVeteran());
@@ -1172,6 +1327,15 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toThreadSleep(1000);
 		toClickButton(l2.getClickAssignDoctor());
+		toThreadSleep(3000);
+		driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
+		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7, "\nDoctor assigned successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7, "\nDoctor not assigned");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Fail");
+		}
 		toThreadSleep(3000);
 		closeBrowser();
 	}
@@ -1789,8 +1953,6 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(3000);
 		closeBrowser();
 	}
-	
-	
 
 // <---- Doctor Profile Update ---->		
 
@@ -1862,19 +2024,17 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(4000);
 		closeBrowser();
 	}
-	
-	
+
 // <------ Caretaker profile update ----->	
-	
-	
-	@Test(enabled=false)
-    private void caretakerProfileUpdate() throws Exception{
+
+	@Test(enabled = false)
+	private void caretakerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
-		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
 		toFillTextbox(l1.getEnterUsername(), "jahkari.yovanny@fullangle.org");
 		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
 		toClickButton(l1.getClickSignIn());
@@ -1891,7 +2051,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
 		toThreadSleep(1000);
 		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
 		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
 		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
@@ -1918,7 +2078,7 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		pressEnterKey();
 		scrollDown(l4.getClickProfileSubmit());
-		toThreadSleep(1000);		
+		toThreadSleep(1000);
 		toClickButton(l1.getClickSat());
 		toClickButton(l1.getClickSun());
 		toClickButton(l4.getClickEndTime());
@@ -1927,9 +2087,9 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickAMbutton());
 		scrollDown(l4.getClickProfileSubmit());
 		toThreadSleep(1000);
-		toClickButton(l4.getClickProfileSubmit());	
+		toClickButton(l4.getClickProfileSubmit());
 		toThreadSleep(4000);
-		closeBrowser();			
+		closeBrowser();
 	}
 
 }

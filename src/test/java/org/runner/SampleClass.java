@@ -39,6 +39,28 @@ import io.restassured.response.Response;
 public class SampleClass extends BaseClass {
 	
 	
+	@Test
+	private void tc3() throws IOException {
+		
+		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email","sangar@yopmail.com", "_id");
+		String status = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_VETERAN_ONBOARD_DATA, "enquiryId",enquiryId, "status");
+		String mappingId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_DOCTOR_VETERAN_MAPPING, "enquiryId", enquiryId, "_id");
+		System.out.println(mappingId+status+enquiryId);
+		if (status != "Completed") {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "status :"+status+"\nVeteran not onboarded");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
+		} else if(mappingId==null){
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "\nVeteran not onboarded");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
+		}else if(status=="completed" && mappingId != null){
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7,
+					"\nVeteran onboarded successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Pass");
+		}
+
+	}
+	
+	
 	@Test(enabled=false)
 	private void caremanagerProfileUpdate() throws Exception {		
 		openChrome();
