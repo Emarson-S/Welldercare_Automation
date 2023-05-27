@@ -85,8 +85,7 @@ public class ProfileUpdatePojo extends BaseClass{
 	
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
-	private WebElement enterTerritory;
-	
+	private WebElement enterTerritory;	
 	
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 

@@ -18,9 +18,7 @@ public class MongoDBCollections extends BaseClass {
 	public MongoDBCollections() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
+			
 // read particular collections	
 	
 	public static String connectMongoDB(String DB_URL, String Database,String Tablename, String key,String putValue, String getValue) throws IOException { 

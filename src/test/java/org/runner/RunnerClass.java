@@ -22,7 +22,7 @@ public class RunnerClass extends BaseClass {
 	// <-- Channel partner -->
 
 	@Test(enabled = false, priority = 1)
-	private void usercreationCP() throws Throwable {
+	private void usercreationChannelPartner() throws Throwable {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("DummyEmail");
@@ -118,7 +118,7 @@ public class RunnerClass extends BaseClass {
 	// <-- Care manager -->
 
 	@Test(enabled = false, priority = 2)
-	private void usercreationCM() throws Throwable {
+	private void usercreationCaremanager() throws Throwable {
 
 		openChrome();
 		maxWindow();
@@ -215,7 +215,7 @@ public class RunnerClass extends BaseClass {
 	// <-- Doctor 1 -->
 
 	@Test(enabled = false, priority = 3)
-	private void usercreationDr1() throws Throwable {
+	private void usercreationDoctor() throws Throwable {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("DummyEmail");
@@ -478,7 +478,7 @@ public class RunnerClass extends BaseClass {
 	// <-- Pharmacist -->
 
 	@Test(enabled = false, priority = 5)
-	private void usercreationPH() throws Throwable {
+	private void usercreationPharmacist() throws Throwable {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("DummyEmail");
@@ -588,7 +588,7 @@ public class RunnerClass extends BaseClass {
 	// <-- Caretaker -->
 
 	@Test(enabled = false, priority = 6)
-	private void usercreationCT() throws Throwable {
+	private void usercreationCaretaker() throws Throwable {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("DummyEmail");
@@ -778,7 +778,7 @@ public class RunnerClass extends BaseClass {
 //	<--- Enquiry page --->
 
 	@Test(enabled = false, priority = 9)
-	private void enquirypage() throws Throwable {
+	private void enquiryCreation() throws Throwable {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
