@@ -25,7 +25,6 @@ public class MongoDBCollections extends BaseClass {
 	    FileReader reader=new FileReader("D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
         Properties props=new Properties();
         props.load(reader);
-        FindIterable<Document> resutls = null;
 		MongoClient mongoClient = MongoClients.create(props.getProperty(DB_URL));
 		MongoDatabase db=mongoClient.getDatabase(props.getProperty(Database));
 		MongoCollection<Document> collection=db.getCollection(Tablename);
@@ -38,6 +37,29 @@ public class MongoDBCollections extends BaseClass {
 					         	
 	      }
 	
+	
+	public static String connMongoDB(String DB_URL, String Database,String Tablename, String key,String putValue1, String getValue1,String getValue2, String putValue2,String putValue3, String getValue3) throws IOException { 
+	    FileReader reader=new FileReader("D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
+        Properties props=new Properties();
+        props.load(reader);
+		MongoClient mongoClient = MongoClients.create(props.getProperty(DB_URL));
+		MongoDatabase db=mongoClient.getDatabase(props.getProperty(Database));
+		MongoCollection<Document> collection=db.getCollection(Tablename);
+		FindIterable<Document> results=collection.find(new Document(key,putValue1));
+		for(Document document: results) {
+			System.out.println("-->"+document);
+			String output1=document.getString(getValue1);
+			String output2=document.getString(getValue2);
+			if(output1.equalsIgnoreCase(putValue2) && output2.equalsIgnoreCase(putValue3) ) {
+				String	output3=document.getString(getValue3);
+				System.err.println("-->op1-->"+output3);
+				return output3;
+			}
+			
+		}
+		return null;
+					         	
+	      }
 	
 // Table names
 	
@@ -58,5 +80,7 @@ public class MongoDBCollections extends BaseClass {
 	public static String TBL_VETERAN_ONBOARD_DATA="tbl_veteran_onboard_data";
 	
 	public static String TBL_DOCTOR_VETERAN_MAPPING="tbl_doctor_veteran_mapping";
+	
+	public static String TBL_APPOINTMENT="tbl_appointment";
 
 }

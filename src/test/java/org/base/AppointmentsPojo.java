@@ -115,11 +115,18 @@ public class AppointmentsPojo extends BaseClass {
 		@FindBy(xpath="//button[text()='Accept']")}) 
 	private WebElement clickAceptBtn;
 	
-
+	@FindAll({
+		@FindBy(xpath="//button[text()=' Create Appointment ']")}) 
+	private WebElement clickCreateAppointment;
 	
 	
 //  < --- Requested Appointments --- >
 	
+	public WebElement getClickCreateAppointment() {
+		return clickCreateAppointment;
+	}
+
+
 	@FindAll({
 		@FindBy(xpath="//button[text()=' Requested ']")}) 
 	private WebElement clickRequestedBtn;
@@ -129,32 +136,37 @@ public class AppointmentsPojo extends BaseClass {
 	private WebElement clickRequestAppointmentBtn;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
 	private WebElement enterRequestDoctorName;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]")}) 
 	private WebElement enterRequestAppointmentType;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[10]")}) 
 	private WebElement enterRequestAppointmentMode;
 	
 	@FindAll({
-		@FindBy(xpath="//input[@formcontrolname='date']")}) 
+		@FindBy(xpath="(//input[@formcontrolname='date'])[2]")}) 
 	private WebElement enterRequestAppointmentDate;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[11]")}) 
 	private WebElement enterRequestAppointmentDuration;
 	
 	@FindAll({
 		@FindBy(xpath="//button[text()='Request Appointment']")}) 
 	private WebElement clickSubmitRequestAppointment;
 
+	@FindAll({
+		@FindBy(xpath="(//input[@formcontrolname='time'])[2]")}) 
+	private WebElement clickTimePickertext;
 	
 // <--- Live Request --->
-	
+
+
+
 	@FindAll({
 		@FindBy(xpath="//h4[text()='Emergency']")}) 
 	private WebElement clickEmergencyBtn;
@@ -181,7 +193,7 @@ public class AppointmentsPojo extends BaseClass {
 	
 	
 	
-	// <---- Request appointment reshcedule>
+	// <---- Request appointment reshcedule  ---->
 	
 	
 	@FindAll({
@@ -201,7 +213,7 @@ public class AppointmentsPojo extends BaseClass {
 	private WebElement  clickAcceptRequestAppt;
 	
 	@FindAll({
-		@FindBy(xpath="//button[text()='Accept']")}) 
+		@FindBy(xpath="//button[text()='Reject']")})
 	private WebElement  clickRejectRequestAppt;
 	
 	
@@ -223,6 +235,11 @@ public class AppointmentsPojo extends BaseClass {
 		@FindBy(xpath="//button[text()='OK']")}) 
 	private WebElement  clickOKbtn;	
 		
+	
+	public WebElement getClickTimePickertext() {
+		return clickTimePickertext;
+	}
+	
 	public WebElement getClickOKbtn() {
 		return clickOKbtn;
 	}

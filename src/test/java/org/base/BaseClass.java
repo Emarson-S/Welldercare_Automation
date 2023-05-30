@@ -8,15 +8,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.TimeZone;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -25,6 +22,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -288,6 +286,14 @@ public class BaseClass {
 		s = new Select(element);
 		s.selectByIndex(index);
 	}
+	
+	
+	// get no of rows in particular table
+	public static int toGetNoOfRowsFromTable(WebElement element, String tagName) {		
+		List<WebElement> allRow=element.findElements(By.tagName(tagName));
+		int allrows=allRow.size();
+		return allrows;
+	}
 
 	// take screenshot
 	public static void takePicture(String pictureName) throws IOException {
@@ -430,20 +436,7 @@ public class BaseClass {
 		return date1;
 	}
 
-	public static Date getCurrentUtcTime() throws ParseException, java.text.ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-		SimpleDateFormat ldf = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-		Date d1 = null;
-		d1 = ldf.parse(sdf.format(new Date()));
 
-		int hr = d1.getHours() + 5;
-		int min = d1.getMinutes() + 30;
-		d1.setHours(hr);
-		d1.setMinutes(min);
-
-		return d1;
-
-	}
+	
 
 }

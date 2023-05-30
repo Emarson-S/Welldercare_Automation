@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +20,7 @@ import org.base.Configurations;
 import org.base.MastersPojo;
 import org.base.MongoDBCollections;
 import org.base.ProfileUpdatePojo;
+import org.base.SmartPillBox;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
 import org.bson.Document;
@@ -37,40 +41,78 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
-	
-	
-	@Test
+
+	@Test(enabled = false)
+	private void acceptMedicineRequest() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		SmartPillBox l6 = new SmartPillBox();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 5));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickMedicineRequest());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickNewMedicinesRequest());
+		toThreadSleep(1000);
+		toClickButton(l6.getClickViewMedicines());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickAcceptMedicines());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickNewMedicinesRequest());
+		toThreadSleep(1000);
+		toClickButton(l6.getClickPillEntry());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickRefillBtn());
+		toThreadSleep(2000);
+		int allRows = toGetNoOfRowsFromTable(l6.getFindPillTable(), "tbody");
+		for (int i = 1; i <= allRows; i++) {
+			String date = Configurations.plusMonth(7).toString();
+			int num = Configurations.patchNumber();
+			driver.findElement(By.xpath("(//input[@formcontrolname='expiryDate'])[" + i + "]")).sendKeys(date);
+			driver.findElement(By.xpath("(//input[@formcontrolname='batchNo'])[" + i + "]")).sendKeys(num + "");
+		}
+		toClickButton(l6.getClickPillSaveBtn());
+		toThreadSleep(4000);
+		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+		toThreadSleep(2000);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickMedicineRequest());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickPillApproveBtn());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickViewMedicines());
+		toThreadSleep(3000);
+		closeBrowser();
+	}
+
+	@Test(enabled = true)
 	private void tc3() throws IOException {
 		
-		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email","sangar@yopmail.com", "_id");
-		String status = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_VETERAN_ONBOARD_DATA, "enquiryId",enquiryId, "status");
-		String mappingId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_DOCTOR_VETERAN_MAPPING, "enquiryId", enquiryId, "_id");
-		System.out.println(mappingId+status+enquiryId);
-		if (status != "Completed") {
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "status :"+status+"\nVeteran not onboarded");
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
-		} else if(mappingId==null){
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "\nVeteran not onboarded");
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
-		}else if(status=="completed" && mappingId != null){
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7,
-					"\nVeteran onboarded successfully");
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Pass");
-		}
 
+//		String enquiryId = MongoDBCollections.connMongoDB("DB_URL", "Database", MongoDBCollections.TBL_APPOINTMENT, "veteranName", "Harson T", "time","status", "12:55 PM","completed", "_id");
+//		System.out.println(enquiryId);
+	
 	}
-	
-	
-	@Test(enabled=false)
-	private void caremanagerProfileUpdate() throws Exception {		
+	@Test(enabled = false)
+	private void caremanagerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
-		Actions a=new Actions(driver);
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		Actions a = new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		toFillTextbox(l1.getEnterUsername(), "ilhan.demari@fullangle.org");
 		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
@@ -88,7 +130,7 @@ public class SampleClass extends BaseClass {
 		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
 		toThreadSleep(1000);
 		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
 		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
 		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
@@ -119,18 +161,17 @@ public class SampleClass extends BaseClass {
 		closeBrowser();
 
 	}
-		
-	
-	@Test(enabled=false)
-	private void channelPartnerProfileUpdate() throws Exception{
+
+	@Test(enabled = false)
+	private void channelPartnerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
-		Actions a=new Actions(driver);
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		Actions a = new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		toFillTextbox(l1.getEnterUsername(), "aryo.ollis@fullangle.org");
 		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
@@ -148,7 +189,7 @@ public class SampleClass extends BaseClass {
 		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
 		toThreadSleep(1000);
 		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
 		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
 		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
@@ -178,18 +219,17 @@ public class SampleClass extends BaseClass {
 		toThreadSleep(3000);
 		closeBrowser();
 	}
-	
-	
-	@Test(enabled=false)
-    private void caretakerProfileUpdate() throws Exception{
+
+	@Test(enabled = false)
+	private void caretakerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
-		Actions a=new Actions(driver);
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		Actions a = new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		toFillTextbox(l1.getEnterUsername(), "jahkari.yovanny@fullangle.org");
 		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
@@ -207,7 +247,7 @@ public class SampleClass extends BaseClass {
 		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 4));
 		toThreadSleep(1000);
 		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 4));
 		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 4));
 		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 4));
@@ -234,7 +274,7 @@ public class SampleClass extends BaseClass {
 		toThreadSleep(1000);
 		pressEnterKey();
 		scrollDown(l4.getClickProfileSubmit());
-		toThreadSleep(1000);		
+		toThreadSleep(1000);
 		toClickButton(l1.getClickSat());
 		toClickButton(l1.getClickSun());
 		toClickButton(l4.getClickEndTime());
@@ -243,13 +283,12 @@ public class SampleClass extends BaseClass {
 		toClickButton(l1.getClickAMbutton());
 		scrollDown(l4.getClickProfileSubmit());
 		toThreadSleep(1000);
-		toClickButton(l4.getClickProfileSubmit());	
+		toClickButton(l4.getClickProfileSubmit());
 		toThreadSleep(4000);
-		closeBrowser();			
+		closeBrowser();
 
 	}
-	
-	
+
 	@Test(enabled = false)
 	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
 		openChrome();
@@ -258,8 +297,8 @@ public class SampleClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		AppointmentsPojo l3 = new AppointmentsPojo();
-		ProfileUpdatePojo l4 =new ProfileUpdatePojo();
-		Actions a=new Actions(driver);
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		Actions a = new Actions(driver);
 		VeteranOnboardingPojo l2 = new VeteranOnboardingPojo();
 		toFillTextbox(l1.getEnterUsername(), "tyrese.motty@fullangle.org");
 		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
@@ -277,7 +316,7 @@ public class SampleClass extends BaseClass {
 		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 6));
 		toThreadSleep(1000);
 		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(),"01-02-1990");
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 6));
 		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 6));
 		toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 6));
@@ -317,7 +356,7 @@ public class SampleClass extends BaseClass {
 		toClickButton(l1.getClickAMbutton());
 		scrollDown(l4.getClickProfileSubmit());
 		toThreadSleep(1000);
-		toClickButton(l4.getClickProfileSubmit());	
+		toClickButton(l4.getClickProfileSubmit());
 		toThreadSleep(4000);
 		closeBrowser();
 	}
@@ -348,7 +387,7 @@ public class SampleClass extends BaseClass {
 		String date = readDate();
 		a.doubleClick(l3.getEnterRescheduleDate()).perform();
 		selectAllText();
-	    toFillTextbox(l3.getEnterRescheduleDate(), date);
+		toFillTextbox(l3.getEnterRescheduleDate(), date);
 		toClickButton(l3.getClickTimePicker());
 		String hr = readHour();
 		String mm = readMin();
@@ -378,12 +417,12 @@ public class SampleClass extends BaseClass {
 
 	@Test(enabled = false)
 	private void Masters() throws IOException, InterruptedException {
-		
+
 		openChrome();
 		maxWindow();
 		Configurations.readUrl("BaseUrl");
 		UserCreationPojo l1 = new UserCreationPojo();
-		MastersPojo l5=new MastersPojo();
+		MastersPojo l5 = new MastersPojo();
 		Actions a = new Actions(driver);
 		toThreadSleep(2000);
 		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
@@ -402,7 +441,6 @@ public class SampleClass extends BaseClass {
 		toFillTextbox(l5.getEnterInsuranceCompanyName(), "DHFL Pramerica Life Insurance Co. Ltd.");
 		toClickButton(l5.getClickSaveBtn());
 
-		
 	}
 
 	@Test(enabled = false)

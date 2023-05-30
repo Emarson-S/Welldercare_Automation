@@ -9,6 +9,7 @@ import org.base.BaseClass;
 import org.base.Configurations;
 import org.base.MongoDBCollections;
 import org.base.ProfileUpdatePojo;
+import org.base.SmartPillBox;
 import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
 import org.openqa.selenium.By;
@@ -767,7 +768,8 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l1.getClickValidateBtn());
 		} catch (Exception e) {
 		}
-		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",text, "_id");
+		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
+				text, "_id");
 		if (userId == null) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 7, "Caretaker not created");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 4, 10, "Fail");
@@ -810,7 +812,8 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l1.getClickSignIn());
 			toThreadSleep(3000);
 			driver.findElement(By.xpath("//span[text()='Dashboard ']")).click();
-			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7, "Password created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7,
+					"Password created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 10, "Pass");
 		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7, "New password not created");
@@ -848,7 +851,8 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l1.getClickSignIn());
 			toThreadSleep(3000);
 			driver.findElement(By.xpath("//span[text()='Dashboard ']")).click();
-			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7, "\nPassword created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7,
+					"\nPassword created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 10, "Pass");
 		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7, "New password not created");
@@ -871,65 +875,65 @@ public class RunnerClass extends BaseClass {
 		UserCreationPojo l1 = new UserCreationPojo();
 		toThreadSleep(1000);
 		try {
-		driver.findElement(By.xpath("//button[text()='Click to Enquire']")).click();
-		toFillTextbox(l2.getEnterVTFirstName(), toReadDataFromExcel("Files", "Enquiry", 1, 1));
-		toFillTextbox(l2.getEnterVTLastName(), toReadDataFromExcel("Files", "Enquiry", 2, 1));
-		toFillTextbox(l2.getEnterVTGender(), toReadDataFromExcel("Files", "Enquiry", 3, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterVTEmailAdress(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-		toFillTextbox(l2.getEnterVTContactNo(), toReadDataFromExcel("Files", "Enquiry", 5, 1));
-		toFillTextbox(l2.getEnterVTAddress1(), toReadDataFromExcel("Files", "Enquiry", 6, 1));
-		toFillTextbox(l2.getEnterVTAddress2(), toReadDataFromExcel("Files", "Enquiry", 7, 1));
-		toFillTextbox(l2.getEnterVTCountry(), toReadDataFromExcel("Files", "Enquiry", 8, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterVTState(), toReadDataFromExcel("Files", "Enquiry", 9, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterVTCity(), toReadDataFromExcel("Files", "Enquiry", 10, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterVTPincode(), toReadDataFromExcel("Files", "Enquiry", 11, 1));
-		toFillTextbox(l2.getEnterVTTerritory(), toReadDataFromExcel("Files", "Enquiry", 12, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		scrollDown(l2.getEnterCGFirstName());
-		toFillTextbox(l2.getEnterCGFirstName(), toReadDataFromExcel("Files", "Enquiry", 13, 1));
-		toFillTextbox(l2.getEnterCGLastName(), toReadDataFromExcel("Files", "Enquiry", 14, 1));
-		toFillTextbox(l2.getEnterCGGender(), toReadDataFromExcel("Files", "Enquiry", 15, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterCGEmailAdress(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
-		toFillTextbox(l2.getEnterCGAddress(), toReadDataFromExcel("Files", "Enquiry", 17, 1));
-		toFillTextbox(l2.getEnterCGContactNo(), toReadDataFromExcel("Files", "Enquiry", 18, 1));
-		toFillTextbox(l2.getEnterCGRelationship(), toReadDataFromExcel("Files", "Enquiry", 19, 1));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterNotes(), toReadDataFromExcel("Files", "Enquiry", 20, 1));
-		scrollDown(l2.getEnterNotes());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Submit ']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toClickButton(l2.getClickEnquiriesMenu());
-		toThreadSleep(3000);
-		toClickButton(l2.getClickNewEnquiry());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickNewAssignPartner());
-		toThreadSleep(1000);
-		toSelectIndex(l2.getSelectChannelPartner(), 1);
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAssignChannelPartner());
+			driver.findElement(By.xpath("//button[text()='Click to Enquire']")).click();
+			toFillTextbox(l2.getEnterVTFirstName(), toReadDataFromExcel("Files", "Enquiry", 1, 1));
+			toFillTextbox(l2.getEnterVTLastName(), toReadDataFromExcel("Files", "Enquiry", 2, 1));
+			toFillTextbox(l2.getEnterVTGender(), toReadDataFromExcel("Files", "Enquiry", 3, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterVTEmailAdress(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+			toFillTextbox(l2.getEnterVTContactNo(), toReadDataFromExcel("Files", "Enquiry", 5, 1));
+			toFillTextbox(l2.getEnterVTAddress1(), toReadDataFromExcel("Files", "Enquiry", 6, 1));
+			toFillTextbox(l2.getEnterVTAddress2(), toReadDataFromExcel("Files", "Enquiry", 7, 1));
+			toFillTextbox(l2.getEnterVTCountry(), toReadDataFromExcel("Files", "Enquiry", 8, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterVTState(), toReadDataFromExcel("Files", "Enquiry", 9, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterVTCity(), toReadDataFromExcel("Files", "Enquiry", 10, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterVTPincode(), toReadDataFromExcel("Files", "Enquiry", 11, 1));
+			toFillTextbox(l2.getEnterVTTerritory(), toReadDataFromExcel("Files", "Enquiry", 12, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			scrollDown(l2.getEnterCGFirstName());
+			toFillTextbox(l2.getEnterCGFirstName(), toReadDataFromExcel("Files", "Enquiry", 13, 1));
+			toFillTextbox(l2.getEnterCGLastName(), toReadDataFromExcel("Files", "Enquiry", 14, 1));
+			toFillTextbox(l2.getEnterCGGender(), toReadDataFromExcel("Files", "Enquiry", 15, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterCGEmailAdress(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+			toFillTextbox(l2.getEnterCGAddress(), toReadDataFromExcel("Files", "Enquiry", 17, 1));
+			toFillTextbox(l2.getEnterCGContactNo(), toReadDataFromExcel("Files", "Enquiry", 18, 1));
+			toFillTextbox(l2.getEnterCGRelationship(), toReadDataFromExcel("Files", "Enquiry", 19, 1));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterNotes(), toReadDataFromExcel("Files", "Enquiry", 20, 1));
+			scrollDown(l2.getEnterNotes());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Submit ']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 2, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 3, 1));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toClickButton(l2.getClickEnquiriesMenu());
+			toThreadSleep(3000);
+			toClickButton(l2.getClickNewEnquiry());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickNewAssignPartner());
+			toThreadSleep(1000);
+			toSelectIndex(l2.getSelectChannelPartner(), 1);
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAssignChannelPartner());
+		} catch (Exception e) {
 		}
-		catch (Exception e) {
-		}
-		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email",toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
+		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY,
+				"veteran.email", toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
 		if (enquiryId == null) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 7, "Enquiry not created");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 6, 10, "Fail");
@@ -958,183 +962,185 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
 		try {
-		toClickButton(l2.getClickEnquiriesMenu());
-		toThreadSleep(3000);
-		toClickButton(l2.getClickNewEnquiry());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickOnboardBtn());
-		toThreadSleep(2000);
-		toFillTextbox(l2.getUploadVTProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 1));
-		toFillTextbox(l2.getEnterVTTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterVTDOB(), "02/05/1980");
-		toFillTextbox(l2.getEnterVTAlternateNumber(), toReadDataFromExcel("Files", "Enquiry", 25, 1));
-		toFillTextbox(l2.getEnterVTGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 26, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterVTGovtIdNumber(), toReadDataFromExcel("Files", "Enquiry", 27, 1));
-		// toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files",
-		// "Enquiry", 28, 1));
-		scrollDown(l2.getEnterVTDOB());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterHight(), toReadDataFromExcel("Files", "Enquiry", 29, 1));
-		toFillTextbox(l2.getEnterWeight(), toReadDataFromExcel("Files", "Enquiry", 30, 1));
-		toFillTextbox(l2.getSelectBloodGroup(), toReadDataFromExcel("Files", "Enquiry", 31, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		driver.findElement(By.xpath("(//label[text()='Moderate'])[1]")).click();
-		toFillTextbox(l2.getEnterSmokeDuration(), "2013");
-		toFillTextbox(l2.getEnterSmokingPerDay(), "2");
-		driver.findElement(By.xpath("(//label[text()='Moderate'])[2]")).click();
-		toFillTextbox(l2.getEnterDrinkingDuration(), "2016");
-		toFillTextbox(l2.getEnterDrinkingPerWeek(), "4");
-		scrollDown(l2.getEnterDrinkingPerWeek());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterCelsius(), toReadDataFromExcel("Files", "Enquiry", 32, 1));
-		toFillTextbox(l2.getEnterBloodGlucose(), toReadDataFromExcel("Files", "Enquiry", 33, 1));
-		toFillTextbox(l2.getEnterMealTime(), toReadDataFromExcel("Files", "Enquiry", 34, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterSystolic(), toReadDataFromExcel("Files", "Enquiry", 35, 1));
-		toFillTextbox(l2.getEnterDiastolic(), toReadDataFromExcel("Files", "Enquiry", 36, 1));
-		toFillTextbox(l2.getEnterOxygenLevel(), toReadDataFromExcel("Files", "Enquiry", 37, 1));
-		toFillTextbox(l2.getEnterHeartRate(), toReadDataFromExcel("Files", "Enquiry", 38, 1));
-		toFillTextbox(l2.getEnterRespiratoryRate(), toReadDataFromExcel("Files", "Enquiry", 39, 1));
-		scrollDown(l2.getEnterRespiratoryRate());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAddComorbidities());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterComorbidities(), toReadDataFromExcel("Files", "Enquiry", 40, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterFromYear(), toReadDataFromExcel("Files", "Enquiry", 41, 1));
-		toFillTextbox(l2.getEnterToYear(), toReadDataFromExcel("Files", "Enquiry", 42, 1));
-		toFillTextbox(l2.getEnterComorbiditiesHistory(), toReadDataFromExcel("Files", "Enquiry", 43, 1));
-		toClickButton(l2.getSaveComorbidities());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAllergiesNo());
-		toClickButton(l2.getClickFallsNo());
-		toClickButton(l2.getClickHospitalizationYes());
-		toFillTextbox(l2.getEnterWhenHospitalization(), toReadDataFromExcel("Files", "Enquiry", 44, 1));
-		toFillTextbox(l2.getEnterWhereHospitalization(), toReadDataFromExcel("Files", "Enquiry", 45, 1));
-		toFillTextbox(l2.getUploadHospitalizationPDF(), toReadDataFromExcel("Files", "Enquiry", 46, 1));
-		toFillTextbox(l2.getEnterHospitalizationHistory(), toReadDataFromExcel("Files", "Enquiry", 47, 1));
-		scrollDown(l2.getClickHeartdiseaseYes());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickHeartdiseaseYes());
-		toFillTextbox(l2.getEnterWhenHeartdisease(), toReadDataFromExcel("Files", "Enquiry", 48, 1));
-		toFillTextbox(l2.getEnterWhereHeartdisease(), toReadDataFromExcel("Files", "Enquiry", 49, 1));
-		toFillTextbox(l2.getEnterHeartdiseaseHistory(), toReadDataFromExcel("Files", "Enquiry", 50, 1));
-		toClickButton(l2.getClickkidneydiseaseYes());
-		toFillTextbox(l2.getEnterWhenkidneydisease(), toReadDataFromExcel("Files", "Enquiry", 51, 1));
-		toFillTextbox(l2.getEnterWherekidneydisease(), toReadDataFromExcel("Files", "Enquiry", 52, 1));
-		toFillTextbox(l2.getEnterkidneydiseaseHistory(), toReadDataFromExcel("Files", "Enquiry", 53, 1));
-		scrollDown(l2.getClickCancerHistoryNo());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickCancerHistoryNo());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAddPrescription());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterPrescribedDoctorName(), toReadDataFromExcel("Files", "Enquiry", 57, 1));
-		toFillTextbox(l2.getEnterMedicineName(), toReadDataFromExcel("Files", "Enquiry", 58, 1));
-		toFillTextbox(l2.getEnterDosage(), toReadDataFromExcel("Files", "Enquiry", 59, 1));
-		toFillTextbox(l2.getSelectGram(), "Gram");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickMorning());
-		toClickButton(l2.getClickAfternoon());
-		toClickButton(l2.getClickEvening());
-		toClickButton(l2.getClickNight());
-		toFillTextbox(l2.getEnterFromYearMedicine(), "02/2018");
-		toClickButton(l2.getClickBeforeFood());
-		toClickButton(l2.getClickSaveMedicines());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAddHealthInsurance());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterInsuranceName(), toReadDataFromExcel("Files", "Enquiry", 61, 1));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterPolicyNumber(), toReadDataFromExcel("Files", "Enquiry", 62, 1));
-		toFillTextbox(l2.getEnterSumAssured(), toReadDataFromExcel("Files", "Enquiry", 63, 1));
-		toFillTextbox(l2.getEnterInsuranceEmail(), toReadDataFromExcel("Files", "Enquiry", 64, 1));
-		toFillTextbox(l2.getEnterInsuranceCopy(), toReadDataFromExcel("Files", "Enquiry", 65, 1));
-		toFillTextbox(l2.getEnterInsuranceExpiryDate(), "01-01-2040");
-		toFillTextbox(l2.getEnterInsurancePhoneNo(), toReadDataFromExcel("Files", "Enquiry", 67, 1));
-		toFillTextbox(l2.getEnterInsuranceAddress(), toReadDataFromExcel("Files", "Enquiry", 68, 1));
-		toClickButton(l2.getClickSaveInsurance());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAddFamilymember());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getUploadCGProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 3));
-		toFillTextbox(l2.getEnterCGTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 3));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterCGGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 24, 3));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l2.getEnterCGGovtIdnumber(), toReadDataFromExcel("Files", "Enquiry", 25, 3));
-		toFillTextbox(l2.getUploadCGProofId(), toReadDataFromExcel("Files", "Enquiry", 26, 3));
-		toFillTextbox(l2.getEnterCGDOB(), "02/04/1998");
-		toFillTextbox(l2.getEnterPoliceStationNo(), toReadDataFromExcel("Files", "Enquiry", 28, 3));
-		toFillTextbox(l2.getEnterStationPincode(), toReadDataFromExcel("Files", "Enquiry", 29, 3));
-		toFillTextbox(l2.getEnterCGAlternateContactNo(), toReadDataFromExcel("Files", "Enquiry", 30, 3));
-		toClickButton(l2.getClickSaveFamilyMember());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()=' Submit ']")).click();
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
-		toThreadSleep(4000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 2));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(2000);
-		toClickButton(l2.getClickEnquiriesMenu());
-		toThreadSleep(2000);
-		toClickButton(l2.getClickNewEnquiry());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAssignDoctorBtn1());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toClickButton(l2.getClickAssignDoctorBtn2());
-		toThreadSleep(4000);
+			toClickButton(l2.getClickEnquiriesMenu());
+			toThreadSleep(3000);
+			toClickButton(l2.getClickNewEnquiry());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickOnboardBtn());
+			toThreadSleep(2000);
+			toFillTextbox(l2.getUploadVTProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 1));
+			toFillTextbox(l2.getEnterVTTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterVTDOB(), "02/05/1980");
+			toFillTextbox(l2.getEnterVTAlternateNumber(), toReadDataFromExcel("Files", "Enquiry", 25, 1));
+			toFillTextbox(l2.getEnterVTGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 26, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterVTGovtIdNumber(), toReadDataFromExcel("Files", "Enquiry", 27, 1));
+			// toFillTextbox(l2.getUploadVTIdProof(), toReadDataFromExcel("Files",
+			// "Enquiry", 28, 1));
+			scrollDown(l2.getEnterVTDOB());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterHight(), toReadDataFromExcel("Files", "Enquiry", 29, 1));
+			toFillTextbox(l2.getEnterWeight(), toReadDataFromExcel("Files", "Enquiry", 30, 1));
+			toFillTextbox(l2.getSelectBloodGroup(), toReadDataFromExcel("Files", "Enquiry", 31, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			driver.findElement(By.xpath("(//label[text()='Moderate'])[1]")).click();
+			toFillTextbox(l2.getEnterSmokeDuration(), "2013");
+			toFillTextbox(l2.getEnterSmokingPerDay(), "2");
+			driver.findElement(By.xpath("(//label[text()='Moderate'])[2]")).click();
+			toFillTextbox(l2.getEnterDrinkingDuration(), "2016");
+			toFillTextbox(l2.getEnterDrinkingPerWeek(), "4");
+			scrollDown(l2.getEnterDrinkingPerWeek());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterCelsius(), toReadDataFromExcel("Files", "Enquiry", 32, 1));
+			toFillTextbox(l2.getEnterBloodGlucose(), toReadDataFromExcel("Files", "Enquiry", 33, 1));
+			toFillTextbox(l2.getEnterMealTime(), toReadDataFromExcel("Files", "Enquiry", 34, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterSystolic(), toReadDataFromExcel("Files", "Enquiry", 35, 1));
+			toFillTextbox(l2.getEnterDiastolic(), toReadDataFromExcel("Files", "Enquiry", 36, 1));
+			toFillTextbox(l2.getEnterOxygenLevel(), toReadDataFromExcel("Files", "Enquiry", 37, 1));
+			toFillTextbox(l2.getEnterHeartRate(), toReadDataFromExcel("Files", "Enquiry", 38, 1));
+			toFillTextbox(l2.getEnterRespiratoryRate(), toReadDataFromExcel("Files", "Enquiry", 39, 1));
+			scrollDown(l2.getEnterRespiratoryRate());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAddComorbidities());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterComorbidities(), toReadDataFromExcel("Files", "Enquiry", 40, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterFromYear(), toReadDataFromExcel("Files", "Enquiry", 41, 1));
+			toFillTextbox(l2.getEnterToYear(), toReadDataFromExcel("Files", "Enquiry", 42, 1));
+			toFillTextbox(l2.getEnterComorbiditiesHistory(), toReadDataFromExcel("Files", "Enquiry", 43, 1));
+			toClickButton(l2.getSaveComorbidities());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAllergiesNo());
+			toClickButton(l2.getClickFallsNo());
+			toClickButton(l2.getClickHospitalizationYes());
+			toFillTextbox(l2.getEnterWhenHospitalization(), toReadDataFromExcel("Files", "Enquiry", 44, 1));
+			toFillTextbox(l2.getEnterWhereHospitalization(), toReadDataFromExcel("Files", "Enquiry", 45, 1));
+			toFillTextbox(l2.getUploadHospitalizationPDF(), toReadDataFromExcel("Files", "Enquiry", 46, 1));
+			toFillTextbox(l2.getEnterHospitalizationHistory(), toReadDataFromExcel("Files", "Enquiry", 47, 1));
+			scrollDown(l2.getClickHeartdiseaseYes());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickHeartdiseaseYes());
+			toFillTextbox(l2.getEnterWhenHeartdisease(), toReadDataFromExcel("Files", "Enquiry", 48, 1));
+			toFillTextbox(l2.getEnterWhereHeartdisease(), toReadDataFromExcel("Files", "Enquiry", 49, 1));
+			toFillTextbox(l2.getEnterHeartdiseaseHistory(), toReadDataFromExcel("Files", "Enquiry", 50, 1));
+			toClickButton(l2.getClickkidneydiseaseYes());
+			toFillTextbox(l2.getEnterWhenkidneydisease(), toReadDataFromExcel("Files", "Enquiry", 51, 1));
+			toFillTextbox(l2.getEnterWherekidneydisease(), toReadDataFromExcel("Files", "Enquiry", 52, 1));
+			toFillTextbox(l2.getEnterkidneydiseaseHistory(), toReadDataFromExcel("Files", "Enquiry", 53, 1));
+			scrollDown(l2.getClickCancerHistoryNo());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickCancerHistoryNo());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAddPrescription());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterPrescribedDoctorName(), toReadDataFromExcel("Files", "Enquiry", 57, 1));
+			toFillTextbox(l2.getEnterMedicineName(), toReadDataFromExcel("Files", "Enquiry", 58, 1));
+			toFillTextbox(l2.getEnterDosage(), toReadDataFromExcel("Files", "Enquiry", 59, 1));
+			toFillTextbox(l2.getSelectGram(), "Gram");
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickMorning());
+			toClickButton(l2.getClickAfternoon());
+			toClickButton(l2.getClickEvening());
+			toClickButton(l2.getClickNight());
+			toFillTextbox(l2.getEnterFromYearMedicine(), "02/2018");
+			toClickButton(l2.getClickBeforeFood());
+			toClickButton(l2.getClickSaveMedicines());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAddHealthInsurance());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterInsuranceName(), toReadDataFromExcel("Files", "Enquiry", 61, 1));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterPolicyNumber(), toReadDataFromExcel("Files", "Enquiry", 62, 1));
+			toFillTextbox(l2.getEnterSumAssured(), toReadDataFromExcel("Files", "Enquiry", 63, 1));
+			toFillTextbox(l2.getEnterInsuranceEmail(), toReadDataFromExcel("Files", "Enquiry", 64, 1));
+			toFillTextbox(l2.getEnterInsuranceCopy(), toReadDataFromExcel("Files", "Enquiry", 65, 1));
+			toFillTextbox(l2.getEnterInsuranceExpiryDate(), "01-01-2040");
+			toFillTextbox(l2.getEnterInsurancePhoneNo(), toReadDataFromExcel("Files", "Enquiry", 67, 1));
+			toFillTextbox(l2.getEnterInsuranceAddress(), toReadDataFromExcel("Files", "Enquiry", 68, 1));
+			toClickButton(l2.getClickSaveInsurance());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAddFamilymember());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getUploadCGProfilePicture(), toReadDataFromExcel("Files", "Enquiry", 22, 3));
+			toFillTextbox(l2.getEnterCGTitle(), toReadDataFromExcel("Files", "Enquiry", 23, 3));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterCGGovtIdType(), toReadDataFromExcel("Files", "Enquiry", 24, 3));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l2.getEnterCGGovtIdnumber(), toReadDataFromExcel("Files", "Enquiry", 25, 3));
+			toFillTextbox(l2.getUploadCGProofId(), toReadDataFromExcel("Files", "Enquiry", 26, 3));
+			toFillTextbox(l2.getEnterCGDOB(), "02/04/1998");
+			toFillTextbox(l2.getEnterPoliceStationNo(), toReadDataFromExcel("Files", "Enquiry", 28, 3));
+			toFillTextbox(l2.getEnterStationPincode(), toReadDataFromExcel("Files", "Enquiry", 29, 3));
+			toFillTextbox(l2.getEnterCGAlternateContactNo(), toReadDataFromExcel("Files", "Enquiry", 30, 3));
+			toClickButton(l2.getClickSaveFamilyMember());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//div[text()=' Save & Next ']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()=' Submit ']")).click();
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			toThreadSleep(4000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 2));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(2000);
+			toClickButton(l2.getClickEnquiriesMenu());
+			toThreadSleep(2000);
+			toClickButton(l2.getClickNewEnquiry());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAssignDoctorBtn1());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 3));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toClickButton(l2.getClickAssignDoctorBtn2());
+			toThreadSleep(4000);
+		} catch (Exception e) {
 		}
-		catch (Exception e) {			
-		}
-		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY, "veteran.email",toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
-		String status = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_VETERAN_ONBOARD_DATA, "enquiryId",enquiryId, "status");
-		String mappingId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_DOCTOR_VETERAN_MAPPING, "enquiryId", enquiryId, "_id");
-		if(status != "Completed" && mappingId==null) {
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "status :"+status+"\nVeteran not onboarded");
+		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY,
+				"veteran.email", toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
+		String status = MongoDBCollections.connectMongoDB("DB_URL", "Database",
+				MongoDBCollections.TBL_VETERAN_ONBOARD_DATA, "enquiryId", enquiryId, "status");
+		String mappingId = MongoDBCollections.connectMongoDB("DB_URL", "Database",
+				MongoDBCollections.TBL_DOCTOR_VETERAN_MAPPING, "enquiryId", enquiryId, "_id");
+		if (status != "Completed" && mappingId == null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7,
+					"status :" + status + "\nVeteran not onboarded");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
-		}else if(status == "Completed" && mappingId==null){
+		} else if (!status.equalsIgnoreCase("completed") && mappingId == null) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "\nVeteran not onboarded");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Fail");
-		}else if(status=="completed" && mappingId != null){
-			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7,
-					"\nVeteran onboarded successfully");
+		} else if (status.equalsIgnoreCase("completed") && mappingId != null) {
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 7, "\nVeteran onboarded successfully");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 7, 10, "Pass");
 		}
 		closeBrowser();
@@ -1156,32 +1162,29 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
 		try {
-		toClickButton(l2.getClickEnquiriesMenu());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickNewEnquiry());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickVerifyAndApprove());
-		toThreadSleep(2000);
-		scrollDown(l2.getEnterMedicalScore());
-		toThreadSleep(2000);
-		toFillTextbox(l2.getEnterMedicalScore(), "5");
-		toClickButton(l2.getEnterMedicalScore());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterRiskScore(), "8");
-		toClickButton(l2.getEnterRiskScore());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickSubmitMedicalScore());
-		toThreadSleep(3000);
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "\nDoctor apporoved successfully");
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l2.getClickEnquiriesMenu());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickNewEnquiry());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickVerifyAndApprove());
+			toThreadSleep(2000);
+			scrollDown(l2.getEnterMedicalScore());
+			toThreadSleep(2000);
+			toFillTextbox(l2.getEnterMedicalScore(), "5");
+			toClickButton(l2.getEnterMedicalScore());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterRiskScore(), "8");
+			toClickButton(l2.getEnterRiskScore());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickSubmitMedicalScore());
+			toThreadSleep(3000);
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "\nDoctor apporoved successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "Doctor not approverd");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Fail");
 		}
-		
 		closeBrowser();
-
 	}
 
 //   < --  Veteran active  -->	
@@ -1194,32 +1197,31 @@ public class RunnerClass extends BaseClass {
 		Configurations.readVerificationToken(toReadDataFromExcel("Files", "Enquiry", 4, 1), "SetPassword");
 		toThreadSleep(2000);
 		try {
-		toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickCreatePassword());
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 4, 1));
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
-		}
-		toThreadSleep(1000);
-		toClickButton(l1.getClickValidateBtn());
-		toThreadSleep(5000);
-		String output= driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
-		System.out.println(output);
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran Activated successfully");
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Pass");
-		}
-		catch (Exception e) {
+			toFillTextbox(l1.getEnterNewPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toFillTextbox(l1.getEnterConfirmPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickCreatePassword());
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 4, 1));
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toThreadSleep(1000);
+			toClickButton(l1.getClickValidateBtn());
+			toThreadSleep(5000);
+			String output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
+			System.out.println(output);
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran Activated successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran not Activated");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Fail");
-		}	
+		}
 		closeBrowser();
 
 	}
@@ -1238,28 +1240,27 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickCreatePassword());
 		toThreadSleep(2000);
 		try {
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 16, 1));
-		for (int i = 0, j = 1; i < s.length(); i++, j++) {
-			char ch = s.charAt(i);
-			String otp = Character.toString(ch);
-			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
-		}
-		toThreadSleep(1000);
-		toClickButton(l1.getClickValidateBtn());
-		toThreadSleep(5000);
-		String output=driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
-		System.out.println(output);
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver Activated successfully");
-		toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Pass");
-		}
-		catch (Exception e) {
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			String s = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Enquiry", 16, 1));
+			for (int i = 0, j = 1; i < s.length(); i++, j++) {
+				char ch = s.charAt(i);
+				String otp = Character.toString(ch);
+				toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
+			}
+			toThreadSleep(1000);
+			toClickButton(l1.getClickValidateBtn());
+			toThreadSleep(5000);
+			String output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']")).getText();
+			System.out.println(output);
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver Activated successfully");
+			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver not Activated");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Fail");
-		}		
+		}
 		closeBrowser();
 	}
 
@@ -1278,26 +1279,26 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
 		try {
-		toClickButton(l2.getClickVeteransMenu());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickNewVeteran());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAssignCaretakerBtn());
-		toThreadSleep(3000);
-		toFillTextbox(l2.getEnterAssignCaretakerName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toClickButton(l2.getClickAssignCaretaker());
-		toThreadSleep(3000);
-		driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
-		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7, "\nCaretaker assigned successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l2.getClickVeteransMenu());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickNewVeteran());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAssignCaretakerBtn());
+			toThreadSleep(3000);
+			toFillTextbox(l2.getEnterAssignCaretakerName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 4));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toClickButton(l2.getClickAssignCaretaker());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7,
+					"\nCaretaker assigned successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7, "\nCaretaker not assigned");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Fail");
 		}
-		
+
 		toThreadSleep(3000);
 		closeBrowser();
 	}
@@ -1317,22 +1318,22 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(2000);
 		try {
-		toClickButton(l2.getClickVeteransMenu());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickNewVeteran());
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAssignDoctorBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l2.getEnterAssignDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickAssignDoctor());
-		toThreadSleep(3000);
-		driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
-		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7, "\nDoctor assigned successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l2.getClickVeteransMenu());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickNewVeteran());
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAssignDoctorBtn());
+			toThreadSleep(1000);
+			toFillTextbox(l2.getEnterAssignDoctorName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 6));
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickAssignDoctor());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("(//i[@class='fa fa-eye'])[1]")).click();
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7,
+					"\nDoctor assigned successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7, "\nDoctor not assigned");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Fail");
 		}
@@ -1355,6 +1356,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickEmergencyBtn());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
@@ -1402,7 +1404,16 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l3.getClickUpdateAppointment());
 		toThreadSleep(1000);
 		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(4000);
+		toThreadSleep(3000);
+		toClickButton(l3.getClickCreateAppointment());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment completed");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment not completed");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Fail");
+		}
+		toThreadSleep(2000);
 		closeBrowser();
 
 	}
@@ -1421,6 +1432,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickEmergencyBtn());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
@@ -1440,6 +1452,15 @@ public class RunnerClass extends BaseClass {
 		scrollDown(l3.getClickAttendBtn());
 		toThreadSleep(1000);
 		toClickButton(l3.getClickFalseAlarmBtn());
+		toThreadSleep(3000);
+		toClickButton(l3.getClickNewLiveRequest());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request cancelled");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request not cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Fail");
+		}
 		toThreadSleep(3000);
 		closeBrowser();
 
@@ -1461,83 +1482,155 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickCalendar());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickcreateAppointmenBtn());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterVeteranName(), toReadDataFromExcel("Files", "Enquiry", 2, 3));
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterAppointmentType(), "OPD");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterAppointmentMode(), "Online");
-		pressEnterKey();
-		toThreadSleep(1000);
-		String date = readDate();
-		toFillTextbox(l3.getEnterAppointmentDate(), date);
-		toClickButton(l3.getClickTimePicker());
-		String hr = readHour();
-		String mm = readMin();
-		int m = Integer.parseInt(mm);
-		String aa = readAm();
-		toThreadSleep(1000);
-		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
-		String out = text.getText();
-		if (aa == out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
-			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+		try {
+			toClickButton(l3.getClickCalendar());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickcreateAppointmenBtn());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterVeteranName(), toReadDataFromExcel("Files", "Enquiry", 2, 3));
+			toThreadSleep(1000);
 			pressEnterKey();
+			toFillTextbox(l3.getEnterAppointmentType(), "OPD");
 			toThreadSleep(1000);
-		} else if (aa != out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+			pressEnterKey();
+			toFillTextbox(l3.getEnterAppointmentMode(), "Online");
 			toThreadSleep(1000);
-			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
-			a.moveToElement(bb).click();
+			pressEnterKey();
+			String date = readDate();
+			toFillTextbox(l3.getEnterAppointmentDate(), date);
 			toClickButton(l3.getClickTimePicker());
+			String hr = readHour();
+			String mm = readMin();
+			int m = Integer.parseInt(mm);
+			String aa = readAm();
 			toThreadSleep(1000);
-			toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+			WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
+			String out = text.getText();
+			if (aa == out) {
+				toFillTextbox(l3.getEnterhour(), hr);
+				toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+				toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+				toThreadSleep(1000);
+				pressEnterKey();
+			} else if (aa != out) {
+				toFillTextbox(l3.getEnterhour(), hr);
+				toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+				toThreadSleep(1000);
+				WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
+				a.moveToElement(bb).click();
+				toClickButton(l3.getClickTimePicker());
+				toThreadSleep(1000);
+				toFillTextbox(l3.getEnterAppointmentDuration(), "1 Hour");
+				toThreadSleep(1000);
+				pressEnterKey();
+			}
+			toClickButton(l3.getClickBookAppointment());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickStartBtn());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
+			scrollDown(l3.getClickUpdateAppointment());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickAddMedicines());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
+			toThreadSleep(1000);
 			pressEnterKey();
+			toClickButton(l2.getClickMorning());
+			toClickButton(l2.getClickAfternoon());
+			toClickButton(l3.getClickAfterFood());
+			toFillTextbox(l3.getEnterNoOfDays(), "5");
+			toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
+			toFillTextbox(l3.getEnterLabTest(), "Ct scan");
 			toThreadSleep(1000);
+			pressEnterKey();
+			scrollDown(l3.getClickUpdateAppointment());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickUpdateAppointment());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickOKbtn());
+			toClickButton(l3.getClickcreateAppointmenBtn());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment not completed");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Fail");
 		}
-		toClickButton(l3.getClickBookAppointment());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickStartBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
-		scrollDown(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickAddMedicines());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickMorning());
-		toClickButton(l2.getClickAfternoon());
-		toClickButton(l3.getClickAfterFood());
-		toFillTextbox(l3.getEnterNoOfDays(), "5");
-		toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
-		toFillTextbox(l3.getEnterLabTest(), "Ct scan");
-		pressEnterKey();
-		scrollDown(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickOKbtn());
+			catch (Exception e) {
+				toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment completed successfully");
+				toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Pass");
+			}	
 		toThreadSleep(4000);
 		closeBrowser();
 
 	}
 
-	// Appointment request by Caregiver
+	// <------ Pharmacist accept the medicines request ------->
 
 	@Test(enabled = false, priority = 19)
+	private void acceptMedicineRequest() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		SmartPillBox l6 = new SmartPillBox();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 5));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		try {
+		toClickButton(l6.getClickMedicineRequest());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickNewMedicinesRequest());
+		toThreadSleep(1000);
+		toClickButton(l6.getClickViewMedicines());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickAcceptMedicines());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickNewMedicinesRequest());
+		toThreadSleep(1000);
+		toClickButton(l6.getClickPillEntry());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickRefillBtn());
+		toThreadSleep(2000);
+		int allRows = toGetNoOfRowsFromTable(l6.getFindPillTable(), "tbody");
+		for (int i = 1; i <= allRows; i++) {
+			String date = Configurations.plusMonth(7).toString();
+			int num = Configurations.patchNumber();
+			driver.findElement(By.xpath("(//input[@formcontrolname='expiryDate'])[" + i + "]")).sendKeys(date);
+			driver.findElement(By.xpath("(//input[@formcontrolname='batchNo'])[" + i + "]")).sendKeys(num + "");
+		}
+		toClickButton(l6.getClickPillSaveBtn());
+		toThreadSleep(4000);
+		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+		toThreadSleep(2000);
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		toClickButton(l6.getClickMedicineRequest());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickPillApproveBtn());
+		toThreadSleep(2000);
+		toClickButton(l6.getClickViewMedicines());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine approved successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine not approved");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Fail");
+		}		
+		toThreadSleep(3000);		
+		closeBrowser();
+	}
+
+	// Appointment request by Caregiver
+
+	@Test(enabled = false, priority = 20)
 	private void requestAppointmentByCaregiver() throws InterruptedException, IOException, AWTException {
 
 		openChrome();
@@ -1550,12 +1643,13 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestAppointmentBtn());
-		toThreadSleep(1000);
+		toThreadSleep(2000);
 		toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
-		toThreadSleep(1000);
+		toThreadSleep(2000);
 		pressEnterKey();
 		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
 		toThreadSleep(1000);
@@ -1583,22 +1677,29 @@ public class RunnerClass extends BaseClass {
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
-		driver.findElement(By.xpath("//input[@placeholder='00:00']")).click();
+		driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
 		toFillTextbox(l3.getEnterhour(), "10");
 		toFillTextbox(l3.getEnterMin(), "00");
 		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
-		pressEnterKey();
 		toThreadSleep(1000);
+		pressEnterKey();
 		toClickButton(l3.getClickSubmitRequestAppointment());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7, "Request appointment created successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Pass");
+		}
+		catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7, "Request appointment not created");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Fail");
+		}
 		toThreadSleep(3000);
 		closeBrowser();
 	}
 
 	// Appointment request by Veteran
 
-	@Test(enabled = false, priority = 20)
+	@Test(enabled = false, priority = 21)
 	private void requestAppointmentByVeteran() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -1610,6 +1711,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestAppointmentBtn());
@@ -1643,7 +1745,7 @@ public class RunnerClass extends BaseClass {
 		String dd = n + "";
 		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
 		toThreadSleep(1000);
-		driver.findElement(By.xpath("//input[@placeholder='00:00']")).click();
+		driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
 		toFillTextbox(l3.getEnterhour(), "10");
 		toFillTextbox(l3.getEnterMin(), "00");
 		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
@@ -1651,13 +1753,22 @@ public class RunnerClass extends BaseClass {
 		pressEnterKey();
 		toClickButton(l3.getClickSubmitRequestAppointment());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7, "Request appointment created successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7, "Request appointment not created");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Fail");
+		}
+		toThreadSleep(3000);
 		closeBrowser();
 	}
 
 	// <--- Request Appointment Accept by Doctor--->
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority=22)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
 
 		openChrome();
@@ -1671,6 +1782,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestFilterBtn());
@@ -1706,14 +1818,22 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		driver.findElement(By.xpath("//button[text()='OK']")).click();
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickCreateAppointment());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7, "Request appointment accepted successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7, "Request appointment not accepted");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Fail");
+		}
 		toThreadSleep(3000);
 		closeBrowser();
 	}
 
 	// <---- Upcoming Appointment Cancelled by Doctor ---->
 
-	@Test(enabled = false, priority = 22)
+	@Test(enabled = false, priority = 23)
 	private void upcomingAppointmentCancelByDoctor() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1725,6 +1845,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickUpcomingAppointment());
@@ -1736,14 +1857,22 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickCreateAppointment());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7, "Upcoming appointment cancelled successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7, "Upcoming appointment not cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Fail");
+		}
 		toThreadSleep(2000);
 		closeBrowser();
 	}
 
 	// <---- Request Appointment cancel by Doctor --->
 
-	@Test(enabled = false, priority = 23)
+	@Test(enabled = false, priority = 24)
 	private void requestAppointmentCancelByDoctor() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1755,6 +1884,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestFilterBtn());
@@ -1770,14 +1900,22 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickCreateAppointment());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7, "Request appointment cancelled successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7, "Request appointment not cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Fail");
+		}
 		toThreadSleep(2000);
 		closeBrowser();
 	}
 
 	// <---- Request Appointment cancel by Veteran --->
 
-	@Test(enabled = false, priority = 24)
+	@Test(enabled = false, priority = 25)
 	private void requestAppointmentCancelByVeteran() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1789,6 +1927,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestFilterBtn());
@@ -1802,14 +1941,22 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7, "Request appointment cancelled successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7, "Request appointment not cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Fail");
+		}
 		toThreadSleep(2000);
 		closeBrowser();
 	}
 
 	// <---- Request Appointment cancel by Caregiver --->
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority = 26)
 	private void requestAppointmentCancelByCaregiver() throws IOException, InterruptedException {
 		openChrome();
 		maxWindow();
@@ -1821,6 +1968,7 @@ public class RunnerClass extends BaseClass {
 		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		toClickButton(l3.getClickAppointments());
 		toThreadSleep(2000);
 		toClickButton(l3.getClickRequestFilterBtn());
@@ -1834,7 +1982,15 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		toClickButton(l3.getClickOKbtn());
 		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
+		toClickButton(l3.getClickRequestAppointmentBtn());
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7, "Request appointment cancelled successfully");
+		toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.err.println("test---->"+e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7, "Request appointment not cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Fail");
+		}
 		toThreadSleep(2000);
 		closeBrowser();
 	}
