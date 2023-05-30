@@ -142,6 +142,83 @@ public class ProfileUpdatePojo extends BaseClass{
 	
 	
 	
+	
+  // <-------  Pharmacist profile --------->	
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
+	private WebElement enterPhDegree;
+	
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pharmacyName']")}) 
+	private WebElement enterPhPharmacyName;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pharmacyRegisterNo']")}) 
+	private WebElement enterPhPharmacyRegNum;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='contactNo']")}) 
+	private WebElement enterPhPharmacyConNumber;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pharmacyGST']")}) 
+	private WebElement enterPhPharmacyGSTNumber;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='emailId']")}) 
+	private WebElement enterPhPharmacyEmail;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pharmacyPAN']")}) 
+	private WebElement enterPhPharmacyPanNum;
+	
+	@FindAll({
+		@FindBy(xpath="//textarea[@formcontrolname='address']")}) 
+	private WebElement enterPhPharmacyAddress;
+	
+	public WebElement getEnterPhDegree() {
+		return enterPhDegree;
+	}
+
+
+	public WebElement getEnterPhPharmacyName() {
+		return enterPhPharmacyName;
+	}
+
+
+	public WebElement getEnterPhPharmacyRegNum() {
+		return enterPhPharmacyRegNum;
+	}
+
+
+	public WebElement getEnterPhPharmacyConNumber() {
+		return enterPhPharmacyConNumber;
+	}
+
+
+	public WebElement getEnterPhPharmacyGSTNumber() {
+		return enterPhPharmacyGSTNumber;
+	}
+
+
+	public WebElement getEnterPhPharmacyEmail() {
+		return enterPhPharmacyEmail;
+	}
+
+
+	public WebElement getEnterPhPharmacyPanNum() {
+		return enterPhPharmacyPanNum;
+	}
+
+
+	public WebElement getEnterPhPharmacyAddress() {
+		return enterPhPharmacyAddress;
+	}
+
+
+	
 	public WebElement getClickEndTime() {
 		return clickEndTime;
 	}

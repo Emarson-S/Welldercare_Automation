@@ -1357,59 +1357,58 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickEmergencyBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickLiveRequestMenu());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickNewLiveRequest());
-		toThreadSleep(2000);
-		scrollDown(l3.getClickAttendBtn());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickAttendBtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickStartBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
-		scrollDown(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickAddMedicines());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toClickButton(l2.getClickMorning());
-		toClickButton(l2.getClickAfternoon());
-		toClickButton(l3.getClickAfterFood());
-		toFillTextbox(l3.getEnterNoOfDays(), "5");
-		toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
-		toFillTextbox(l3.getEnterLabTest(), "Ct scan");
-		pressEnterKey();
-		toThreadSleep(1000);
-		scrollDown(l3.getClickUpdateAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpdateAppointment());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickCreateAppointment());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment completed");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l3.getClickEmergencyBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickLiveRequestMenu());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickNewLiveRequest());
+			toThreadSleep(2000);
+			scrollDown(l3.getClickAttendBtn());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickAttendBtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickStartBtn());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterDoctorNotes(), "Follow the below Medicines and Instructions");
+			scrollDown(l3.getClickUpdateAppointment());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickAddMedicines());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterMedicineName(), "Acemax&nbsp;10&nbsp;mg");
+			pressEnterKey();
+			toThreadSleep(1000);
+			toClickButton(l2.getClickMorning());
+			toClickButton(l2.getClickAfternoon());
+			toClickButton(l3.getClickAfterFood());
+			toFillTextbox(l3.getEnterNoOfDays(), "5");
+			toFillTextbox(l3.getEnterInstructins(), "Your suger level increased, avoid sweets");
+			toFillTextbox(l3.getEnterLabTest(), "Ct scan");
+			pressEnterKey();
+			toThreadSleep(1000);
+			scrollDown(l3.getClickUpdateAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpdateAppointment());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickCreateAppointment());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment completed");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment not completed");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Fail");
 		}
@@ -1433,31 +1432,30 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickEmergencyBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickLiveRequestMenu());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickNewLiveRequest());
-		toThreadSleep(2000);
-		scrollDown(l3.getClickAttendBtn());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickFalseAlarmBtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickNewLiveRequest());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request cancelled");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l3.getClickEmergencyBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickLiveRequestMenu());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickNewLiveRequest());
+			toThreadSleep(2000);
+			scrollDown(l3.getClickAttendBtn());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickFalseAlarmBtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickNewLiveRequest());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request cancelled");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Fail");
 		}
@@ -1556,11 +1554,10 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l3.getClickcreateAppointmenBtn());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment not completed");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Fail");
+		} catch (Exception e) {
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment completed successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Pass");
 		}
-			catch (Exception e) {
-				toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment completed successfully");
-				toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Pass");
-			}	
 		toThreadSleep(4000);
 		closeBrowser();
 
@@ -1581,50 +1578,49 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l6.getClickMedicineRequest());
-		toThreadSleep(2000);
-		toClickButton(l6.getClickNewMedicinesRequest());
-		toThreadSleep(1000);
-		toClickButton(l6.getClickViewMedicines());
-		toThreadSleep(3000);
-		toClickButton(l6.getClickAcceptMedicines());
-		toThreadSleep(3000);
-		toClickButton(l6.getClickNewMedicinesRequest());
-		toThreadSleep(1000);
-		toClickButton(l6.getClickPillEntry());
-		toThreadSleep(2000);
-		toClickButton(l6.getClickRefillBtn());
-		toThreadSleep(2000);
-		int allRows = toGetNoOfRowsFromTable(l6.getFindPillTable(), "tbody");
-		for (int i = 1; i <= allRows; i++) {
-			String date = Configurations.plusMonth(7).toString();
-			int num = Configurations.patchNumber();
-			driver.findElement(By.xpath("(//input[@formcontrolname='expiryDate'])[" + i + "]")).sendKeys(date);
-			driver.findElement(By.xpath("(//input[@formcontrolname='batchNo'])[" + i + "]")).sendKeys(num + "");
-		}
-		toClickButton(l6.getClickPillSaveBtn());
-		toThreadSleep(4000);
-		driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
-		toThreadSleep(2000);
-		driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
-		toThreadSleep(2000);
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		toClickButton(l6.getClickMedicineRequest());
-		toThreadSleep(2000);
-		toClickButton(l6.getClickPillApproveBtn());
-		toThreadSleep(2000);
-		toClickButton(l6.getClickViewMedicines());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine approved successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Pass");
-		}
-		catch (Exception e) {
+			toClickButton(l6.getClickMedicineRequest());
+			toThreadSleep(2000);
+			toClickButton(l6.getClickNewMedicinesRequest());
+			toThreadSleep(1000);
+			toClickButton(l6.getClickViewMedicines());
+			toThreadSleep(3000);
+			toClickButton(l6.getClickAcceptMedicines());
+			toThreadSleep(3000);
+			toClickButton(l6.getClickNewMedicinesRequest());
+			toThreadSleep(1000);
+			toClickButton(l6.getClickPillEntry());
+			toThreadSleep(2000);
+			toClickButton(l6.getClickRefillBtn());
+			toThreadSleep(2000);
+			int allRows = toGetNoOfRowsFromTable(l6.getFindPillTable(), "tbody");
+			for (int i = 1; i <= allRows; i++) {
+				String date = Configurations.plusMonth(7).toString();
+				int num = Configurations.patchNumber();
+				driver.findElement(By.xpath("(//input[@formcontrolname='expiryDate'])[" + i + "]")).sendKeys(date);
+				driver.findElement(By.xpath("(//input[@formcontrolname='batchNo'])[" + i + "]")).sendKeys(num + "");
+			}
+			toClickButton(l6.getClickPillSaveBtn());
+			toThreadSleep(4000);
+			driver.findElement(By.xpath("//li[@class='dropdown user user-menu']")).click();
+			toThreadSleep(2000);
+			driver.findElement(By.xpath("//a[text()=' Sign out']")).click();
+			toThreadSleep(2000);
+			toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 16, 1));
+			toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+			toClickButton(l1.getClickSignIn());
+			toThreadSleep(3000);
+			toClickButton(l6.getClickMedicineRequest());
+			toThreadSleep(2000);
+			toClickButton(l6.getClickPillApproveBtn());
+			toThreadSleep(2000);
+			toClickButton(l6.getClickViewMedicines());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine approved successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine not approved");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Fail");
-		}		
-		toThreadSleep(3000);		
+		}
+		toThreadSleep(3000);
 		closeBrowser();
 	}
 
@@ -1644,52 +1640,52 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
-		toThreadSleep(2000);
-		pressEnterKey();
-		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
-		toThreadSleep(1000);
-		pressEnterKey();
-		String s = readDay();
-		String mm = readMonth();
-		String yyyy = readYear();
-		int n = Integer.parseInt(s);
-		if (n == 30 || n == 31 || n == 29 || n == 28) {
-			n = n - 26;
-			int m = Integer.parseInt(mm);
-			if (m == 12) {
-				mm = (m - 11) + "";
-				int y = Integer.parseInt(yyyy);
-				yyyy = (y + 1) + "";
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
+			toThreadSleep(2000);
+			pressEnterKey();
+			toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
+			toThreadSleep(1000);
+			pressEnterKey();
+			String s = readDay();
+			String mm = readMonth();
+			String yyyy = readYear();
+			int n = Integer.parseInt(s);
+			if (n == 30 || n == 31 || n == 29 || n == 28) {
+				n = n - 26;
+				int m = Integer.parseInt(mm);
+				if (m == 12) {
+					mm = (m - 11) + "";
+					int y = Integer.parseInt(yyyy);
+					yyyy = (y + 1) + "";
+				} else {
+					mm = (m + 1) + "";
+				}
 			} else {
-				mm = (m + 1) + "";
+				n = n + 1;
 			}
-		} else {
-			n = n + 1;
-		}
-		String dd = n + "";
-		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
-		toFillTextbox(l3.getEnterhour(), "10");
-		toFillTextbox(l3.getEnterMin(), "00");
-		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
-		toThreadSleep(1000);
-		pressEnterKey();
-		toClickButton(l3.getClickSubmitRequestAppointment());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7, "Request appointment created successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Pass");
-		}
-		catch (Exception e) {
+			String dd = n + "";
+			toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
+			toFillTextbox(l3.getEnterhour(), "10");
+			toFillTextbox(l3.getEnterMin(), "00");
+			toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
+			toThreadSleep(1000);
+			pressEnterKey();
+			toClickButton(l3.getClickSubmitRequestAppointment());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7,
+					"Request appointment created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Pass");
+		} catch (Exception e) {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7, "Request appointment not created");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Fail");
 		}
@@ -1712,53 +1708,53 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
-		toThreadSleep(1000);
-		pressEnterKey();
-		String s = readDay();
-		String mm = readMonth();
-		String yyyy = readYear();
-		int n = Integer.parseInt(s);
-		if (n == 30 || n == 31 || n == 29 || n == 28) {
-			n = n - 27;
-			int m = Integer.parseInt(mm);
-			if (m == 12) {
-				mm = (m - 11) + "";
-				int y = Integer.parseInt(yyyy);
-				yyyy = (y + 1) + "";
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toThreadSleep(1000);
+			toFillTextbox(l3.getEnterRequestDoctorName(), toReadDataFromExcel("Files", "Enquiry", 1, 3));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l3.getEnterRequestAppointmentType(), "OPD");
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l3.getEnterRequestAppointmentMode(), "Online");
+			toThreadSleep(1000);
+			pressEnterKey();
+			String s = readDay();
+			String mm = readMonth();
+			String yyyy = readYear();
+			int n = Integer.parseInt(s);
+			if (n == 30 || n == 31 || n == 29 || n == 28) {
+				n = n - 27;
+				int m = Integer.parseInt(mm);
+				if (m == 12) {
+					mm = (m - 11) + "";
+					int y = Integer.parseInt(yyyy);
+					yyyy = (y + 1) + "";
+				} else {
+					mm = (m + 1) + "";
+				}
 			} else {
-				mm = (m + 1) + "";
+				n = n + 2;
 			}
-		} else {
-			n = n + 2;
-		}
-		String dd = n + "";
-		toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
-		toFillTextbox(l3.getEnterhour(), "10");
-		toFillTextbox(l3.getEnterMin(), "00");
-		toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
-		toThreadSleep(1000);
-		pressEnterKey();
-		toClickButton(l3.getClickSubmitRequestAppointment());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7, "Request appointment created successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			String dd = n + "";
+			toFillTextbox(l3.getEnterRequestAppointmentDate(), dd + "-" + mm + "-" + yyyy);
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("(//input[@placeholder='00:00'])[2]")).click();
+			toFillTextbox(l3.getEnterhour(), "10");
+			toFillTextbox(l3.getEnterMin(), "00");
+			toFillTextbox(l3.getEnterRequestAppointmentDuration(), "1 Hour");
+			toThreadSleep(1000);
+			pressEnterKey();
+			toClickButton(l3.getClickSubmitRequestAppointment());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7,
+					"Request appointment created successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Pass");
+		} catch (Exception e) {
+			System.err.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7, "Request appointment not created");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Fail");
 		}
@@ -1768,7 +1764,7 @@ public class RunnerClass extends BaseClass {
 
 	// <--- Request Appointment Accept by Doctor--->
 
-	@Test(enabled = false, priority=22)
+	@Test(enabled = false, priority = 22)
 	private void requestAppointmentAccept() throws InterruptedException, IOException, AWTException {
 
 		openChrome();
@@ -1783,47 +1779,47 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestFilterBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		scrollDown(l3.getClickAcceptRequestAppt());
-		toThreadSleep(1000);
-		String date = readDate();
-		a.doubleClick(l3.getEnterRescheduleDate()).perform();
-		selectAllText();
-		toFillTextbox(l3.getEnterRescheduleDate(), date);
-		toClickButton(l3.getClickTimePicker());
-		String hr = readHour();
-		String mm = readMin();
-		int m = Integer.parseInt(mm);
-		String aa = readAm();
-		toThreadSleep(1000);
-		WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
-		String out = text.getText();
-		if (aa == out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
-		} else if (aa != out) {
-			toFillTextbox(l3.getEnterhour(), hr);
-			toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			scrollDown(l3.getClickAcceptRequestAppt());
 			toThreadSleep(1000);
-			WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
-			a.moveToElement(bb).click();
-		}
+			String date = readDate();
+			a.doubleClick(l3.getEnterRescheduleDate()).perform();
+			selectAllText();
+			toFillTextbox(l3.getEnterRescheduleDate(), date);
+			toClickButton(l3.getClickTimePicker());
+			String hr = readHour();
+			String mm = readMin();
+			int m = Integer.parseInt(mm);
+			String aa = readAm();
+			toThreadSleep(1000);
+			WebElement text = driver.findElement(By.xpath("//button[@class='btn btn-default text-center']"));
+			String out = text.getText();
+			if (aa == out) {
+				toFillTextbox(l3.getEnterhour(), hr);
+				toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+			} else if (aa != out) {
+				toFillTextbox(l3.getEnterhour(), hr);
+				toFillTextbox(l3.getEnterMin(), (m + 5) + "");
+				toThreadSleep(1000);
+				WebElement bb = driver.findElement(By.xpath("//button[text()='AM ']"));
+				a.moveToElement(bb).click();
+			}
 
-		toClickButton(l3.getClickAcceptRequestAppt());
-		toThreadSleep(1000);
-		driver.findElement(By.xpath("//button[text()='OK']")).click();
-		toThreadSleep(3000);
-		toClickButton(l3.getClickCreateAppointment());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7, "Request appointment accepted successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			toClickButton(l3.getClickAcceptRequestAppt());
+			toThreadSleep(1000);
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			toThreadSleep(3000);
+			toClickButton(l3.getClickCreateAppointment());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7,
+					"Request appointment accepted successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Pass");
+		} catch (Exception e) {
+			System.err.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7, "Request appointment not accepted");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Fail");
 		}
@@ -1846,23 +1842,23 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickCancelAppointment());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-		toClickButton(l3.getClickCancel());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickCreateAppointment());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7, "Upcoming appointment cancelled successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickCancelAppointment());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickCreateAppointment());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7,
+					"Upcoming appointment cancelled successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Pass");
+		} catch (Exception e) {
+			System.err.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7, "Upcoming appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Fail");
 		}
@@ -1885,27 +1881,27 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestFilterBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		scrollDown(l3.getClickRejectRequestAppt());
-		toThreadSleep(1000);
-		toClickButton(l3.getClickRejectRequestAppt());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-		toClickButton(l3.getClickCancel());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickCreateAppointment());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7, "Request appointment cancelled successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			scrollDown(l3.getClickRejectRequestAppt());
+			toThreadSleep(1000);
+			toClickButton(l3.getClickRejectRequestAppt());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickCreateAppointment());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7,
+					"Request appointment cancelled successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Pass");
+		} catch (Exception e) {
+			System.err.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Fail");
 		}
@@ -1928,25 +1924,25 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestFilterBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickCancelAppointment());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-		toClickButton(l3.getClickCancel());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7, "Request appointment cancelled successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickCancelAppointment());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7,
+					"Request appointment cancelled successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Pass");
+		} catch (Exception e) {
+			System.out.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Fail");
 		}
@@ -1969,25 +1965,25 @@ public class RunnerClass extends BaseClass {
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		try {
-		toClickButton(l3.getClickAppointments());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickRequestFilterBtn());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickUpcomingAppointment());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickCancelAppointment());
-		toThreadSleep(2000);
-		toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
-		toClickButton(l3.getClickCancel());
-		toThreadSleep(2000);
-		toClickButton(l3.getClickOKbtn());
-		toThreadSleep(3000);
-		toClickButton(l3.getClickRequestAppointmentBtn());
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7, "Request appointment cancelled successfully");
-		toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Pass");
-		}
-		catch (Exception e) {
-			System.err.println("test---->"+e.toString());
+			toClickButton(l3.getClickAppointments());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickRequestFilterBtn());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickUpcomingAppointment());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickCancelAppointment());
+			toThreadSleep(2000);
+			toFillTextbox(l3.getEnterCancelApptReason(), "Not Available");
+			toClickButton(l3.getClickCancel());
+			toThreadSleep(2000);
+			toClickButton(l3.getClickOKbtn());
+			toThreadSleep(3000);
+			toClickButton(l3.getClickRequestAppointmentBtn());
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7,
+					"Request appointment cancelled successfully");
+			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Pass");
+		} catch (Exception e) {
+			System.err.println("test---->" + e.toString());
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Fail");
 		}
@@ -1995,67 +1991,9 @@ public class RunnerClass extends BaseClass {
 		closeBrowser();
 	}
 
-// <-----  	Care manager Update Profile  ---->	
-
-	@Test(enabled = false)
-	private void caremanagerProfileUpdate() throws Exception {
-		openChrome();
-		maxWindow();
-		Configurations.readUrl("BaseUrl");
-		toThreadSleep(2000);
-		UserCreationPojo l1 = new UserCreationPojo();
-		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
-		toFillTextbox(l1.getEnterUsername(), "ilhan.demari@fullangle.org");
-		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
-		toClickButton(l1.getClickSignIn());
-		toThreadSleep(3000);
-		scrollDown(l4.getClickProfile());
-		toThreadSleep(2000);
-		toClickButton(l4.getClickProfile());
-		toThreadSleep(2000);
-		toFillTextbox(l4.getEnterTitle(), "Mrs");
-		pressEnterKey();
-		toThreadSleep(1000);
-		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
-		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
-		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
-		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
-		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
-		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l4.getEnterCpState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l4.getEnterCpCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
-		toFillTextbox(l4.getEnterCpTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		scrollDown(l4.getClickCpSubmitBtn());
-		toThreadSleep(1000);
-		toFillTextbox(l4.getEnterCpGovtIDType(), "Aadhar card");
-		toThreadSleep(1000);
-		pressEnterKey();
-		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
-		toSelectAndFill(l4.getEnterAlterContNum(), "7685945657");
-		toFillTextbox(l4.getEnterCpDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
-		toThreadSleep(1000);
-		pressEnterKey();
-		toClickButton(l4.getClickCpSubmitBtn());
-		toThreadSleep(4000);
-		closeBrowser();
-
-	}
-
 	// <---- Channel Partner Profile Update ---->
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority = 27)
 	private void channelPartnerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
@@ -2063,10 +2001,11 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
-		toFillTextbox(l1.getEnterUsername(), "aryo.ollis@fullangle.org");
-		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		scrollDown(l4.getClickProfile());
 		toThreadSleep(2000);
 		toClickButton(l4.getClickProfile());
@@ -2106,13 +2045,92 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(1000);
 		pressEnterKey();
 		toClickButton(l4.getClickCpSubmitBtn());
-		toThreadSleep(3000);
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 7,
+				"Channel partner profile updated");
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.out.println("test---->" + e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 7,
+					"Channel partner profile not updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 10, "Fail");
+		}
+		toThreadSleep(3000);		
 		closeBrowser();
+	}
+
+// <-----  	Care manager Update Profile  ---->	
+
+	@Test(enabled = false, priority = 28)
+	private void caremanagerProfileUpdate() throws Exception {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 2));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 2));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		try {
+		scrollDown(l4.getClickProfile());
+		toThreadSleep(2000);
+		toClickButton(l4.getClickProfile());
+		toThreadSleep(2000);
+		toFillTextbox(l4.getEnterTitle(), "Mrs");
+		pressEnterKey();
+		toThreadSleep(1000);
+		toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
+		toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
+		toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+		toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
+		toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 2));
+		toFillTextbox(l4.getEnterCpCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterCpCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
+		toFillTextbox(l4.getEnterCpTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		scrollDown(l4.getClickCpSubmitBtn());
+		toThreadSleep(1000);
+		toFillTextbox(l4.getEnterCpGovtIDType(), "Aadhar card");
+		toThreadSleep(1000);
+		pressEnterKey();
+		toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+		toSelectAndFill(l4.getEnterAlterContNum(), "7685945657");
+		toFillTextbox(l4.getEnterCpDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toClickButton(l4.getClickCpSubmitBtn());
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 7,
+				"Care manager profile updated");
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.out.println("test---->" + e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 7,
+					"Care manager profile not updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 10, "Fail");
+		}
+		toThreadSleep(4000);
+		closeBrowser();
+
 	}
 
 // <---- Doctor Profile Update ---->		
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority = 29)
 	private void DoctorProfileUpdate() throws IOException, InterruptedException, AWTException {
 		openChrome();
 		maxWindow();
@@ -2120,10 +2138,11 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
-		toFillTextbox(l1.getEnterUsername(), "tyrese.motty@fullangle.org");
-		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toFillTextbox(l1.getEnterUsername(),toReadDataFromExcel("Files", "Login&Usercreation", 8, 3));
+		toFillTextbox(l1.getEnterPassword(),  toReadDataFromExcel("Files", "Login&Usercreation", 11, 3));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		scrollDown(l4.getClickProfile());
 		toThreadSleep(2000);
 		toClickButton(l4.getClickProfile());
@@ -2177,13 +2196,23 @@ public class RunnerClass extends BaseClass {
 		scrollDown(l4.getClickProfileSubmit());
 		toThreadSleep(1000);
 		toClickButton(l4.getClickProfileSubmit());
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 7,
+				"Doctor profile updated");
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.out.println("test---->" + e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 7,
+					"Doctor profile not updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 10, "Fail");
+		}
 		toThreadSleep(4000);
 		closeBrowser();
 	}
 
 // <------ Caretaker profile update ----->	
 
-	@Test(enabled = false)
+	@Test(enabled = false, priority = 30)
 	private void caretakerProfileUpdate() throws Exception {
 		openChrome();
 		maxWindow();
@@ -2191,10 +2220,11 @@ public class RunnerClass extends BaseClass {
 		toThreadSleep(2000);
 		UserCreationPojo l1 = new UserCreationPojo();
 		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
-		toFillTextbox(l1.getEnterUsername(), "jahkari.yovanny@fullangle.org");
-		toFillTextbox(l1.getEnterPassword(), "Emarson5020@");
+		toFillTextbox(l1.getEnterUsername(),  toReadDataFromExcel("Files", "Login&Usercreation", 8, 4));
+		toFillTextbox(l1.getEnterPassword(),  toReadDataFromExcel("Files", "Login&Usercreation", 11, 4));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
+		try {
 		scrollDown(l4.getClickProfile());
 		toThreadSleep(2000);
 		toClickButton(l4.getClickProfile());
@@ -2244,8 +2274,132 @@ public class RunnerClass extends BaseClass {
 		scrollDown(l4.getClickProfileSubmit());
 		toThreadSleep(1000);
 		toClickButton(l4.getClickProfileSubmit());
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 7,
+				"Caretaker profile updated");
+		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.out.println("test---->" + e.toString());
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 7,
+					"Caretaker profile not updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 10, "Fail");
+		}
 		toThreadSleep(4000);
 		closeBrowser();
 	}
 
+	// <----- Pharmacist profile updated ---->
+
+	@Test(enabled = false, priority = 32)
+	private void pharmacistProfileUpdate() throws IOException, InterruptedException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 5));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		try {
+			scrollDown(l4.getClickProfile());
+			toThreadSleep(2000);
+			toClickButton(l4.getClickProfile());
+			toThreadSleep(2000);	
+			toFillTextbox(l4.getEnterTitle(), "Mrs");
+			pressEnterKey();
+			toThreadSleep(1000);
+			toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 5));
+			toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 5));
+			toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+			toSelectAndFill(l4.getEnterAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 5));
+			toSelectAndFill(l4.getEnterAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 5));
+			toFillTextbox(l4.getEnterCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l4.getEnterState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l4.getEnterCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toSelectAndFill(l4.getEnterPinCode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 5));
+			toFillTextbox(l4.getEnterTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l4.getEnterGovtIDType(), "Aadhar card");
+			toThreadSleep(1000);
+			pressEnterKey();
+			toFillTextbox(l4.getEnterGovtIDNum(), "786545364534");
+			toFillTextbox(l4.getEnterPhDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			scrollDown(l4.getEnterPhPharmacyName());
+			toThreadSleep(1000);
+			toSelectAndFill(l4.getEnterPhPharmacyName(), toReadDataFromExcel("Files", "Login&Usercreation", 37, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyRegNum(), toReadDataFromExcel("Files", "Login&Usercreation", 40, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyConNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 38, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyGSTNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 41, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyEmail(), toReadDataFromExcel("Files", "Login&Usercreation", 39, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyPanNum(), toReadDataFromExcel("Files", "Login&Usercreation", 42, 5));
+			toSelectAndFill(l4.getEnterPhPharmacyAddress(), "No 34, Nagercoil, East main road, Kanyakumary");
+			toClickButton(l4.getClickProfileSubmit());
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 7,
+					"Pharmacist profile updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 10, "Pass");
+		}
+		catch (Exception e) {
+			System.out.println("Exception----->"+e);
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 7,
+					"Pharmacist profile not updated");
+			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 10, "Fail");
+		}
+		toThreadSleep(4000);
+		closeBrowser();
+
+	}
+
+//  <----- Veteran profile updated ---->
+
+	@Test(enabled = true, priority = 33)
+	private void veteranProfileUpdate() throws InterruptedException, IOException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Enquiry", 4, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(3000);
+		try {
+			scrollDown(l4.getClickProfile());
+			toThreadSleep(2000);
+			toClickButton(l4.getClickProfile());
+			toThreadSleep(2000);	
+			toFillTextbox(l4.getEnterTitle(), "Mrs");
+			pressEnterKey();
+			toThreadSleep(1000);
+			toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 5));
+			toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 5));
+			toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 5));
+			toThreadSleep(1000);
+			pressEnterKey();
+			toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
+		}
+		catch (Exception e) {
+		}
+	}
+	
+//  <----- Caregiver profile updated ---->
+
+	@Test(enabled = false, priority = 34)
+	private void caregiverProfileUpdate() {
+
+	}
 }
