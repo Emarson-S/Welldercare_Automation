@@ -2,15 +2,15 @@
 <testng-results total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-05-30T14:06:42Z" name="Default suite" finished-at="2023-05-30T14:07:43Z" duration-ms="60759">
+  <suite started-at="2023-06-01T12:34:24Z" name="Default suite" finished-at="2023-06-01T12:36:19Z" duration-ms="114671">
     <groups>
     </groups>
-    <test started-at="2023-05-30T14:06:42Z" name="Default test" finished-at="2023-05-30T14:07:43Z" duration-ms="60759">
+    <test started-at="2023-06-01T12:34:24Z" name="Default test" finished-at="2023-06-01T12:36:19Z" duration-ms="114671">
       <class name="org.runner.RunnerClass">
-        <test-method signature="veteranProfileUpdate()[pri:33, instance:org.runner.RunnerClass@5ddf0d24]" started-at="2023-05-30T19:36:42Z" name="veteranProfileUpdate" finished-at="2023-05-30T19:37:43Z" duration-ms="60739" status="PASS">
+        <test-method signature="usercreationDoctor()[pri:3, instance:org.runner.RunnerClass@5ddf0d24]" started-at="2023-06-01T18:04:24Z" name="usercreationDoctor" finished-at="2023-06-01T18:06:19Z" duration-ms="114620" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- veteranProfileUpdate -->
+        </test-method> <!-- usercreationDoctor -->
       </class> <!-- org.runner.RunnerClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

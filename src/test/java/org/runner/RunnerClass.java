@@ -48,13 +48,16 @@ public class RunnerClass extends BaseClass {
 			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 1));
 			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 1));
 			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 1));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 1));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 1));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toClickButton(l1.getClickSaveBtn());
 			toThreadSleep(2000);
 			Configurations.readVerificationToken(text, "SetPassword");
@@ -159,13 +162,16 @@ public class RunnerClass extends BaseClass {
 			toFillTextbox(l1.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 2));
 			toFillTextbox(l1.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 2));
 			toFillTextbox(l1.getSelectGender(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 2));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 2));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 2));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toClickButton(l1.getClickSaveBtn());
 			toThreadSleep(2000);
 			Configurations.readVerificationToken(text, "SetPassword");
@@ -184,14 +190,14 @@ public class RunnerClass extends BaseClass {
 			toThreadSleep(2000);
 			toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 2));
 			toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 2));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 2));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 2));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 2));
 			toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 2));
 			toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 2));
@@ -199,18 +205,18 @@ public class RunnerClass extends BaseClass {
 			toFillTextbox(l1.getEnterCPDOB(), "06-06-1996");
 			toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 2));
 			toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 2));
+			toThreadSleep(2000);
 			pressEnterKey();
-			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 2));
+			toThreadSleep(2000);
 			pressEnterKey();
-			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 2));
+			toThreadSleep(2000);
 			pressEnterKey();
-			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 2));
 			toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 2));
+			toThreadSleep(2000);
 			pressEnterKey();
-			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 2));
 			driver.findElement(By.xpath("//button[text()=' Save ']")).click();
 			toThreadSleep(2000);
@@ -242,7 +248,7 @@ public class RunnerClass extends BaseClass {
 
 	// <-- Doctor 1 -->
 
-	@Test(enabled = false, priority = 3)
+	@Test(enabled = true, priority = 3)
 	private void usercreationDoctor() throws Throwable {
 		openChrome();
 		maxWindow();
@@ -271,6 +277,9 @@ public class RunnerClass extends BaseClass {
 			pressEnterKey();
 			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 3));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 3));
 			pressEnterKey();
@@ -305,18 +314,18 @@ public class RunnerClass extends BaseClass {
 			toFillTextbox(l1.getEnterDrDOB(), "06-06-1998");
 			toFillTextbox(l1.getEnterDrAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 3));
 			toFillTextbox(l1.getEnterDrCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 3));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterDrState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 3));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterDrCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 3));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterDrpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 3));
 			toFillTextbox(l1.getEnterDrTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 3));
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			driver.findElement(By.xpath("//button[text()=' Save & Next ']")).click();
 			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterDrDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 3));
@@ -416,6 +425,9 @@ public class RunnerClass extends BaseClass {
 			pressEnterKey();
 			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 6));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 6));
 			pressEnterKey();
@@ -550,6 +562,9 @@ public class RunnerClass extends BaseClass {
 			pressEnterKey();
 			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 5));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 5));
 			pressEnterKey();
@@ -672,6 +687,9 @@ public class RunnerClass extends BaseClass {
 			pressEnterKey();
 			toThreadSleep(1000);
 			toFillTextbox(l1.getEnterUserEmail(), text);
+			toFillTextbox(l1.getSelectCountryCode(), "91");
+			toThreadSleep(1000);
+			pressEnterKey();
 			toFillTextbox(l1.getEnterPhoneNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 9, 4));
 			toFillTextbox(l1.getSelectUserRole(), toReadDataFromExcel("Files", "Login&Usercreation", 10, 4));
 			pressEnterKey();
@@ -2365,7 +2383,7 @@ public class RunnerClass extends BaseClass {
 
 //  <----- Veteran profile updated ---->
 
-	@Test(enabled = true, priority = 33)
+	@Test(enabled = false, priority = 33)
 	private void veteranProfileUpdate() throws InterruptedException, IOException {
 		openChrome();
 		maxWindow();
@@ -2383,8 +2401,8 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l4.getClickProfile());
 			toThreadSleep(2000);	
 			toFillTextbox(l4.getEnterTitle(), "Mrs");
-			pressEnterKey();
 			toThreadSleep(1000);
+			pressEnterKey();
 			toSelectAndFill(l4.getEnterFirstName(), toReadDataFromExcel("Files", "Login&Usercreation", 5, 5));
 			toSelectAndFill(l4.getEnterLastName(), toReadDataFromExcel("Files", "Login&Usercreation", 6, 5));
 			toFillTextbox(l4.getEnterGendar(), toReadDataFromExcel("Files", "Login&Usercreation", 7, 5));

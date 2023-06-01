@@ -92,6 +92,10 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement selectGender;
 	
 	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[2]")}) 
+	private WebElement selectCountryCode;
+	
+	@FindAll({
 		@FindBy(xpath="//input[@formcontrolname='email']"),
 		@FindBy(xpath="//input[@placeholder='Email']")}) 
 	private WebElement enterUserEmail;
@@ -102,9 +106,10 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterPhoneNumber;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[2]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]")}) 
 	private WebElement selectUserRole;
 	
+
 	@FindAll({
 		@FindBy(xpath="//button[text()='Save']")}) 
 	private WebElement clickSaveBtn;
@@ -153,31 +158,6 @@ public class UserCreationPojo extends BaseClass {
 	//	<--- Channel Partner & Care manager onboard form --->
 	
 
-	public WebElement getClickProfileMenu() {
-		return clickProfileMenu;
-	}
-
-	public WebElement getClickChangePassword() {
-		return clickChangePassword;
-	}
-
-	public WebElement getEnterOdlPassword() {
-		return enterOdlPassword;
-	}
-
-	public WebElement getEnterchangeNewPassword() {
-		return enterchangeNewPassword;
-	}
-
-	public WebElement getEnterchangeConfirmPassword() {
-		return enterchangeConfirmPassword;
-	}
-
-	public WebElement getClickSaveChangePassword() {
-		return clickSaveChangePassword;
-	}
-
-
 
 	@FindAll({
 		@FindBy(xpath="//input[@id='file-upload']"),
@@ -200,12 +180,12 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterCPAlternateContect;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]"),
 		@FindBy(xpath="(//input[@type='text'])[10]")}) 
 	private WebElement enterCPDegree;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]"),
 		@FindBy(xpath="(//input[@type='text'])[11]")}) 
 	private WebElement enterCPGovtIdType;
 	
@@ -230,22 +210,22 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterCPAddress2;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]"),
 		@FindBy(xpath="//input[@autocomplete='a55d532151e6']")}) 
 	private WebElement enterCPCountry;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]"),
 		@FindBy(xpath="//input[@autocomplete='afbeb71c248a']")}) 
 	private WebElement enterCPState;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]"),
 		@FindBy(xpath="//input[@autocomplete='ade66aa82b19']")}) 
 	private WebElement enterCPCity;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]"),
 		@FindBy(xpath="//input[@autocomplete='ab86fc7c778b']")}) 
 	private WebElement enterCPTerritory;
 	
@@ -283,7 +263,7 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterDrAlternateContect;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[3]"),
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]"),
 		@FindBy(xpath="(//input[@type='text'])[10]")}) 
 	private WebElement enterDrGovtIdType;
 	
@@ -298,33 +278,37 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterDrUploadProof;
 	
 	@FindAll({
-		@FindBy(xpath="//input[@formcontrolname='address1']"),
-		@FindBy(xpath="(//input[@placeholder='Enter address'])[1]")}) 
+		@FindBy(xpath="//input[@formcontrolname='address1']")}) 
 	private WebElement enterDrAddress1;
 	
 	@FindAll({
-		@FindBy(xpath="//input[@formcontrolname='address2']"),
-		@FindBy(xpath="(//input[@placeholder='Enter address'])[1]")}) 
+		@FindBy(xpath="//input[@formcontrolname='address2']")}) 
 	private WebElement enterDrAddress2;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[4]"),
-		@FindBy(xpath="(//input[@type='text'])[14]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]")}) 
 	private WebElement enterDrCountry;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[5]"),
-		@FindBy(xpath="(//input[@type='text'])[15]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
 	private WebElement enterDrState;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]"),
-		@FindBy(xpath="(//input[@type='text'])[16]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
 	private WebElement enterDrCity;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[1]"),
-		@FindBy(xpath="(//input[@type='text'])[1]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]"),
+		@FindBy(xpath="(//input[@type='text'])[18]")}) 
+	private WebElement enterDrTerritory;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='pinCode']"),
+		@FindBy(xpath="//input[@placeholder='Enter Pin code']")}) 
+	private WebElement enterDrpincode;
+	
+	@FindAll({
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[1]")}) 
 	private WebElement enterDrDegree;
 	
 	@FindAll({
@@ -439,18 +423,15 @@ public class UserCreationPojo extends BaseClass {
 //	<--- Caretaker onboard form --->
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]"),
-		@FindBy(xpath="(//input[@type='text'])[19]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]")}) 
 	private WebElement enterCTDegree;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]"),
-		@FindBy(xpath="(//input[@type='text'])[20]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[10]")}) 
 	private WebElement enterCTSpecialty;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[10]"),
-		@FindBy(xpath="(//input[@type='text'])[21]")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[11]")}) 
 	private WebElement enterCTSpecialSkills;
 	
 	@FindAll({
@@ -499,6 +480,35 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterPharmacyAddress;
 	
 
+	
+	public WebElement getSelectCountryCode() {
+		return selectCountryCode;
+	}
+
+	
+	public WebElement getClickProfileMenu() {
+		return clickProfileMenu;
+	}
+
+	public WebElement getClickChangePassword() {
+		return clickChangePassword;
+	}
+
+	public WebElement getEnterOdlPassword() {
+		return enterOdlPassword;
+	}
+
+	public WebElement getEnterchangeNewPassword() {
+		return enterchangeNewPassword;
+	}
+
+	public WebElement getEnterchangeConfirmPassword() {
+		return enterchangeConfirmPassword;
+	}
+
+	public WebElement getClickSaveChangePassword() {
+		return clickSaveChangePassword;
+	}
 	
 	
 	public WebElement getClickSat() {
@@ -705,17 +715,6 @@ public class UserCreationPojo extends BaseClass {
 		return enterDrpincode;
 	}
 
-
-
-	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]"),
-		@FindBy(xpath="(//input[@type='text'])[18]")}) 
-	private WebElement enterDrTerritory;
-	
-	@FindAll({
-		@FindBy(xpath="//input[@formcontrolname='pinCode']"),
-		@FindBy(xpath="//input[@placeholder='Enter Pin code']")}) 
-	private WebElement enterDrpincode;
 	
 
 	public WebElement getClickValidateBtn() {

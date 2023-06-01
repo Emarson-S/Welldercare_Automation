@@ -182,7 +182,7 @@ public class Configurations extends BaseClass {
 		// Change phone numbers & Id numbers
 
 		for (int i = 0, j = -1; i < 7 || j < 7; i++, j++) {
-			List<String> l2 = Configurations.enterContactNo(8976564580l, 78745323578l, 876593543738l, i);
+			List<String> l2 = Configurations.enterContactNo(8976564180l, 78745323178l, 876593543138l, i);
 			if (j >= 1) {
 				toCreateNewCell("Files", "Login&Usercreation", 15, j, l2.get(1));
 				toCreateNewCell("Files", "Login&Usercreation", 18, j, l2.get(2));
