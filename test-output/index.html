@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\dell\AppData\Local\Temp\testng-eclipse--826293611\testng-customsuite.xml</span>
+                    <span>C:\Users\dell\AppData\Local\Temp\testng-eclipse--2035616880\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="org.runner.RunnerClass" class="method navigator-link" hash-for-method="usercreationDoctor">usercreationDoctor</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="org.runner.SampleClass" class="method navigator-link" hash-for-method="tc3">tc3</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -120,14 +120,14 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">org.runner.RunnerClass</span>
+              <span class="class-name">org.runner.SampleClass</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="usercreationDoctor">
-                  </a> <!-- usercreationDoctor -->
-                  <span class="method-name">usercreationDoctor</span>
+                  <a name="tc3">
+                  </a> <!-- tc3 -->
+                  <span class="method-name">tc3</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -135,7 +135,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\dell\AppData\Local\Temp\testng-eclipse--826293611\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\dell\AppData\Local\Temp\testng-eclipse--2035616880\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -144,7 +144,7 @@
 &lt;suite parallel=&quot;none&quot; name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;org.runner.RunnerClass&quot;/&gt;
+      &lt;class name=&quot;org.runner.SampleClass&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -186,14 +186,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'usercreationDoctor')
-data.setCell(0, 2, 'org.runner.RunnerClass')
-data.setCell(0, 3, 114620);
+data.setCell(0, 1, 'tc3')
+data.setCell(0, 2, 'org.runner.SampleClass')
+data.setCell(0, 3, 17);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 17 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -208,73 +208,37 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">32 ignored methods</span>
+            <span class="header-content">14 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">org.runner.RunnerClass</span>
+              <span class="ignored-class-name">org.runner.SampleClass</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">requestAppointmentByVeteran</span>
-                <br/>
-                <span class="ignored-method-name">requestAppointmentByCaregiver</span>
-                <br/>
-                <span class="ignored-method-name">liveRequestCancelled</span>
-                <br/>
-                <span class="ignored-method-name">usercreationPharmacist</span>
-                <br/>
-                <span class="ignored-method-name">veteranOnboarding</span>
-                <br/>
-                <span class="ignored-method-name">createAppointment</span>
-                <br/>
-                <span class="ignored-method-name">familymemberActive</span>
-                <br/>
-                <span class="ignored-method-name">usercreationCaretaker</span>
-                <br/>
-                <span class="ignored-method-name">caretakerProfileUpdate</span>
-                <br/>
-                <span class="ignored-method-name">usercreationDr2</span>
-                <br/>
-                <span class="ignored-method-name">requestAppointmentCancelByDoctor</span>
-                <br/>
-                <span class="ignored-method-name">DoctorProfileUpdate</span>
-                <br/>
-                <span class="ignored-method-name">caremanagerProfileUpdate</span>
-                <br/>
-                <span class="ignored-method-name">usercreationCaremanager</span>
-                <br/>
-                <span class="ignored-method-name">usercreationChannelPartner</span>
-                <br/>
-                <span class="ignored-method-name">pharmacistProfileUpdate</span>
-                <br/>
-                <span class="ignored-method-name">doctorApproval</span>
-                <br/>
-                <span class="ignored-method-name">forgotPassword</span>
-                <br/>
-                <span class="ignored-method-name">changePassword</span>
-                <br/>
-                <span class="ignored-method-name">caretakerAssign</span>
-                <br/>
                 <span class="ignored-method-name">requestAppointmentAccept</span>
-                <br/>
-                <span class="ignored-method-name">enquiryCreation</span>
-                <br/>
-                <span class="ignored-method-name">requestAppointmentCancelByVeteran</span>
-                <br/>
-                <span class="ignored-method-name">assignDoctor</span>
-                <br/>
-                <span class="ignored-method-name">veteranProfileUpdate</span>
-                <br/>
-                <span class="ignored-method-name">upcomingAppointmentCancelByDoctor</span>
                 <br/>
                 <span class="ignored-method-name">veteranActive</span>
                 <br/>
+                <span class="ignored-method-name">assignDoctor</span>
+                <br/>
+                <span class="ignored-method-name">familymemberActive</span>
+                <br/>
+                <span class="ignored-method-name">doctorApproval</span>
+                <br/>
+                <span class="ignored-method-name">requestAppointmentByVeteran</span>
+                <br/>
+                <span class="ignored-method-name">createAppointment</span>
+                <br/>
+                <span class="ignored-method-name">completeAppointments</span>
+                <br/>
+                <span class="ignored-method-name">caremanagerProfileUpdate</span>
+                <br/>
                 <span class="ignored-method-name">channelPartnerProfileUpdate</span>
                 <br/>
-                <span class="ignored-method-name">requestAppointmentCancelByCaregiver</span>
+                <span class="ignored-method-name">DoctorProfileUpdate</span>
                 <br/>
-                <span class="ignored-method-name">liveRequest</span>
+                <span class="ignored-method-name">Masters</span>
                 <br/>
-                <span class="ignored-method-name">caregiverProfileUpdate</span>
+                <span class="ignored-method-name">caretakerProfileUpdate</span>
                 <br/>
                 <span class="ignored-method-name">acceptMedicineRequest</span>
                 <br/>
@@ -288,9 +252,9 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">org.runner.RunnerClass</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">org.runner.SampleClass</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">usercreationDoctor</span>
+                <span class="method-name">tc3</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->

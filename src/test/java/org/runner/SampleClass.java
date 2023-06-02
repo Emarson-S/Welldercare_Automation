@@ -97,12 +97,21 @@ public class SampleClass extends BaseClass {
 
 	@Test(enabled = true)
 	private void tc3() throws IOException {
-		
+
+		try {
+			int a = 0;
+			int b = 1;
+			int c = b / a;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 //		String enquiryId = MongoDBCollections.connMongoDB("DB_URL", "Database", MongoDBCollections.TBL_APPOINTMENT, "veteranName", "Harson T", "time","status", "12:55 PM","completed", "_id");
 //		System.out.println(enquiryId);
-	
+
 	}
+
 	@Test(enabled = false)
 	private void caremanagerProfileUpdate() throws Exception {
 		openChrome();

@@ -118,6 +118,7 @@ public class RunnerClass extends BaseClass {
 			System.out.println(output1.getText());
 			toThreadSleep(1000);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
 				text, "_id");
@@ -231,6 +232,7 @@ public class RunnerClass extends BaseClass {
 			WebElement output = driver.findElement(By.xpath("//h4[@class='page-title']"));
 			System.out.println(output.getText());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
 				text, "_id");
@@ -378,6 +380,7 @@ public class RunnerClass extends BaseClass {
 			}
 			toClickButton(l1.getClickValidateBtn());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
 				text, "_id");
@@ -526,6 +529,7 @@ public class RunnerClass extends BaseClass {
 			}
 			toClickButton(l1.getClickValidateBtn());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		toThreadSleep(4000);
 		closeBrowser();
@@ -642,6 +646,7 @@ public class RunnerClass extends BaseClass {
 			WebElement output = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
 			System.out.println(output.getText());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
 				text, "_id");
@@ -785,6 +790,7 @@ public class RunnerClass extends BaseClass {
 			toThreadSleep(1000);
 			toClickButton(l1.getClickValidateBtn());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String userId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_USER, "email",
 				text, "_id");
@@ -834,6 +840,7 @@ public class RunnerClass extends BaseClass {
 					"Password created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 7, "New password not created");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 3, 10, "Fail");
 		}
@@ -873,6 +880,7 @@ public class RunnerClass extends BaseClass {
 					"\nPassword created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 7, "New password not created");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 4, 10, "Fail");
 		}
@@ -949,6 +957,7 @@ public class RunnerClass extends BaseClass {
 			toThreadSleep(1000);
 			toClickButton(l2.getClickAssignChannelPartner());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY,
 				"veteran.email", toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
@@ -1143,6 +1152,7 @@ public class RunnerClass extends BaseClass {
 			toClickButton(l2.getClickAssignDoctorBtn2());
 			toThreadSleep(4000);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		String enquiryId = MongoDBCollections.connectMongoDB("DB_URL", "Database", MongoDBCollections.TBL_ENQUIRY,
 				"veteran.email", toReadDataFromExcel("Files", "Enquiry", 4, 1), "_id");
@@ -1199,6 +1209,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "\nDoctor apporoved successfully");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 7, "Doctor not approverd");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 8, 10, "Fail");
 		}
@@ -1237,6 +1248,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran Activated successfully");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 7, "\nVeteran not Activated");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 9, 10, "Fail");
 		}
@@ -1276,6 +1288,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver Activated successfully");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 7, "\nCaregiver not Activated");
 			toCreateNewCell("WC_Automation_Testcases", "User Onboarding", 10, 10, "Fail");
 		}
@@ -1313,6 +1326,7 @@ public class RunnerClass extends BaseClass {
 					"\nCaretaker assigned successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 7, "\nCaretaker not assigned");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 2, 10, "Fail");
 		}
@@ -1352,6 +1366,7 @@ public class RunnerClass extends BaseClass {
 					"\nDoctor assigned successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 7, "\nDoctor not assigned");
 			toCreateNewCell("WC_Automation_Testcases", "Doctor&CaretakerAssigns", 1, 10, "Fail");
 		}
@@ -1427,6 +1442,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment completed");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 7, "Emergency Appointment not completed");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 1, 10, "Fail");
 		}
@@ -1474,6 +1490,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 7, "Emergency request not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 2, 10, "Fail");
 		}
@@ -1573,6 +1590,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment not completed");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Fail");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 7, "Appointment completed successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 3, 10, "Pass");
 		}
@@ -1635,6 +1653,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine approved successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 7, "Medicine not approved");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 4, 10, "Fail");
 		}
@@ -1704,6 +1723,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Pass");
 		} catch (Exception e) {
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 7, "Request appointment not created");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 5, 10, "Fail");
 		}
@@ -1772,7 +1792,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment created successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Pass");
 		} catch (Exception e) {
-			System.err.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 7, "Request appointment not created");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 6, 10, "Fail");
 		}
@@ -1837,7 +1857,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment accepted successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Pass");
 		} catch (Exception e) {
-			System.err.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 7, "Request appointment not accepted");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 7, 10, "Fail");
 		}
@@ -1876,7 +1896,7 @@ public class RunnerClass extends BaseClass {
 					"Upcoming appointment cancelled successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Pass");
 		} catch (Exception e) {
-			System.err.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 7, "Upcoming appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 8, 10, "Fail");
 		}
@@ -1919,7 +1939,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment cancelled successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Pass");
 		} catch (Exception e) {
-			System.err.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 9, 10, "Fail");
 		}
@@ -1960,7 +1980,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment cancelled successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Pass");
 		} catch (Exception e) {
-			System.out.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 10, 10, "Fail");
 		}
@@ -2001,7 +2021,7 @@ public class RunnerClass extends BaseClass {
 					"Request appointment cancelled successfully");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Pass");
 		} catch (Exception e) {
-			System.err.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 7, "Request appointment not cancelled");
 			toCreateNewCell("WC_Automation_Testcases", "Appointments", 11, 10, "Fail");
 		}
@@ -2068,7 +2088,7 @@ public class RunnerClass extends BaseClass {
 		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 10, "Pass");
 		}
 		catch (Exception e) {
-			System.out.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 7,
 					"Channel partner profile not updated");
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 1, 10, "Fail");
@@ -2136,7 +2156,7 @@ public class RunnerClass extends BaseClass {
 		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 10, "Pass");
 		}
 		catch (Exception e) {
-			System.out.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 7,
 					"Care manager profile not updated");
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 2, 10, "Fail");
@@ -2219,7 +2239,7 @@ public class RunnerClass extends BaseClass {
 		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 10, "Pass");
 		}
 		catch (Exception e) {
-			System.out.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 7,
 					"Doctor profile not updated");
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 3, 10, "Fail");
@@ -2297,7 +2317,7 @@ public class RunnerClass extends BaseClass {
 		toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 10, "Pass");
 		}
 		catch (Exception e) {
-			System.out.println("test---->" + e.toString());
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 7,
 					"Caretaker profile not updated");
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 4, 10, "Fail");
@@ -2371,7 +2391,7 @@ public class RunnerClass extends BaseClass {
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 10, "Pass");
 		}
 		catch (Exception e) {
-			System.out.println("Exception----->"+e);
+			e.printStackTrace();
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 7,
 					"Pharmacist profile not updated");
 			toCreateNewCell("WC_Automation_Testcases", "ProfileUpdate", 5, 10, "Fail");
@@ -2411,6 +2431,7 @@ public class RunnerClass extends BaseClass {
 			toSelectAndFill(l4.getEnterDoB(), "01-02-1990");
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
