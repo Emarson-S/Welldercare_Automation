@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -37,6 +39,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 public class BaseClass {
 
@@ -118,11 +122,11 @@ public class BaseClass {
 
 		element.sendKeys(String.valueOf(myInt));
 	}
-	
-	public static void toSelectAndFill(WebElement element,  String data) throws AWTException {
-		Actions b=new Actions(driver);
+
+	public static void toSelectAndFill(WebElement element, String data) throws AWTException {
+		Actions b = new Actions(driver);
 		b.doubleClick(element).perform();
-        selectAllText();
+		selectAllText();
 		element.sendKeys(data);
 	}
 
@@ -286,12 +290,11 @@ public class BaseClass {
 		s = new Select(element);
 		s.selectByIndex(index);
 	}
-	
-	
+
 	// get no of rows in particular table
-	public static int toGetNoOfRowsFromTable(WebElement element, String tagName) {		
-		List<WebElement> allRow=element.findElements(By.tagName(tagName));
-		int allrows=allRow.size();
+	public static int toGetNoOfRowsFromTable(WebElement element, String tagName) {
+		List<WebElement> allRow = element.findElements(By.tagName(tagName));
+		int allrows = allRow.size();
 		return allrows;
 	}
 
@@ -299,7 +302,7 @@ public class BaseClass {
 	public static void takePicture(String pictureName) throws IOException {
 		TakesScreenshot tk = (TakesScreenshot) driver;
 		File sr = tk.getScreenshotAs(OutputType.FILE);
-		File dn = new File("C:\\Users\\Mavensi Lap017\\Welldercare\\Screenshots" + pictureName + ".png");
+		File dn = new File("D:\\Project\\Welldercare_Automation\\Screenshots\\" + pictureName + ".png");
 		FileUtils.copyFile(sr, dn);
 	}
 
@@ -435,8 +438,28 @@ public class BaseClass {
 		String date1 = dateFormat.format(date);
 		return date1;
 	}
-
-
 	
+//  <--- Take response from verification token url --->		
+
+	public static void readtoken(String ActiveToken, String email, String SetPassword) throws IOException {
+		FileReader reader = new FileReader(
+				"D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
+		Properties props = new Properties();
+		props.load(reader);
+		Response response = RestAssured.get(props.getProperty(ActiveToken) + email + "");
+		String token = response.asString();
+		System.out.println(token);
+		driver.get(props.getProperty(SetPassword) + token + "");
+	}
+	
+	public static String readOtp(String Otp, String email) throws IOException {
+		FileReader reader = new FileReader(
+				"D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
+		Properties props = new Properties();
+		props.load(reader);
+		Response respon = RestAssured.get(props.getProperty(Otp) + email + "");
+		String s = respon.asString();
+		return s;
+	}
 
 }

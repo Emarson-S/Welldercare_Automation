@@ -30,10 +30,65 @@ public class UserCreationPojo extends BaseClass {
 		@FindBy(xpath="//button[text()='Sign in']")}) 
 	private WebElement clickSignIn;
 	
+	@FindAll({
+		@FindBy(xpath="//h4[@class='page-title']")}) 
+	private WebElement pageTitle;
+	
+	@FindAll({
+		@FindBy(xpath="(//h2[@class='rightHeaderTitle'])[1]")}) 
+	private WebElement LoginpageTitle;
+	
+	@FindAll({
+		@FindBy(xpath="(//h3[@class='pb-10'])[1]")}) 
+	private WebElement ExpirypageTitle;
+	
+	public WebElement getExpirypageTitle() {
+		return ExpirypageTitle;
+	}
 
+
+	public WebElement getLoginpageTitle() {
+		return LoginpageTitle;
+	}
+
+
+
+	@FindAll({
+		@FindBy(xpath="//p[@class='notifier__notification-message ng-star-inserted']")}) 
+	private WebElement readNotify;
+	
+
+	@FindAll({
+		@FindBy(xpath="(//div[@class='ng-star-inserted'])[1]")}) 
+	private WebElement readValidationMessage;
+	
+	@FindAll({
+		@FindBy(xpath="(//div[@class='ng-star-inserted'])[2]")}) 
+	private WebElement readUserCreaErrorMessage;
+	
+	@FindAll({
+		@FindBy(xpath="(//div[@class='text-danger fs-12 ng-star-inserted'])[2]")}) 
+	private WebElement readEmailErrorMessage;
+	
+	
+	@FindAll({
+		@FindBy(xpath="(//div[@class='text-danger fs-12 ng-star-inserted'])[2]")}) 
+	private WebElement readNumberErrorMessage;
+	
+	@FindAll({
+		@FindBy(xpath="//button[text()='Cancel']")}) 
+	private WebElement clickCancelBtn;
 	
 //	<--- Forgot password page --->
 	
+
+
+	public WebElement getClickCancelBtn() {
+		return clickCancelBtn;
+	}
+
+
+
 	@FindAll({
 		@FindBy(xpath="//a[text()='Forgot password?']"),
 		@FindBy(xpath="//a[@href='#/en/forgot-password']")}) 
@@ -96,6 +151,11 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement selectCountryCode;
 	
 	@FindAll({
+		@FindBy(xpath="(//button[@class='btn-edit-well ng-star-inserted'])[1]")}) 
+	private WebElement clickEditBtn;
+	
+	
+	@FindAll({
 		@FindBy(xpath="//input[@formcontrolname='email']"),
 		@FindBy(xpath="//input[@placeholder='Email']")}) 
 	private WebElement enterUserEmail;
@@ -118,10 +178,20 @@ public class UserCreationPojo extends BaseClass {
 		@FindBy(xpath="//button[text()='Validate']")}) 
 	private WebElement clickValidateBtn;
 	
+	@FindAll({
+		@FindBy(xpath="//select[@formcontrolname='status']")})
+	private WebElement selectUserStatus;
+	
 
 //  < ---- Change password page ---->
 	
 	
+	public WebElement getSelectUserStatus() {
+		return selectUserStatus;
+	}
+
+
+
 	@FindAll({
 		@FindBy(xpath="//li[@class='dropdown user user-menu']")}) 
 	private WebElement clickProfileMenu;
@@ -210,23 +280,19 @@ public class UserCreationPojo extends BaseClass {
 	private WebElement enterCPAddress2;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]"),
-		@FindBy(xpath="//input[@autocomplete='a55d532151e6']")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[6]")}) 
 	private WebElement enterCPCountry;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]"),
-		@FindBy(xpath="//input[@autocomplete='afbeb71c248a']")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[7]")}) 
 	private WebElement enterCPState;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]"),
-		@FindBy(xpath="//input[@autocomplete='ade66aa82b19']")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
 	private WebElement enterCPCity;
 	
 	@FindAll({
-		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]"),
-		@FindBy(xpath="//input[@autocomplete='ab86fc7c778b']")}) 
+		@FindBy(xpath="(//input[@aria-autocomplete='list'])[9]")}) 
 	private WebElement enterCPTerritory;
 	
 	@FindAll({
@@ -481,6 +547,11 @@ public class UserCreationPojo extends BaseClass {
 	
 
 	
+	public WebElement getPageTitle() {
+		return pageTitle;
+	}
+
+	
 	public WebElement getSelectCountryCode() {
 		return selectCountryCode;
 	}
@@ -510,10 +581,34 @@ public class UserCreationPojo extends BaseClass {
 		return clickSaveChangePassword;
 	}
 	
+	public WebElement getClickEditBtn() {
+		return clickEditBtn;
+	}
+
+
+	public WebElement getReadNumberErrorMessage() {
+		return readNumberErrorMessage;
+	}
+
+
+	public WebElement getReadEmailErrorMessage() {
+		return readEmailErrorMessage;
+	}
+
+
+	public WebElement getReadUserCreaErrorMessage() {
+		return readUserCreaErrorMessage;
+	}
+
 	
 	public WebElement getClickSat() {
 		return clickSat;
 	}
+	
+	public WebElement getReadNotify() {
+		return readNotify;
+	}
+
 
 	public WebElement getClickSun() {
 		return clickSun;
@@ -728,6 +823,16 @@ public class UserCreationPojo extends BaseClass {
 	public WebElement getEnterCPTitle() {
 		return enterCPTitle;
 	}
+	
+
+
+
+	public WebElement getReadValidationMessage() {
+		return readValidationMessage;
+	}
+
+
+
 
 	public WebElement getEnterCPDOB() {
 		return enterCPDOB;

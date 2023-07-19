@@ -1,30 +1,23 @@
  DummyEmail=https://www.fakemail.net/
  
- BaseUrl=http://65.108.222.73/#/en/login
+ BaseUrl=https://awsdev.iksana.life/#/en/login
  
- ActiveToken=http://65.108.222.73:8080/recent-user-activation-link/
+ ActiveToken=https://api-dev.iksana.life/recent-user-activation-link/
  
- PasswordToken=http://65.108.222.73:8080/recent-recent-password-link/
+ PasswordToken=https://api-dev.iksana.life/recent-recent-password-link/
  
- SetPassword=http://65.108.222.73/#/en/createPassword?token=
+ SetPassword=https://awsdev.iksana.life/#/en/createPassword?token=
  
- ResetPassword=http://65.108.222.73/#/en/reset-password?token=
+ ResetPassword=https://awsdev.iksana.life/#/en/reset-password?token=
  
- Otp=http://65.108.222.73:8080/recent-user-otp/
+ Otp=https://api-dev.iksana.life/recent-user-otp/
  
 
-DB_URL =mongodb://welldercare:rntVrfcPE9vAJkJqXvVi@65.108.222.73:27017/db_welldercare_dev?authSource=admin
+DB_URL =mongodb://development:bRbhKCWgaVrhkgKnkvqC@172.31.32.118:27017/db_iksana_dev?authSource=admin
 
 DB_USER =admin
 
-DB_PASSWORD =rntVrfcPE9vAJkJqXvVi
+DB_PASSWORD =bRbhKCWgaVrhkgKnkvqC
 
-Database=db_welldercare_dev
+Database=db_iksana_dev
 
-host=65.108.222.73
-port=27017
-mongodb.username=admin
-mongodb.password=rntVrfcPE9vAJkJqXvVi
-mongodb.database=db_welldercare_dev
-mongodb.uri=mongodb://welldercare:rntVrfcPE9vAJkJqXvVi@65.108.222.73:27017/db_welldercare_dev?authSource=admin
-server.port=8080

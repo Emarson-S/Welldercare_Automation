@@ -62,9 +62,18 @@ public class AppointmentsPojo extends BaseClass {
 		@FindBy(xpath="//button[text()='Book Appointment']")}) 
 	private WebElement clickBookAppointment;
 	
+	@FindAll({
+		@FindBy(xpath="(//h4[@class='modal-title mb-4'])[1]")}) 
+	private WebElement createAppointmentTitle;
+	
 	
 //  < --- Complete appointments -- >	
 	
+	public WebElement getCreateAppointmentTitle() {
+		return createAppointmentTitle;
+	}
+
+
 	@FindAll({
 		@FindBy(xpath="//span[text()='Appointments ']"),
 		@FindBy(xpath="//a[@href='#/en/home/appointment/upcoming']")}) 

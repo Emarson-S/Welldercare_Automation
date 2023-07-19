@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -25,8 +26,10 @@ import org.base.UserCreationPojo;
 import org.base.VeteranOnboardingPojo;
 import org.bson.Document;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 import com.google.common.io.Files;
@@ -41,6 +44,16 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class SampleClass extends BaseClass {
+	
+	@Test
+	private void tc1() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
+		browserstackOptions.put("unhandledPromptBehavior", "ignore");
+		capabilities.setCapability("bstack:options", browserstackOptions);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("browserstack_executor: {\"action\": \"sendBasicAuth\", \"arguments\": {\"username\":\"<username>\", \"password\": \"<password>\", \"timeout\": \"<time in milliseconds>\"}}");
+	}
 
 	@Test(enabled = false)
 	private void acceptMedicineRequest() throws IOException, InterruptedException {
@@ -51,8 +64,8 @@ public class SampleClass extends BaseClass {
 		UserCreationPojo l1 = new UserCreationPojo();
 		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
 		SmartPillBox l6 = new SmartPillBox();
-		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 5));
-		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 5));
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
 		toClickButton(l1.getClickSignIn());
 		toThreadSleep(3000);
 		toClickButton(l6.getClickMedicineRequest());
@@ -95,22 +108,74 @@ public class SampleClass extends BaseClass {
 		closeBrowser();
 	}
 
-	@Test(enabled = true)
-	private void tc3() throws IOException {
-
-		try {
-			int a = 0;
-			int b = 1;
-			int c = b / a;
-
-		} catch (Exception e) {
-			e.printStackTrace();
+	@Test(enabled = false)
+	private void tc3() throws IOException, InterruptedException, AWTException {
+		openChrome();
+		maxWindow();
+		Configurations.readUrl("BaseUrl");
+		toThreadSleep(2000);
+		UserCreationPojo l1 = new UserCreationPojo();
+		ProfileUpdatePojo l4 = new ProfileUpdatePojo();
+		toFillTextbox(l1.getEnterUsername(), toReadDataFromExcel("Files", "Login&Usercreation", 8, 1));
+		toFillTextbox(l1.getEnterPassword(), toReadDataFromExcel("Files", "Login&Usercreation", 11, 1));
+		toClickButton(l1.getClickSignIn());
+		toThreadSleep(2000);
+		toFillTextbox(l1.getUploadCPprofilePicture(), toReadDataFromExcel("Files", "Login&Usercreation", 12, 1));
+		toFillTextbox(l1.getEnterCPTitle(), toReadDataFromExcel("Files", "Login&Usercreation", 13, 1));
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l1.getEnterCPDegree(), toReadDataFromExcel("Files", "Login&Usercreation", 16, 1));
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l1.getEnterCPGovtIdType(), toReadDataFromExcel("Files", "Login&Usercreation", 17, 1));
+		pressEnterKey();
+		toThreadSleep(1000);
+		toFillTextbox(l1.getEnterCPGovtIdNumber(), toReadDataFromExcel("Files", "Login&Usercreation", 18, 1));
+		toFillTextbox(l1.getEnterCPUploadProof(), toReadDataFromExcel("Files", "Login&Usercreation", 19, 1));
+		toThreadSleep(4000);
+		toFillTextbox(l1.getEnterCPAddress1(), toReadDataFromExcel("Files", "Login&Usercreation", 20, 1));
+		toFillTextbox(l1.getEnterCPAddress2(), toReadDataFromExcel("Files", "Login&Usercreation", 21, 1));
+		toFillTextbox(l1.getEnterCPDOB(), "06-06-2001");
+		toFillTextbox(l1.getEnterCPAlternateContect(), toReadDataFromExcel("Files", "Login&Usercreation", 15, 1));
+		toFillTextbox(l1.getEnterCPCountry(), toReadDataFromExcel("Files", "Login&Usercreation", 22, 1));
+		toThreadSleep(1000);
+		pressEnterKey();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("(//input[@aria-autocomplete='list'])[7]")).sendKeys("Sarawak");
+	//	toFillTextbox(l1.getEnterCPState(), toReadDataFromExcel("Files", "Login&Usercreation", 23, 1));
+		pressEnterKey();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("(//input[@aria-autocomplete='list'])[8]")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("(//input[@aria-autocomplete='list'])[8]")).sendKeys("Kanowit");
+	//	toFillTextbox(l1.getEnterCPCity(), toReadDataFromExcel("Files", "Login&Usercreation", 24, 1));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l1.getEnterCPpincode(), toReadDataFromExcel("Files", "Login&Usercreation", 25, 1));
+		driver.findElement(By.xpath("(//input[@aria-autocomplete='list'])[9]")).click();
+		toThreadSleep(2000);
+		driver.findElement(By.xpath("(//input[@aria-autocomplete='list'])[9]")).sendKeys("Pekan kanowit");
+	//	toFillTextbox(l1.getEnterCPTerritory(), toReadDataFromExcel("Files", "Login&Usercreation", 26, 1));
+		toThreadSleep(2000);
+		pressEnterKey();
+		toFillTextbox(l1.getEnterCPAboutYourself(), toReadDataFromExcel("Files", "Login&Usercreation", 27, 1));
+		driver.findElement(By.xpath("//button[text()=' Save ']")).click();
+		toThreadSleep(3000);
+		String output = Configurations.readOtpFromTable(toReadDataFromExcel("Files", "Login&Usercreation", 8, 1));
+		for (int i = 0, j = 1; i < output.length(); i++, j++) {
+			char ch = output.charAt(i);
+			String otp = Character.toString(ch);
+			toFillTextbox(driver.findElement(By.xpath("(//input[@autocomplete='one-time-code'])[" + j + "]")), otp);
 		}
-
-//		String enquiryId = MongoDBCollections.connMongoDB("DB_URL", "Database", MongoDBCollections.TBL_APPOINTMENT, "veteranName", "Harson T", "time","status", "12:55 PM","completed", "_id");
-//		System.out.println(enquiryId);
-
-	}
+		toClickButton(l1.getClickValidateBtn());
+		toThreadSleep(4000);
+		WebElement output1 = driver.findElement(By.xpath("//h4[@class='text-white fw-500']"));
+		System.out.println(output1.getText());
+		toThreadSleep(1000);
+	toThreadSleep(5000);
+	closeBrowser();
+}
+	
 
 	@Test(enabled = false)
 	private void caremanagerProfileUpdate() throws Exception {
@@ -167,7 +232,6 @@ public class SampleClass extends BaseClass {
 		pressEnterKey();
 		toClickButton(l4.getClickCpSubmitBtn());
 		toThreadSleep(4000);
-		closeBrowser();
 
 	}
 

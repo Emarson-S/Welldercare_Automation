@@ -37,11 +37,12 @@ public class Configurations extends BaseClass {
 
 	public static void readtoken(String ActiveToken, String email, String SetPassword) throws IOException {
 		FileReader reader = new FileReader(
-				"D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\" + host);
+				"D:\\Project\\Welldercare_Automation\\src\\test\\java\\org\\runner\\Application properties Dev");
 		Properties props = new Properties();
 		props.load(reader);
 		Response response = RestAssured.get(props.getProperty(ActiveToken) + email + "");
 		String token = response.asString();
+		System.out.println(token);
 		driver.get(props.getProperty(SetPassword) + token + "");
 	}
 
@@ -169,7 +170,7 @@ public class Configurations extends BaseClass {
 
 		// Change Address
 
-		List<String> l1 = Configurations.enterAddress("India", "Tamilnadu", "Ramanathapuram", "656453", "C.k.mangalam");
+		List<String> l1 = Configurations.enterAddress("India", "Maharashtra", "Mumbai", "656453", "Navi mumbai");
 		for (int i = 8, k = 0; i < 13 && k < 5; i++, k++) {
 			toCreateNewCell("Files", "Enquiry", i, 1, l1.get(k));
 		}
@@ -178,11 +179,12 @@ public class Configurations extends BaseClass {
 				toCreateNewCell("Files", "Login&Usercreation", i, j, l1.get(k));
 			}
 		}
+		
 
 		// Change phone numbers & Id numbers
 
 		for (int i = 0, j = -1; i < 7 || j < 7; i++, j++) {
-			List<String> l2 = Configurations.enterContactNo(8976564180l, 78745323178l, 876593543138l, i);
+			List<String> l2 = Configurations.enterContactNo(7976564180l, 78745323178l, 576593543138l, i);
 			if (j >= 1) {
 				toCreateNewCell("Files", "Login&Usercreation", 15, j, l2.get(1));
 				toCreateNewCell("Files", "Login&Usercreation", 18, j, l2.get(2));

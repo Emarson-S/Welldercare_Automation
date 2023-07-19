@@ -147,8 +147,7 @@ public class ProfileUpdatePojo extends BaseClass{
 	
 	@FindAll({
 		@FindBy(xpath="(//input[@aria-autocomplete='list'])[8]")}) 
-	private WebElement enterPhDegree;
-	
+	private WebElement enterPhDegree;	
 	
 	@FindAll({
 		@FindBy(xpath="//input[@formcontrolname='pharmacyName']")}) 
@@ -178,6 +177,57 @@ public class ProfileUpdatePojo extends BaseClass{
 		@FindBy(xpath="//textarea[@formcontrolname='address']")}) 
 	private WebElement enterPhPharmacyAddress;
 	
+	
+//  <--------  Veteran profile update  ------>	
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='emergencyContactNo']")}) 
+	private WebElement enterVTAlternateNumber;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='height']")}) 
+	private WebElement enterVTHeight;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='weight']")}) 
+	private WebElement enterVTWeight;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='smokeCount']")}) 
+	private WebElement enterVTNoOfCigarettes;
+	
+	@FindAll({
+		@FindBy(xpath="//input[@formcontrolname='drinkerCount']")}) 
+	private WebElement enterVTDrinkerCount;
+	
+	
+	
+	
+	public WebElement getEnterVTAlternateNumber() {
+		return enterVTAlternateNumber;
+	}
+
+
+	public WebElement getEnterVTHeight() {
+		return enterVTHeight;
+	}
+
+
+	public WebElement getEnterVTWeight() {
+		return enterVTWeight;
+	}
+
+
+	public WebElement getEnterVTNoOfCigarettes() {
+		return enterVTNoOfCigarettes;
+	}
+
+
+	public WebElement getEnterVTDrinkerCount() {
+		return enterVTDrinkerCount;
+	}
+
+
 	public WebElement getEnterPhDegree() {
 		return enterPhDegree;
 	}
